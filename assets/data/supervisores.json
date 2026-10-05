@@ -1,0 +1,160 @@
+[
+  {
+    "responsavel": "ALLAN LEVATI",
+    "unidades": [
+      {
+        "unidade": "COPA LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional GOL Virtual"
+      },
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional COPA Virtual"
+      },
+      {
+        "unidade": "AZUL Linhas Aéreas - Varredura BR",
+        "setor": "Operacional COPA Virtual Brasília"
+      }
+    ],
+    "setor_ondemand": "Setor Virtual"
+  },
+  {
+    "responsavel": "ANDRESSA DOS SANTOS BARBOSA",
+    "unidades": [
+      {
+        "unidade": "COPA LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional LATAM Virtual"
+      },
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional Curitiba"
+      },
+      {
+        "unidade": "LATAM Linhas Aéreas - Varredura BR",
+        "setor": "Operacional COPA Virtual Brasília"
+      },
+      {
+        "unidade": "AZUL Linhas Aéreas - Varredura BR",
+        "setor": "Operacional GOL Virtual"
+      }
+    ],
+    "setor_ondemand": "Setor Virtual"
+  },
+  {
+    "responsavel": "Antônio Marcos Rodrigues Lino",
+    "unidades": [
+      {
+        "unidade": "COPA LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional LATAM Virtual"
+      },
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional LATAM Virtual"
+      },
+      {
+        "unidade": "LATAM Linhas Aéreas - Varredura BR",
+        "setor": "Operacional COPA Virtual Brasília"
+      },
+      {
+        "unidade": "AZUL Linhas Aéreas - Varredura BR",
+        "setor": "Operacional LATAM Virtual"
+      }
+    ],
+    "setor_ondemand": "Setor Virtual"
+  },
+  {
+    "responsavel": "CLARICE DIAS BARRETO",
+    "unidades": [
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional Goiania "
+      }
+    ],
+    "setor_ondemand": "Setor Virtual"
+  },
+  {
+    "responsavel": "Emerson Nascimento Da Franca",
+    "unidades": [
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Setor Virtual"
+      }
+    ],
+    "setor_ondemand": "Setor Virtual"
+  },
+  {
+    "responsavel": "ESVALDO DE SOUSA SILVA",
+    "unidades": [
+      {
+        "unidade": "COPA LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional AZUL Virtual"
+      },
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional COPA Virtual"
+      },
+      {
+        "unidade": "LATAM Linhas Aéreas - Varredura BR",
+        "setor": "Operacional AZUL Virtual"
+      },
+      {
+        "unidade": "AZUL Linhas Aéreas - Varredura BR",
+        "setor": "Operacional COPA Virtual Brasília"
+      }
+    ],
+    "setor_ondemand": "Setor Virtual"
+  },
+  {
+    "responsavel": "FRANCIELLE SANTOS DIAS",
+    "unidades": [
+      {
+        "unidade": "AZUL Linhas Aéreas - Varredura BR",
+        "setor": "Operacional Confins"
+      }
+    ],
+    "setor_ondemand": "Setor Virtual"
+  },
+  {
+    "responsavel": "Janderson Henrique de Santana",
+    "unidades": [
+      {
+        "unidade": "COPA LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional LATAM Virtual"
+      },
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional LATAM Virtual"
+      },
+      {
+        "unidade": "LATAM Linhas Aéreas - Varredura BR",
+        "setor": "Operacional COPA Virtual Brasília"
+      },
+      {
+        "unidade": "AZUL Linhas Aéreas - Varredura BR",
+        "setor": "Operacional LATAM Virtual"
+      },
+      {
+        "unidade": "CABO VERDE AIRLINES - VARREDURA BR",
+        "setor": "Operacional Virtual"
+      }
+    ],
+    "setor_ondemand": "Setor Virtual"
+  },
+  {
+    "responsavel": "VERANO ARAUJO DA CUNHA",
+    "unidades": [
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional AZUL Virtual"
+      },
+      {
+        "unidade": "AZUL Linhas Aéreas - Varredura BR",
+        "setor": "Operacional GOL Virtual"
+      },
+      {
+        "unidade": "COPA LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional GOL Virtual"
+      }
+    ],
+    "setor_ondemand": "Setor Virtual"
+  }
+]

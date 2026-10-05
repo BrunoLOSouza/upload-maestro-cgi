@@ -1,0 +1,83 @@
+[
+  {
+    "label": "Controle de Acesso Rampa 1"
+  },
+  {
+    "label": "Controle de Acesso Rampa 2"
+  },
+  {
+    "label": "Controle de Acesso Rampa 3"
+  },
+  {
+    "label": "Controle de Acesso Rampa 4"
+  },
+  {
+    "label": "Controle de Acesso Porta 1"
+  },
+  {
+    "label": "Controle de Acesso Porta 2"
+  },
+  {
+    "label": "Inspeção em Aeronave 1"
+  },
+  {
+    "label": "Inspeção em Aeronave 2"
+  },
+  {
+    "label": "Inspeção em Aeronave 3"
+  },
+  {
+    "label": "Inspeção em Aeronave 4"
+  },
+  {
+    "label": "Triagem Bagagens 1"
+  },
+  {
+    "label": "Triagem Bagagens 2"
+  },
+  {
+    "label": "Inspeção Bagagens"
+  },
+  {
+    "label": "Inspeção Cargas"
+  },
+  {
+    "label": "Proteção Cargas"
+  },
+  {
+    "label": "Profiler 1"
+  },
+  {
+    "label": "Profiler 2"
+  },
+  {
+    "label": "Profiler 3"
+  },
+  {
+    "label": "Profiler 4"
+  },
+  {
+    "label": "Selectee 1"
+  },
+  {
+    "label": "Selectee 2"
+  },
+  {
+    "label": "Selectee 3"
+  },
+  {
+    "label": "Catering"
+  },
+  {
+    "label": "GRIS"
+  },
+  {
+    "label": "GRIS + Pernoite"
+  },
+  {
+    "label": "Inspeção Conecta"
+  },
+  {
+    "label": "Líder"
+  }
+]

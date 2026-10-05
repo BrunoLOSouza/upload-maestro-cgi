@@ -1,0 +1,48 @@
+{
+  "unidades": [
+    {
+      "id": "latam",
+      "label": "LATAM Linhas Aéreas - Varredura BR",
+      "arquivos": [
+        "latam_rotas.json"
+      ]
+    },
+    {
+      "id": "gol",
+      "label": "GOL Linhas Aéreas - Varredura BR",
+      "arquivos": [
+        "gol_rotas.json"
+      ]
+    },
+    {
+      "id": "azul",
+      "label": "AZUL Linhas Aéreas - Varredura BR",
+      "arquivos": [
+        "azul_rotas.json"
+      ]
+    },
+    {
+      "id": "copa",
+      "label": "COPA LINHAS AÉREAS - VARREDURA BR",
+      "arquivos": [
+        "copa_rotas.json"
+      ]
+    },
+    {
+      "id": "ondemand",
+      "label": "Administração",
+      "arquivos": [
+        "ondemand.json"
+      ]
+    }
+  ],
+  "campos_fixos": {
+    "EMPRESA": "SECURITY MATRIZ - BSB",
+    "EXECUTOR": "CONTRATO",
+    "CATEGORIA": "MALHA AÉREA",
+    "PRIORIDADE": "ALTA",
+    "DISCIPLINA": "ATENDIMENTO",
+    "GRUPO_SERVICO": "OPERACIONAL",
+    "SERVICO": "OPERADOR AEREO"
+  }
+}

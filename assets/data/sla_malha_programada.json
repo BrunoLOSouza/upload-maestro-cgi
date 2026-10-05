@@ -1,0 +1,376 @@
+{
+  "chaves": {
+    "LATAM LINHAS AÉREAS - VARREDURA BR|BSB|LIM|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|BSB|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|CNF|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FLN|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|POA|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|POA|SCL|Voo internacional mercosul|Inspeção Bagagens": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|POA|LIM|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|POA|LIM|Voo internacional mercosul|Inspeção Bagagens": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|CWB|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|CWB|SCL|Voo internacional mercosul|Inspeção Bagagens": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|CWB|LIM|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|CWB|LIM|Voo internacional mercosul|Inspeção Bagagens": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|REC|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|MIA|Voo internacional EUA|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|MIA|Voo internacional EUA|Catering": {
+      "sla_upload": -300,
+      "sla_contratual": 300
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|MIA|Voo internacional EUA|Líder": {
+      "sla_upload": -300,
+      "sla_contratual": 300
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|LIS|Voo internacional EUR|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|AEP|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|ASU|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|MDZ|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|MVD|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|PUJ|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|VVI|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL |PBM|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|NAT|AEP|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|NAT|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|AEP|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BPS|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|REC|AEP|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|REC|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MCZ|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|JPA|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|MIA|Voo internacional EUA|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|MIA|Voo internacional EUA|Catering": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|MCO|Voo internacional EUA|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|MCO|Voo internacional EUA|Catering": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|TODAS|TODAS|GRIS (Cargueiro Mercado Livre)|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|TODAS|TODAS|GRIS (Cargueiro Mercado Livre)|GRIS + Pernoite": {
+      "sla_upload": -360,
+      "sla_contratual": 360
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|ASU|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|ASU|Voo internacional mercosul|Catering": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|MVD|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|MVD|Voo internacional mercosul|Catering": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|MCO|Voo internacional EUA|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|MCO|Voo internacional EUA|Catering": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|MAO|FLL|Voo internacional EUA|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|MAO|FLL|Voo internacional EUA|Catering": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|BEL |FLL|Voo internacional EUA|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|BEL |FLL|Voo internacional EUA|Catering": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|MAD|Voo internacional EUR|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|OPO|Voo internacional EUR|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "AZUL LINHAS AÉREAS - VARREDURA BR|TODAS|TODAS|Varredura Azul Conecta|Inspeção Conecta": {
+      "sla_upload": -60,
+      "sla_contratual": 60
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional Bate e volta (TURN)|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional Bate e volta (TURN)|Controle de Acesso Rampa 2": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional Bate e volta (TURN)|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 1": {
+      "sla_upload": -110,
+      "sla_contratual": 110
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 2": {
+      "sla_upload": -110,
+      "sla_contratual": 110
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 2": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Bate e volta (TURN)|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 1": {
+      "sla_upload": -110,
+      "sla_contratual": 110
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 2": {
+      "sla_upload": -110,
+      "sla_contratual": 110
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 2": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Bate e volta (TURN)|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 1": {
+      "sla_upload": -110,
+      "sla_contratual": 110
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 2": {
+      "sla_upload": -110,
+      "sla_contratual": 110
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 2": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Bate e volta (TURN)|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 1": {
+      "sla_upload": -110,
+      "sla_contratual": 110
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 2": {
+      "sla_upload": -110,
+      "sla_contratual": 110
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 2": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Bate e volta (TURN)|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 1": {
+      "sla_upload": -110,
+      "sla_contratual": 110
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 2": {
+      "sla_upload": -110,
+      "sla_contratual": 110
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 2": {
+      "sla_upload": -180,
+      "sla_contratual": 180
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|PTY|Voo Internacional  Bate e volta (TURN)|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120
+    }
+  }
+}
