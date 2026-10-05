@@ -1,0 +1,19 @@
+{
+  "fixed_cols": [
+    "EMPRESA",
+    "UNIDADE DE GESTÃO",
+    "EXECUTOR",
+    "SETOR RESPONSÁVEL",
+    "RESPONSÁVEL",
+    "CATEGORIA ",
+    "PRIORIDADE",
+    "TÍTULO",
+    "DESCRIÇÃO",
+    "DISCIPLINA",
+    "GRUPO DE SERVIÇO",
+    "SERVIÇO",
+    "SITE",
+    "SLA DATA",
+    "SLA HORA"
+  ]
+}

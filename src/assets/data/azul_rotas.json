@@ -1,0 +1,53 @@
+{
+  "rotas": [
+    {
+      "base_atend": "REC",
+      "base_dest": "ASU",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "REC",
+      "base_dest": "MVD",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "REC",
+      "base_dest": "MCO",
+      "classificacao": "Voo internacional EUA",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "MAO",
+      "base_dest": "FLL",
+      "classificacao": "Voo internacional EUA",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "BEL ",
+      "base_dest": "FLL",
+      "classificacao": "Voo internacional EUA",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "REC",
+      "base_dest": "MAD",
+      "classificacao": "Voo internacional EUR",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "REC",
+      "base_dest": "OPO",
+      "classificacao": "Voo internacional EUR",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "TODAS",
+      "base_dest": "TODAS",
+      "classificacao": "Varredura Azul Conecta",
+      "_destino_tipo": "select"
+    }
+  ],
+  "destino_tipo": "select"
+}

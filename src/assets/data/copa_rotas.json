@@ -1,0 +1,107 @@
+{
+  "rotas": [
+    {
+      "base_atend": "BSB",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional Bate e volta (TURN)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "BSB",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Partida (RON)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "BSB",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Chegada (RON)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GRU",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Bate e volta (TURN)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GRU",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Partida (RON)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GRU",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Chegada (RON)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GIG",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Bate e volta (TURN)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GIG",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Partida (RON)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GIG",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Chegada (RON)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "CNF",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Bate e volta (TURN)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "CNF",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Partida (RON)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "CNF",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Chegada (RON)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "POA",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Bate e volta (TURN)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "POA",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Partida (RON)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "POA",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Chegada (RON)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "MAO",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Bate e volta (TURN)",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "MAO",
+      "base_dest": "PTY",
+      "classificacao": "Voo Internacional  Partida (RON)",
+      "_destino_tipo": "select"
+    }
+  ],
+  "destino_tipo": "select"
+}

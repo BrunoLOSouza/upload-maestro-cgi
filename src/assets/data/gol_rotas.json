@@ -1,0 +1,137 @@
+{
+  "rotas": [
+    {
+      "base_atend": "GRU",
+      "base_dest": "AEP",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GRU",
+      "base_dest": "ASU",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GRU",
+      "base_dest": "EZE",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GRU",
+      "base_dest": "MDZ",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GRU",
+      "base_dest": "MVD",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GRU",
+      "base_dest": "PUJ",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "GRU",
+      "base_dest": "VVI",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "BEL ",
+      "base_dest": "PBM",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "NAT",
+      "base_dest": "AEP",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "NAT",
+      "base_dest": "EZE",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "BEL ",
+      "base_dest": "PBM",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "FOR",
+      "base_dest": "AEP",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "FOR",
+      "base_dest": "EZE",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "BPS",
+      "base_dest": "EZE",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "REC",
+      "base_dest": "AEP",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "REC",
+      "base_dest": "EZE",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "MCZ",
+      "base_dest": "EZE",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "JPA",
+      "base_dest": "EZE",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "FOR",
+      "base_dest": "MIA",
+      "classificacao": "Voo internacional EUA",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "FOR",
+      "base_dest": "MCO",
+      "classificacao": "Voo internacional EUA",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "TODAS",
+      "base_dest": "TODAS",
+      "classificacao": "Varredura",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "TODAS",
+      "base_dest": "TODAS",
+      "classificacao": "GRIS (Cargueiro Mercado Livre)",
+      "_destino_tipo": "select"
+    }
+  ],
+  "destino_tipo": "select"
+}

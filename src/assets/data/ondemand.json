@@ -1,0 +1,49 @@
+{
+  "destino_tipo": "input",
+  "subtipos": [
+    {
+      "classificacao": "VARREDURA",
+      "label": "VARREDURA"
+    },
+    {
+      "classificacao": "NDA_VARREDURA",
+      "label": "NDA_VARREDURA"
+    },
+    {
+      "classificacao": "GOL MELI",
+      "label": "GOL MELI"
+    },
+    {
+      "classificacao": "AZUL CONECTA",
+      "label": "AZUL CONECTA"
+    },
+    {
+      "classificacao": "INTERNACIONAL",
+      "label": "INTERNACIONAL"
+    },
+    {
+      "classificacao": "INTERNACIONAL EUA",
+      "label": "INTERNACIONAL EUA"
+    },
+    {
+      "classificacao": "INTERNACIONAL EUR",
+      "label": "INTERNACIONAL EUR"
+    },
+    {
+      "classificacao": "INTERNACIONAL RON PARTIDA",
+      "label": "INTERNACIONAL RON PARTIDA"
+    },
+    {
+      "classificacao": "INTERNACIONAL RON CHEGADA",
+      "label": "INTERNACIONAL RON CHEGADA"
+    },
+    {
+      "classificacao": "INTERNACIONAL TURN",
+      "label": "INTERNACIONAL TURN"
+    },
+    {
+      "classificacao": "LATAM CARGO",
+      "label": "LATAM CARGO"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "rotas": [
+    {
+      "base_atend": "BSB",
+      "base_dest": "LIM",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "BSB",
+      "base_dest": "SCL",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "CNF",
+      "base_dest": "SCL",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "FLN",
+      "base_dest": "SCL",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "POA",
+      "base_dest": "SCL",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "POA",
+      "base_dest": "LIM",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "CWB",
+      "base_dest": "SCL",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "CWB",
+      "base_dest": "LIM",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "REC",
+      "base_dest": "SCL",
+      "classificacao": "Voo internacional mercosul",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "FOR",
+      "base_dest": "MIA",
+      "classificacao": "Voo internacional EUA",
+      "_destino_tipo": "select"
+    },
+    {
+      "base_atend": "FOR",
+      "base_dest": "LIS",
+      "classificacao": "Voo internacional EUR",
+      "_destino_tipo": "select"
+    }
+  ],
+  "destino_tipo": "select"
+}
