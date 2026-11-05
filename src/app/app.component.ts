@@ -65,6 +65,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public svcCols: string[] = [];
   public allCols: string[] = [];
   public slaCols: string[] = [];
+  private uploadCols: string[] = [];
 
   // ── FORMULÁRIO (SIDEBAR) ──
   public selCiaId = '';
@@ -211,7 +212,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.githubService.fetchJson<Supervisor[]>('supervisores.json'),
         this.githubService.fetchJson<ServicoDef[]>('servicos.json'),
         this.githubService.fetchJson<Aviso[]>('avisos.json').catch(() => []),
-        this.githubService.fetchJson<{ fixed_cols: string[] }>('colunas.json'),
+        this.githubService.fetchJson<{ fixed_cols: string[]; upload_cols?: string[] }>('colunas.json'),
         this.githubService.fetchJson<SlaConfig>('sla_malha_programada.json').catch(() => null),
         this.githubService.fetchJson<SlaConfig>('sla_malha_manual.json').catch(() => null),
         this.githubService.ensureMalhaMonth(ano, mes),
@@ -225,6 +226,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.slaProgramado = slaProgramado;
       this.slaManual = slaManual;
       this.fixedCols = colunas.fixed_cols || [];
+      this.uploadCols = colunas.upload_cols || [];
 
       // Carregar rotas das CIAs
       const allArquivos = [...new Set(config.unidades.flatMap(u => u.arquivos))];
@@ -263,7 +265,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.svcCols.push(s.label);
       this.svcCols.push('Responsavel ' + s.label);
     });
-    this.allCols = [...this.fixedCols, ...this.svcCols];
+    this.allCols = this.uploadCols.length ? this.uploadCols : [...this.fixedCols, ...this.svcCols];
     this.slaCols = ['TÍTULO', ...this.svcCols.filter(c => !c.startsWith('Responsavel'))];
   }
 
@@ -284,6 +286,8 @@ export class AppComponent implements OnInit, OnDestroy {
   // ── SELEÇÃO EM CASCATA ──
   public onCiaChange(): void {
     this.resetFrom('cia');
+    this.availableSupervisores = [];
+    this.currentCiaData = null;
     if (!this.selCiaId || !this.config) return;
 
     const unidadeCfg = this.config.unidades.find(u => u.id === this.selCiaId);
@@ -291,7 +295,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
     const todasRotas = unidadeCfg.arquivos.flatMap(arq => {
       const d = this.cias[arq];
-      return d ? d.rotas.map(r => ({ ...r, _destino_tipo: d.destino_tipo })) : [];
+      return d ? (d.rotas || []).map(r => ({ ...r, _destino_tipo: d.destino_tipo })) : [];
     });
 
     this.currentCiaData = {
@@ -301,9 +305,9 @@ export class AppComponent implements OnInit, OnDestroy {
     };
 
     // Supervisores
-    this.availableSupervisores = this.currentCiaData._isOndemand
-      ? this.supervisores
-      : this.supervisores.filter(s => s.unidades.some(u => u.unidade === unidadeCfg.label));
+    this.availableSupervisores = this.supervisores.filter(
+      s => s.unidades.some(u => u.unidade === unidadeCfg.label && !!u.setor)
+    );
 
     if (unidadeCfg.id === 'ondemand') {
       this.isBaseAtendInput = true;
@@ -328,17 +332,17 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public onSupervisorChange(): void {
-    if (!this.selSupervisorName) {
-      this.autoSetorText = '—';
-    } else if (this.currentCiaData?._isOndemand) {
-      const sup = this.supervisores.find(s => s.responsavel === this.selSupervisorName);
-      this.autoSetorText = sup?.setor_ondemand || 'Setor Virtual';
-    } else {
-      const sup = this.supervisores.find(s => s.responsavel === this.selSupervisorName);
-      const unidadeEntry = sup?.unidades.find(u => u.unidade === this.currentCiaData?.unidade);
-      this.autoSetorText = unidadeEntry?.setor || '—';
-    }
+    const entry = this.selectedSupervisorLink;
+    if (!entry) this.selSupervisorName = '';
+    this.autoSetorText = entry?.setor || '—';
     this.updateTitulo();
+  }
+
+  private get selectedSupervisorLink() {
+    const unit = this.config?.unidades.find(u => u.id === this.selCiaId);
+    if (!unit || unit.label !== this.currentCiaData?.unidade) return undefined;
+    return this.supervisores.find(s => s.responsavel === this.selSupervisorName)
+      ?.unidades.find(u => u.unidade === unit.label && !!u.setor);
   }
 
   public onBaseChange(): void {
@@ -469,6 +473,9 @@ export class AppComponent implements OnInit, OnDestroy {
       slaUpload: label ? slaRes.sla_upload : SLA_FALLBACK_PARTIDA,
       slaContratual: label ? slaRes.sla_contratual : Math.abs(SLA_FALLBACK_PARTIDA),
       legend: label ? slaRes.legend : 'Selecione o serviço',
+      manualInput: !!slaRes.manual_input,
+      manualMinutes: null,
+      manualSign: slaRes.sla_upload < 0 ? -1 : 1,
       locked
     });
   }
@@ -494,6 +501,9 @@ export class AppComponent implements OnInit, OnDestroy {
     svc.slaUpload = res.sla_upload;
     svc.slaContratual = res.sla_contratual;
     svc.legend = res.legend;
+    svc.manualInput = !!res.manual_input;
+    svc.manualMinutes = null;
+    svc.manualSign = res.sla_upload < 0 ? -1 : 1;
   }
 
   public recalculateAllServicesSla(): void {
@@ -512,12 +522,21 @@ export class AppComponent implements OnInit, OnDestroy {
         s.slaUpload = res.sla_upload;
         s.slaContratual = res.sla_contratual;
         s.legend = res.legend;
+        s.manualInput = !!res.manual_input;
+        s.manualMinutes = null;
+        s.manualSign = res.sla_upload < 0 ? -1 : 1;
       }
     });
   }
 
   public removeServicoItem(index: number): void {
     this.selectedServices.splice(index, 1);
+  }
+
+  public updateManualSla(svc: SelectedService): void {
+    if (typeof svc.manualMinutes !== 'number' || !Number.isFinite(svc.manualMinutes)) return;
+    svc.slaContratual = svc.manualMinutes;
+    svc.slaUpload = svc.manualMinutes * (svc.manualSign || -1);
   }
 
   // ── TÍTULO & VALIDAÇÃO ──
@@ -555,18 +574,35 @@ export class AppComponent implements OnInit, OnDestroy {
     const ctx = this.getCurrentRouteContext();
     const number = this.inputNumberVal.trim();
     const numberValid = number.length > 0 && /^[A-Z0-9][A-Z0-9\-]*$/.test(number);
-    const destValid = ctx.dest.length >= 3;
-    const baseValid = ctx.base.length >= 3;
+    const basePattern = /^[A-Z]{3}(-[A-Z]{3})?$/;
+    const destValid = basePattern.test(ctx.dest);
+    const baseValid = basePattern.test(ctx.base);
+    const servicesValid = this.selectedServices.length > 0 && this.selectedServices.every(
+      service => this.servicos.some(def => def.label === service.label) &&
+        this.colaboradores.includes(service.apac) &&
+        (!service.manualInput || (typeof service.manualMinutes === 'number' &&
+          Number.isInteger(service.manualMinutes) && service.manualMinutes > 0))
+    );
+    const uniqueServices = new Set(this.selectedServices.map(service => service.label)).size ===
+      this.selectedServices.length;
+    const routeValid = !!this.currentCiaData?.rotas.some(
+      route => route.base_atend === ctx.base && route.classificacao === ctx.classif &&
+        (!route.base_dest || route.base_dest === ctx.dest)
+    );
 
     return !!(
       this.selCiaId &&
+      routeValid &&
       baseValid &&
       numberValid &&
       destValid &&
       ctx.classif &&
-      this.selSupervisorName &&
+      this.selectedSupervisorLink &&
+      this.autoSetorText === this.selectedSupervisorLink.setor &&
       this.inputDataVal &&
-      this.inputHoraVal
+      this.inputHoraVal &&
+      servicesValid &&
+      uniqueServices
     );
   }
 
@@ -623,6 +659,8 @@ export class AppComponent implements OnInit, OnDestroy {
       if (s.label && row.hasOwnProperty(s.label)) {
         row[s.label] = s.slaUpload;
         row['Responsavel ' + s.label] = s.apac;
+        const responsibleColumn = this.servicos.find(def => def.label === s.label)?.responsible_column;
+        if (responsibleColumn) row[responsibleColumn] = s.apac;
         row['_contratual_' + s.label] = s.slaContratual;
       }
     });
@@ -722,6 +760,11 @@ export class AppComponent implements OnInit, OnDestroy {
       if (!col.startsWith('Responsavel') && row[col] !== undefined && row[col] !== '') {
         const resp = row['Responsavel ' + col] || '';
         this.addServicoItem(col, resp, false);
+        const restored = this.selectedServices[this.selectedServices.length - 1];
+        if (restored.manualInput) {
+          restored.manualMinutes = Math.abs(Number(row[col]));
+          this.updateManualSla(restored);
+        }
       }
     });
 
@@ -791,9 +834,6 @@ export class AppComponent implements OnInit, OnDestroy {
     const row = this.rows[index];
     if (!row) return;
 
-    this.rows.splice(index, 1);
-    this.recomputeDuplicates();
-
     const titulo = row.TÍTULO || '';
     const parts = titulo.split('_');
     if (parts.length < 4) {
@@ -814,6 +854,9 @@ export class AppComponent implements OnInit, OnDestroy {
       this.showToast('CIA não encontrada para edição', 'error');
       return;
     }
+
+    this.rows.splice(index, 1);
+    this.recomputeDuplicates();
 
     this.selCiaId = unidadeCfg.id;
     this.onCiaChange();
@@ -854,6 +897,11 @@ export class AppComponent implements OnInit, OnDestroy {
             if (!col.startsWith('Responsavel') && row[col] !== undefined && row[col] !== '') {
               const resp = row['Responsavel ' + col] || '';
               this.addServicoItem(col, resp, false);
+        const restored = this.selectedServices[this.selectedServices.length - 1];
+        if (restored.manualInput) {
+          restored.manualMinutes = Math.abs(Number(row[col]));
+          this.updateManualSla(restored);
+        }
             }
           });
 

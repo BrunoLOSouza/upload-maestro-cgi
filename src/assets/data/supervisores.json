@@ -14,8 +14,7 @@
         "unidade": "AZUL Linhas Aéreas - Varredura BR",
         "setor": "Operacional COPA Virtual Brasília"
       }
-    ],
-    "setor_ondemand": "Setor Virtual"
+    ]
   },
   {
     "responsavel": "ANDRESSA DOS SANTOS BARBOSA",
@@ -36,30 +35,7 @@
         "unidade": "AZUL Linhas Aéreas - Varredura BR",
         "setor": "Operacional GOL Virtual"
       }
-    ],
-    "setor_ondemand": "Setor Virtual"
-  },
-  {
-    "responsavel": "Antônio Marcos Rodrigues Lino",
-    "unidades": [
-      {
-        "unidade": "COPA LINHAS AÉREAS - VARREDURA BR",
-        "setor": "Operacional LATAM Virtual"
-      },
-      {
-        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
-        "setor": "Operacional LATAM Virtual"
-      },
-      {
-        "unidade": "LATAM Linhas Aéreas - Varredura BR",
-        "setor": "Operacional COPA Virtual Brasília"
-      },
-      {
-        "unidade": "AZUL Linhas Aéreas - Varredura BR",
-        "setor": "Operacional LATAM Virtual"
-      }
-    ],
-    "setor_ondemand": "Setor Virtual"
+    ]
   },
   {
     "responsavel": "CLARICE DIAS BARRETO",
@@ -68,18 +44,16 @@
         "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
         "setor": "Operacional Goiania "
       }
-    ],
-    "setor_ondemand": "Setor Virtual"
+    ]
   },
   {
-    "responsavel": "Emerson Nascimento Da Franca",
+    "responsavel": "FRANCIELLE SANTOS DIAS",
     "unidades": [
       {
-        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
-        "setor": "Setor Virtual"
+        "unidade": "AZUL Linhas Aéreas - Varredura BR",
+        "setor": "Operacional Confins"
       }
-    ],
-    "setor_ondemand": "Setor Virtual"
+    ]
   },
   {
     "responsavel": "ESVALDO DE SOUSA SILVA",
@@ -100,18 +74,7 @@
         "unidade": "AZUL Linhas Aéreas - Varredura BR",
         "setor": "Operacional COPA Virtual Brasília"
       }
-    ],
-    "setor_ondemand": "Setor Virtual"
-  },
-  {
-    "responsavel": "FRANCIELLE SANTOS DIAS",
-    "unidades": [
-      {
-        "unidade": "AZUL Linhas Aéreas - Varredura BR",
-        "setor": "Operacional Confins"
-      }
-    ],
-    "setor_ondemand": "Setor Virtual"
+    ]
   },
   {
     "responsavel": "Janderson Henrique de Santana",
@@ -136,8 +99,24 @@
         "unidade": "CABO VERDE AIRLINES - VARREDURA BR",
         "setor": "Operacional Virtual"
       }
-    ],
-    "setor_ondemand": "Setor Virtual"
+    ]
+  },
+  {
+    "responsavel": "Antônio Marcos Rodrigues Lino",
+    "unidades": [
+      {
+        "unidade": "COPA LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional LATAM Virtual"
+      },
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional LATAM Virtual"
+      },
+      {
+        "unidade": "LATAM Linhas Aéreas - Varredura BR",
+        "setor": "Operacional COPA Virtual Brasília"
+      }
+    ]
   },
   {
     "responsavel": "VERANO ARAUJO DA CUNHA",
@@ -153,8 +132,63 @@
       {
         "unidade": "COPA LINHAS AÉREAS - VARREDURA BR",
         "setor": "Operacional GOL Virtual"
+      },
+      {
+        "unidade": "TAP Linhas Aéreas - Varredura BR",
+        "setor": "Operacional Brasília"
       }
-    ],
-    "setor_ondemand": "Setor Virtual"
+    ]
+  },
+  {
+    "responsavel": "Emerson Nascimento Da Franca",
+    "unidades": [
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Setor Virtual"
+      },
+      {
+        "unidade": "COPA LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Apoio Administrativo Virtual"
+      },
+      {
+        "unidade": "MODERN Logistics - Varredura BR",
+        "setor": "Operacional Virtual"
+      }
+    ]
+  },
+  {
+    "responsavel": "Luciana Moura Dos Santos",
+    "unidades": [
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Setor Virtual"
+      }
+    ]
+  },
+  {
+    "responsavel": "Gustavo De Castro Rocha",
+    "unidades": [
+      {
+        "unidade": "COPA LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional LATAM Virtual"
+      },
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional LATAM Virtual"
+      }
+    ]
+  },
+  {
+    "responsavel": "Bruna Rafaelle Da Silva",
+    "unidades": [
+      {
+        "unidade": "GOL LINHAS AÉREAS - VARREDURA BR",
+        "setor": "Operacional LATAM Virtual"
+      },
+      {
+        "unidade": "CABO VERDE AIRLINES - VARREDURA BR",
+        "setor": "Operacional Virtual"
+      }
+    ]
   }
 ]

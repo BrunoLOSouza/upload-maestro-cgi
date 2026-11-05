@@ -1,27 +1,6 @@
 {
   "unidades": [
     {
-      "id": "latam",
-      "label": "LATAM Linhas Aéreas - Varredura BR",
-      "arquivos": [
-        "latam_rotas.json"
-      ]
-    },
-    {
-      "id": "gol",
-      "label": "GOL Linhas Aéreas - Varredura BR",
-      "arquivos": [
-        "gol_rotas.json"
-      ]
-    },
-    {
-      "id": "azul",
-      "label": "AZUL Linhas Aéreas - Varredura BR",
-      "arquivos": [
-        "azul_rotas.json"
-      ]
-    },
-    {
       "id": "copa",
       "label": "COPA LINHAS AÉREAS - VARREDURA BR",
       "arquivos": [
@@ -29,10 +8,38 @@
       ]
     },
     {
-      "id": "ondemand",
-      "label": "Administração",
+      "id": "gol",
+      "label": "GOL LINHAS AÉREAS - VARREDURA BR",
       "arquivos": [
-        "ondemand.json"
+        "gol_rotas.json"
+      ]
+    },
+    {
+      "id": "latam",
+      "label": "LATAM Linhas Aéreas - Varredura BR",
+      "arquivos": [
+        "latam_rotas.json"
+      ]
+    },
+    {
+      "id": "cabo",
+      "label": "CABO VERDE AIRLINES - VARREDURA BR",
+      "arquivos": [
+        "cabo_rotas.json"
+      ]
+    },
+    {
+      "id": "modern",
+      "label": "MODERN Logistics - Varredura BR",
+      "arquivos": [
+        "modern_rotas.json"
+      ]
+    },
+    {
+      "id": "tap",
+      "label": "TAP Linhas Aéreas - Varredura BR",
+      "arquivos": [
+        "tap_rotas.json"
       ]
     }
   ],

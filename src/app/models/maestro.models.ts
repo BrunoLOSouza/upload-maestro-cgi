@@ -30,6 +30,7 @@ export interface Supervisor {
 
 export interface ServicoDef {
   label: string;
+  responsible_column?: string;
 }
 
 export interface Aviso {
@@ -46,6 +47,8 @@ export interface ColunasConfig {
 export interface SlaChave {
   sla_upload: number;
   sla_contratual: number;
+  manual_input?: boolean;
+  observation?: string;
 }
 
 export interface SlaConfig {
@@ -85,6 +88,8 @@ export interface MalhaHistorica {
 }
 
 export interface SlaResult {
+  manual_input?: boolean;
+  observation?: string;
   sla_upload: number;
   sla_contratual: number;
   origem: 'manual' | 'programado' | 'fallback_chegada' | 'fallback';
@@ -92,6 +97,9 @@ export interface SlaResult {
 }
 
 export interface SelectedService {
+  manualInput?: boolean;
+  manualMinutes?: number | null;
+  manualSign?: number;
   label: string;
   apac: string;
   slaUpload: number;

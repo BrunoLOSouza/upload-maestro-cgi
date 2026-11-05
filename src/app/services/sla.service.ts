@@ -44,13 +44,16 @@ export class SlaService {
       };
     }
 
-    const prog = slaProgramado?.chaves?.[key];
+    const wildcardKey = this.buildSlaKey(unidadeKey, baseAtend, '*', classif, svcLabel);
+    const prog = slaProgramado?.chaves?.[key] || slaProgramado?.chaves?.[wildcardKey];
     if (prog) {
       return {
         sla_upload: prog.sla_upload,
         sla_contratual: prog.sla_contratual,
         origem: 'programado',
-        legend: this.buildSlaLegend(prog.sla_upload, prog.sla_contratual)
+        manual_input: prog.manual_input,
+        observation: prog.observation,
+        legend: prog.manual_input ? `SLA manual obrigatório. ${prog.observation || ''}` : this.buildSlaLegend(prog.sla_upload, prog.sla_contratual)
       };
     }
 
@@ -83,6 +86,7 @@ export class SlaService {
   }
 
   public buildSlaLegend(slaUpload: number, slaContratual: number): string {
+    if (slaUpload > 0) return `Início ${this.minutosParaTexto(slaUpload)} após a hora informada`;
     if (slaUpload === 0) {
       return `Chegada · início imediato à hora informada · duração estimada ${this.minutosParaTexto(slaContratual)}`;
     }

@@ -1,0 +1,9 @@
+{
+  "rotas": [
+    {
+      "base_atend": "REC",
+      "classificacao": "INTERNACIONAL"
+    }
+  ],
+  "destino_tipo": "input"
+}

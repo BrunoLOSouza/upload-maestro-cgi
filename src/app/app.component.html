@@ -94,6 +94,9 @@
               {{ b }}
             </option>
           </select>
+          <div *ngIf="selCiaId && !isBaseAtendInput && availableBases.length === 0" class="field-label-sm">
+            Nenhuma base ativa cadastrada para esta unidade nas planilhas fornecidas.
+          </div>
           <input
             *ngIf="isBaseAtendInput"
             type="text"
@@ -219,7 +222,7 @@
           <select
             [(ngModel)]="selSupervisorName"
             (change)="onSupervisorChange()"
-            [disabled]="!selCiaId"
+            [disabled]="!selCiaId || availableSupervisores.length === 0"
           >
             <option value="">
               {{ selCiaId ? 'Selecione o supervisor responsável...' : 'Selecione a CIA primeiro' }}
@@ -228,6 +231,9 @@
               {{ s.responsavel }}
             </option>
           </select>
+          <div *ngIf="selCiaId && availableSupervisores.length === 0" class="field-label-sm">
+            Nenhum responsável vinculado a esta unidade na BASE. Lançamento bloqueado.
+          </div>
         </div>
         <div class="field">
           <label class="field-label">
@@ -292,6 +298,11 @@
                   <span class="sla-val-mini">{{ svc.label ? svc.slaUpload + ' min' : '—' }}</span>
                 </div>
                 <div class="sla-legend-mini">{{ svc.legend }}</div>
+                <label *ngIf="svc.manualInput" class="field-label-sm">
+                  SLA em minutos (obrigatório)
+                  <input type="number" min="1" step="1" [(ngModel)]="svc.manualMinutes"
+                    (ngModelChange)="updateManualSla(svc)" placeholder="Informe os minutos" />
+                </label>
               </div>
 
               <button

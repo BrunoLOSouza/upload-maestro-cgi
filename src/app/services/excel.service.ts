@@ -94,21 +94,11 @@ export class ExcelService {
     XLSX.utils.book_append_sheet(wb, ws1, 'UPLOAD MAESTRO');
 
     // ── ABA 2: SLA contratual ──
-    const titulosVistos = new Set<string>();
-    const slaRows: FlightRow[] = [];
-
-    rows.forEach(row => {
-      const titulo = row['TÍTULO'];
-      if (!titulosVistos.has(titulo)) {
-        titulosVistos.add(titulo);
-        slaRows.push(row);
-      }
-    });
+    const titulosVistos = new Set(rows.map(row => row['TÍTULO']));
+    const slaRows = rows;
 
     const ws2Data: any[][] = [
-      [],
-      [],
-      ['', ...slaCols],
+      ['', 'SLA CONTRATUAL', ...slaCols.slice(1)],
       ...slaRows.map(row => [
         '',
         ...slaCols.map(c => {

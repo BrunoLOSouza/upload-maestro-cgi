@@ -1,0 +1,9 @@
+{
+  "rotas": [
+    {
+      "base_atend": "SLZ",
+      "classificacao": "INTERNACIONAL EUR"
+    }
+  ],
+  "destino_tipo": "input"
+}
