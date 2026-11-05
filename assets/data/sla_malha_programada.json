@@ -1,376 +1,1444 @@
 {
   "chaves": {
-    "LATAM LINHAS AÉREAS - VARREDURA BR|BSB|LIM|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL TURN|Controle de Acesso Rampa 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
     },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|BSB|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL TURN|Controle de Acesso Rampa 2": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
     },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|CNF|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL TURN|Controle de Acesso Porta 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
     },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|FLN|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|POA|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|POA|SCL|Voo internacional mercosul|Inspeção Bagagens": {
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL TURN|Triagem Bagagens 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
     },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|POA|LIM|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL TURN|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 2": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Porta 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 1": {
       "sla_upload": -120,
-      "sla_contratual": 120
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
     },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|POA|LIM|Voo internacional mercosul|Inspeção Bagagens": {
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Porta 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL RON PARTIDA|Triagem Bagagens 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
     },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|CWB|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
+    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL RON PARTIDA|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
     },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|CWB|SCL|Voo internacional mercosul|Inspeção Bagagens": {
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL TURN|Controle de Acesso Rampa 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
     },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|CWB|LIM|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|CWB|LIM|Voo internacional mercosul|Inspeção Bagagens": {
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL TURN|Controle de Acesso Rampa 2": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
     },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|REC|SCL|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|MIA|Voo internacional EUA|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|MIA|Voo internacional EUA|Catering": {
-      "sla_upload": -300,
-      "sla_contratual": 300
-    },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|MIA|Voo internacional EUA|Líder": {
-      "sla_upload": -300,
-      "sla_contratual": 300
-    },
-    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|LIS|Voo internacional EUR|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|AEP|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|ASU|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|MDZ|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|MVD|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|PUJ|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|VVI|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|BEL |PBM|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|NAT|AEP|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|NAT|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|AEP|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|BPS|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|REC|AEP|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|REC|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|MCZ|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|JPA|EZE|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|MIA|Voo internacional EUA|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|MIA|Voo internacional EUA|Catering": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|MCO|Voo internacional EUA|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|MCO|Voo internacional EUA|Catering": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|TODAS|TODAS|GRIS (Cargueiro Mercado Livre)|GRIS": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|TODAS|TODAS|GRIS (Cargueiro Mercado Livre)|GRIS + Pernoite": {
-      "sla_upload": -360,
-      "sla_contratual": 360
-    },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|ASU|Voo internacional mercosul|Controle de Acesso Rampa 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240
-    },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|ASU|Voo internacional mercosul|Catering": {
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL TURN|Controle de Acesso Porta 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
     },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|MVD|Voo internacional mercosul|Controle de Acesso Rampa 1": {
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL TURN|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL TURN|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 2": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Porta 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Porta 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL RON PARTIDA|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL RON PARTIDA|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 2": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Porta 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Porta 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL RON PARTIDA|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL RON PARTIDA|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL TURN|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL TURN|Controle de Acesso Rampa 2": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL TURN|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL TURN|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL TURN|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL TURN|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL TURN|Controle de Acesso Rampa 2": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL TURN|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL TURN|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL TURN|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 2": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Porta 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Porta 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL RON PARTIDA|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL RON PARTIDA|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL TURN|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL TURN|Controle de Acesso Rampa 2": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL TURN|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL TURN|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL TURN|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 2": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Porta 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Porta 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL RON PARTIDA|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL RON PARTIDA|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL TURN|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL TURN|Controle de Acesso Rampa 2": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL TURN|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": true,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL TURN|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL TURN|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "*O SLA do posto é o tempo de solo entre o pouso e a decolagem, a ser confirmado pela malha. SLA > 180 deve cadastrar RON chegada e saída"
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Rampa 2": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL RON CHEGADA|Controle de Acesso Porta 1": {
+      "sla_upload": 90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Rampa 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL RON PARTIDA|Controle de Acesso Porta 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL RON PARTIDA|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "COPA LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL RON PARTIDA|Inspeção Cargas": {
+      "sla_upload": -90,
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "Usar quando SLA entre pouso e decolagem for maior que 3 horas."
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|AJU|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|GOL MELI|GRIS": {
       "sla_upload": -240,
-      "sla_contratual": 240
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
     },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|MVD|Voo internacional mercosul|Catering": {
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
     },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|MCO|Voo internacional EUA|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|MCO|Voo internacional EUA|Catering": {
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL|Controle de Acesso Porta 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
     },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|MAO|FLL|Voo internacional EUA|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
     },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|MAO|FLL|Voo internacional EUA|Catering": {
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL EUA|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL EUA|Controle de Acesso Porta 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL EUA|Inspeção em Aeronave 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL EUA|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL EUA|Profiler 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL EUA|Profiler 2": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL EUA|Profiler 3": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL EUA|Profiler 4": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL EUA|Selectee 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL EUA|Selectee 2": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|INTERNACIONAL EUA|Catering": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BEL|*|VARREDURA|Inspeção em Aeronave 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
     },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|BEL |FLL|Voo internacional EUA|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|BEL |FLL|Voo internacional EUA|Catering": {
+    "GOL LINHAS AÉREAS - VARREDURA BR|BPS|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
     },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|MAD|Voo internacional EUR|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
+    "GOL LINHAS AÉREAS - VARREDURA BR|BPS|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
     },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|REC|OPO|Voo internacional EUR|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
+    "GOL LINHAS AÉREAS - VARREDURA BR|BPS|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
     },
-    "AZUL LINHAS AÉREAS - VARREDURA BR|TODAS|TODAS|Varredura Azul Conecta|Inspeção Conecta": {
+    "GOL LINHAS AÉREAS - VARREDURA BR|BPS|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|BSB|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|CGB|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Controle de Acesso Porta 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Inspeção em Aeronave 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Selectee 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Selectee 2": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Catering": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|FOR|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUA|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUA|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUA|Controle de Acesso Porta 2": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUA|Inspeção em Aeronave 1": {
       "sla_upload": -60,
-      "sla_contratual": 60
+      "sla_contratual": 60,
+      "manual_input": false,
+      "observation": ""
     },
-    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional Bate e volta (TURN)|Controle de Acesso Rampa 1": {
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUA|Inspeção em Aeronave 2": {
+      "sla_upload": -60,
+      "sla_contratual": 60,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUA|Inspeção em Aeronave 3": {
+      "sla_upload": -60,
+      "sla_contratual": 60,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUA|Selectee 1": {
+      "sla_upload": -60,
+      "sla_contratual": 60,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUA|Selectee 2": {
+      "sla_upload": -60,
+      "sla_contratual": 60,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUA|Selectee 3": {
+      "sla_upload": -60,
+      "sla_contratual": 60,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUA|Catering": {
+      "sla_upload": -300,
+      "sla_contratual": 300,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUA|Líder": {
+      "sla_upload": -360,
+      "sla_contratual": 360,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUR|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "*posto porta 2 é posto extra solicitado temporáriamente pelo comercial Pamela. Questionar mensalmente se mantem o posto"
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUR|Controle de Acesso Porta 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "*posto porta 2 é posto extra solicitado temporáriamente pelo comercial Pamela. Questionar mensalmente se mantem o posto"
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUR|Controle de Acesso Porta 2": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": true,
+      "observation": "*posto porta 2 é posto extra solicitado temporáriamente pelo comercial Pamela. Questionar mensalmente se mantem o posto"
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|VARREDURA|Inspeção em Aeronave 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
     },
-    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional Bate e volta (TURN)|Controle de Acesso Rampa 2": {
+    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|VARREDURA|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|GOL MELI PARTIDA|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "O número de Partidas deve ser aproximado do numero de Chegadas."
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|GOL MELI CHEGADA|GRIS": {
+      "sla_upload": 240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "O número de Chegadas deve ser aproximado do numero de Partidas."
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00. Avisar comercial do GOL MELI PARTIDA"
     },
-    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional Bate e volta (TURN)|Inspeção Cargas": {
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00. Avisar comercial do GOL MELI PARTIDA"
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00. Avisar comercial do GOL MELI PARTIDA"
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "Sob demanda, podendo ser voo repetido quando for internacional"
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GYN|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GYN|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|IGU|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|JOI|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|JPA|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|JPA|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|JPA|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|JPA|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|JPA|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|LDB|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MAO|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL EUA|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL EUA|Controle de Acesso Porta 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL EUA|Inspeção em Aeronave 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL EUA|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL EUA|Selectee 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL EUA|Selectee 2": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MAO|*|INTERNACIONAL EUA|Catering": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MCZ|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MCZ|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "Voo opera na ANAC como doméstico via JPA G3 7756. Deve ser cadastrado como Internacional. Monitorar mensalmente a modificação da situação."
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MCZ|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "Voo opera na ANAC como doméstico via JPA G3 7756. Deve ser cadastrado como Internacional. Monitorar mensalmente a modificação da situação."
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MCZ|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "Voo opera na ANAC como doméstico via JPA G3 7756. Deve ser cadastrado como Internacional. Monitorar mensalmente a modificação da situação."
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MCZ|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|MCP|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|PET|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|POA|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|REC|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|REC|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|REC|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|REC|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|REC|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|SLZ|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|SLZ|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|STM|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|SSA|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|SSA|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|SSA|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|THE|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|UDI|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|VCP|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|VIX|*|GOL MELI|GRIS": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|VIX|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|BEL|*|LATAM CARGO|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": true,
+      "observation": "Sob demanda"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|BSB|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|CWB|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|CWB|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|CWB|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FLN|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FLN|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FLN|*|LATAM CARGO|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": true,
+      "observation": "Sob demanda"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Controle de Acesso Rampa 1": {
+      "sla_upload": -360,
+      "sla_contratual": 360,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Controle de Acesso Porta 1": {
+      "sla_upload": -360,
+      "sla_contratual": 360,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Inspeção em Aeronave 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Inspeção em Aeronave 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Inspeção em Aeronave 3": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Inspeção em Aeronave 4": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Profiler 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Profiler 2": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Profiler 3": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Selectee 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Selectee 2": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Selectee 3": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Catering": {
+      "sla_upload": -360,
+      "sla_contratual": 360,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Líder": {
+      "sla_upload": -360,
+      "sla_contratual": 360,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUR|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUR|Controle de Acesso Porta 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUR|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUR|Inspeção Cargas": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUR|Proteção Cargas": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|LATAM CARGO|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": true,
+      "observation": "Sob demanda"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|MCZ|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Inicio em 15/12/2026"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|MCZ|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Inicio em 15/12/2026"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|MCZ|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "Inicio em 15/12/2026"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|MCZ|*|INTERNACIONAL|Triagem Bagagens 2": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "Inicio em 15/12/2026"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|NAT|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Inicio em 16/12/2026"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|NAT|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "Inicio em 16/12/2026"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|NAT|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "Inicio em 16/12/2026"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|NAT|*|INTERNACIONAL|Triagem Bagagens 2": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "Inicio em 16/12/2026"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|NVT|*|LATAM CARGO|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": true,
+      "observation": "Sob demanda"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|POA|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|REC|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|REC|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -180,
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": ""
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|VIX|*|LATAM CARGO|Controle de Acesso Rampa 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": true,
+      "observation": "Sob demanda"
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|VIX|*|VARREDURA|Inspeção em Aeronave 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": true,
+      "observation": "Base possui contrato fixo porém se faz necessário o controle dos atendimentos via maestro, assim deverá solicitar os voos conforme a demanda."
+    },
+    "CABO VERDE AIRLINES - VARREDURA BR|REC|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -270,
+      "sla_contratual": 270,
+      "manual_input": false,
+      "observation": ""
+    },
+    "CABO VERDE AIRLINES - VARREDURA BR|REC|*|INTERNACIONAL|Controle de Acesso Porta 1": {
+      "sla_upload": -270,
+      "sla_contratual": 270,
+      "manual_input": false,
+      "observation": ""
+    },
+    "CABO VERDE AIRLINES - VARREDURA BR|REC|*|INTERNACIONAL|Inspeção em Aeronave 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "CABO VERDE AIRLINES - VARREDURA BR|REC|*|INTERNACIONAL|Triagem Bagagens 1": {
+      "sla_upload": -270,
+      "sla_contratual": 270,
+      "manual_input": false,
+      "observation": ""
+    },
+    "CABO VERDE AIRLINES - VARREDURA BR|REC|*|INTERNACIONAL|Catering": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": ""
+    },
+    "MODERN LOGISTICS - VARREDURA BR|SSA|*|CARGUEIRO|Controle de Acesso Rampa 1": {
       "sla_upload": -90,
-      "sla_contratual": 90
+      "sla_contratual": 90,
+      "manual_input": false,
+      "observation": "**Cadastrar Chegada (+) e Saída (-)  Pegar malha no SIROS/ANAC"
     },
-    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 1": {
-      "sla_upload": -110,
-      "sla_contratual": 110
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|BSB|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 2": {
-      "sla_upload": -110,
-      "sla_contratual": 110
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 1": {
+    "TAP LINHAS AÉREAS - VARREDURA BR|SLZ|*|INTERNACIONAL EUR|Controle de Acesso Rampa 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "Inicio dia 26/10/2026"
     },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 2": {
+    "TAP LINHAS AÉREAS - VARREDURA BR|SLZ|*|INTERNACIONAL EUR|Controle de Acesso Porta 1": {
       "sla_upload": -180,
-      "sla_contratual": 180
+      "sla_contratual": 180,
+      "manual_input": false,
+      "observation": "Inicio dia 26/10/2026"
     },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Bate e volta (TURN)|Inspeção Cargas": {
-      "sla_upload": -90,
-      "sla_contratual": 90
+    "TAP LINHAS AÉREAS - VARREDURA BR|SLZ|*|INTERNACIONAL EUR|Triagem Bagagens 1": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "Inicio dia 26/10/2026"
     },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 1": {
-      "sla_upload": -110,
-      "sla_contratual": 110
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GRU|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 2": {
-      "sla_upload": -110,
-      "sla_contratual": 110
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 1": {
-      "sla_upload": -180,
-      "sla_contratual": 180
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 2": {
-      "sla_upload": -180,
-      "sla_contratual": 180
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Bate e volta (TURN)|Inspeção Cargas": {
-      "sla_upload": -90,
-      "sla_contratual": 90
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 1": {
-      "sla_upload": -110,
-      "sla_contratual": 110
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|GIG|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 2": {
-      "sla_upload": -110,
-      "sla_contratual": 110
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 1": {
-      "sla_upload": -180,
-      "sla_contratual": 180
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 2": {
-      "sla_upload": -180,
-      "sla_contratual": 180
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Bate e volta (TURN)|Inspeção Cargas": {
-      "sla_upload": -90,
-      "sla_contratual": 90
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 1": {
-      "sla_upload": -110,
-      "sla_contratual": 110
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|CNF|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 2": {
-      "sla_upload": -110,
-      "sla_contratual": 110
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 1": {
-      "sla_upload": -180,
-      "sla_contratual": 180
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 2": {
-      "sla_upload": -180,
-      "sla_contratual": 180
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Bate e volta (TURN)|Inspeção Cargas": {
-      "sla_upload": -90,
-      "sla_contratual": 90
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 1": {
-      "sla_upload": -110,
-      "sla_contratual": 110
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|POA|PTY|Voo Internacional  Chegada (RON)|Controle de Acesso Rampa 2": {
-      "sla_upload": -110,
-      "sla_contratual": 110
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 1": {
-      "sla_upload": -180,
-      "sla_contratual": 180
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|PTY|Voo Internacional  Bate e volta (TURN)|Controle de Acesso Rampa 2": {
-      "sla_upload": -180,
-      "sla_contratual": 180
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|PTY|Voo Internacional  Bate e volta (TURN)|Inspeção Cargas": {
-      "sla_upload": -90,
-      "sla_contratual": 90
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 1": {
-      "sla_upload": -120,
-      "sla_contratual": 120
-    },
-    "COPA LINHAS AÉREAS - VARREDURA BR|MAO|PTY|Voo Internacional  Partida (RON)|Controle de Acesso Rampa 2": {
-      "sla_upload": -120,
-      "sla_contratual": 120
+    "TAP LINHAS AÉREAS - VARREDURA BR|SLZ|*|INTERNACIONAL EUR|Triagem Bagagens 2": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "Inicio dia 26/10/2026"
     }
   }
 }

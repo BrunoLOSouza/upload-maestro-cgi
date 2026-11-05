@@ -1,137 +1,209 @@
 {
   "rotas": [
     {
-      "base_atend": "GRU",
-      "base_dest": "AEP",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "base_atend": "AJU",
+      "classificacao": "VARREDURA"
     },
     {
-      "base_atend": "GRU",
-      "base_dest": "ASU",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "base_atend": "BEL",
+      "classificacao": "GOL MELI"
     },
     {
-      "base_atend": "GRU",
-      "base_dest": "EZE",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "base_atend": "BEL",
+      "classificacao": "INTERNACIONAL"
     },
     {
-      "base_atend": "GRU",
-      "base_dest": "MDZ",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "base_atend": "BEL",
+      "classificacao": "INTERNACIONAL EUA"
     },
     {
-      "base_atend": "GRU",
-      "base_dest": "MVD",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "GRU",
-      "base_dest": "PUJ",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "GRU",
-      "base_dest": "VVI",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "BEL ",
-      "base_dest": "PBM",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "NAT",
-      "base_dest": "AEP",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "NAT",
-      "base_dest": "EZE",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "BEL ",
-      "base_dest": "PBM",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "FOR",
-      "base_dest": "AEP",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "FOR",
-      "base_dest": "EZE",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "base_atend": "BEL",
+      "classificacao": "VARREDURA"
     },
     {
       "base_atend": "BPS",
-      "base_dest": "EZE",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL"
     },
     {
-      "base_atend": "REC",
-      "base_dest": "AEP",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "base_atend": "BPS",
+      "classificacao": "VARREDURA"
     },
     {
-      "base_atend": "REC",
-      "base_dest": "EZE",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "base_atend": "BSB",
+      "classificacao": "GOL MELI"
     },
     {
-      "base_atend": "MCZ",
-      "base_dest": "EZE",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "base_atend": "CGB",
+      "classificacao": "GOL MELI"
+    },
+    {
+      "base_atend": "FOR",
+      "classificacao": "GOL MELI"
+    },
+    {
+      "base_atend": "FOR",
+      "classificacao": "INTERNACIONAL"
+    },
+    {
+      "base_atend": "FOR",
+      "classificacao": "INTERNACIONAL EUA"
+    },
+    {
+      "base_atend": "FOR",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "GIG",
+      "classificacao": "INTERNACIONAL"
+    },
+    {
+      "base_atend": "GIG",
+      "classificacao": "INTERNACIONAL EUA"
+    },
+    {
+      "base_atend": "GIG",
+      "classificacao": "INTERNACIONAL EUR"
+    },
+    {
+      "base_atend": "GIG",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "GRU",
+      "classificacao": "GOL MELI PARTIDA"
+    },
+    {
+      "base_atend": "GRU",
+      "classificacao": "GOL MELI CHEGADA"
+    },
+    {
+      "base_atend": "GRU",
+      "classificacao": "INTERNACIONAL"
+    },
+    {
+      "base_atend": "GRU",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "GYN",
+      "classificacao": "GOL MELI"
+    },
+    {
+      "base_atend": "GYN",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "IGU",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "JOI",
+      "classificacao": "VARREDURA"
     },
     {
       "base_atend": "JPA",
-      "base_dest": "EZE",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "classificacao": "GOL MELI"
     },
     {
-      "base_atend": "FOR",
-      "base_dest": "MIA",
-      "classificacao": "Voo internacional EUA",
-      "_destino_tipo": "select"
+      "base_atend": "JPA",
+      "classificacao": "INTERNACIONAL"
     },
     {
-      "base_atend": "FOR",
-      "base_dest": "MCO",
-      "classificacao": "Voo internacional EUA",
-      "_destino_tipo": "select"
+      "base_atend": "JPA",
+      "classificacao": "VARREDURA"
     },
     {
-      "base_atend": "TODAS",
-      "base_dest": "TODAS",
-      "classificacao": "Varredura",
-      "_destino_tipo": "select"
+      "base_atend": "LDB",
+      "classificacao": "VARREDURA"
     },
     {
-      "base_atend": "TODAS",
-      "base_dest": "TODAS",
-      "classificacao": "GRIS (Cargueiro Mercado Livre)",
-      "_destino_tipo": "select"
+      "base_atend": "MAO",
+      "classificacao": "GOL MELI"
+    },
+    {
+      "base_atend": "MAO",
+      "classificacao": "INTERNACIONAL EUA"
+    },
+    {
+      "base_atend": "MCZ",
+      "classificacao": "GOL MELI"
+    },
+    {
+      "base_atend": "MCZ",
+      "classificacao": "INTERNACIONAL"
+    },
+    {
+      "base_atend": "MCZ",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "MCP",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "PET",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "POA",
+      "classificacao": "GOL MELI"
+    },
+    {
+      "base_atend": "REC",
+      "classificacao": "GOL MELI"
+    },
+    {
+      "base_atend": "REC",
+      "classificacao": "INTERNACIONAL"
+    },
+    {
+      "base_atend": "REC",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "SLZ",
+      "classificacao": "GOL MELI"
+    },
+    {
+      "base_atend": "SLZ",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "STM",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "SSA",
+      "classificacao": "GOL MELI"
+    },
+    {
+      "base_atend": "SSA",
+      "classificacao": "INTERNACIONAL"
+    },
+    {
+      "base_atend": "SSA",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "THE",
+      "classificacao": "GOL MELI"
+    },
+    {
+      "base_atend": "UDI",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "VCP",
+      "classificacao": "VARREDURA"
+    },
+    {
+      "base_atend": "VIX",
+      "classificacao": "GOL MELI"
+    },
+    {
+      "base_atend": "VIX",
+      "classificacao": "VARREDURA"
     }
   ],
-  "destino_tipo": "select"
+  "destino_tipo": "input"
 }

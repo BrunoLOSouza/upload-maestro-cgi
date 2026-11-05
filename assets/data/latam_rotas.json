@@ -1,71 +1,73 @@
 {
   "rotas": [
     {
-      "base_atend": "BSB",
-      "base_dest": "LIM",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "base_atend": "BEL",
+      "classificacao": "LATAM CARGO"
     },
     {
       "base_atend": "BSB",
-      "base_dest": "SCL",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL"
     },
     {
-      "base_atend": "CNF",
-      "base_dest": "SCL",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "base_atend": "CWB",
+      "classificacao": "INTERNACIONAL"
     },
     {
       "base_atend": "FLN",
-      "base_dest": "SCL",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL"
+    },
+    {
+      "base_atend": "FLN",
+      "classificacao": "LATAM CARGO"
+    },
+    {
+      "base_atend": "FOR",
+      "classificacao": "INTERNACIONAL"
+    },
+    {
+      "base_atend": "FOR",
+      "classificacao": "INTERNACIONAL EUA"
+    },
+    {
+      "base_atend": "FOR",
+      "classificacao": "INTERNACIONAL EUR"
+    },
+    {
+      "base_atend": "FOR",
+      "classificacao": "LATAM CARGO"
+    },
+    {
+      "base_atend": "MCZ",
+      "classificacao": "INTERNACIONAL"
+    },
+    {
+      "base_atend": "NAT",
+      "classificacao": "INTERNACIONAL"
+    },
+    {
+      "base_atend": "NVT",
+      "classificacao": "LATAM CARGO"
     },
     {
       "base_atend": "POA",
-      "base_dest": "SCL",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "POA",
-      "base_dest": "LIM",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "CWB",
-      "base_dest": "SCL",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "CWB",
-      "base_dest": "LIM",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL"
     },
     {
       "base_atend": "REC",
-      "base_dest": "SCL",
-      "classificacao": "Voo internacional mercosul",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL"
     },
     {
-      "base_atend": "FOR",
-      "base_dest": "MIA",
-      "classificacao": "Voo internacional EUA",
-      "_destino_tipo": "select"
+      "base_atend": "VIX",
+      "classificacao": "LATAM CARGO"
     },
     {
-      "base_atend": "FOR",
-      "base_dest": "LIS",
-      "classificacao": "Voo internacional EUR",
-      "_destino_tipo": "select"
+      "base_atend": "DOU",
+      "classificacao": "INSPEÇÃO DE BAGAGEM"
+    },
+    {
+      "base_atend": "VIX",
+      "classificacao": "VARREDURA"
     }
   ],
-  "destino_tipo": "select"
+  "destino_tipo": "input"
 }

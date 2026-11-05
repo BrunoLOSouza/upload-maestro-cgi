@@ -1,83 +1,110 @@
 [
   {
-    "label": "Controle de Acesso Rampa 1"
+    "label": "Controle de Acesso Rampa 1",
+    "responsible_column": "Responsavel Controle de Acesso Rampa 1"
   },
   {
-    "label": "Controle de Acesso Rampa 2"
+    "label": "Controle de Acesso Rampa 2",
+    "responsible_column": "Responsavel Controle de Acesso Rampa 2"
   },
   {
-    "label": "Controle de Acesso Rampa 3"
+    "label": "Controle de Acesso Rampa 3",
+    "responsible_column": "Responsavel Controle de Acesso Rampa 3"
   },
   {
-    "label": "Controle de Acesso Rampa 4"
+    "label": "Controle de Acesso Rampa 4",
+    "responsible_column": "Responsavel Controle de Acesso Rampa 4"
   },
   {
-    "label": "Controle de Acesso Porta 1"
+    "label": "Controle de Acesso Porta 1",
+    "responsible_column": "Responsavel controle de acesso porta 1"
   },
   {
-    "label": "Controle de Acesso Porta 2"
+    "label": "Controle de Acesso Porta 2",
+    "responsible_column": "Responsavel controle de acesso porta 2"
   },
   {
-    "label": "Inspeção em Aeronave 1"
+    "label": "Inspeção em Aeronave 1",
+    "responsible_column": "Responsavel Inspeção em Aeronave 1"
   },
   {
-    "label": "Inspeção em Aeronave 2"
+    "label": "Inspeção em Aeronave 2",
+    "responsible_column": "Responsavel Inspeção em Aeronave 2"
   },
   {
-    "label": "Inspeção em Aeronave 3"
+    "label": "Inspeção em Aeronave 3",
+    "responsible_column": "Responsavel Inspeção em Aeronave 3"
   },
   {
-    "label": "Inspeção em Aeronave 4"
+    "label": "Inspeção em Aeronave 4",
+    "responsible_column": "Responsavel Inspeção em Aeronave 4"
   },
   {
-    "label": "Triagem Bagagens 1"
+    "label": "Triagem Bagagens 1",
+    "responsible_column": "Responsavel Triagem Bagagens 1"
   },
   {
-    "label": "Triagem Bagagens 2"
+    "label": "Triagem Bagagens 2",
+    "responsible_column": "Responsavel Triagem Bagagens 2"
   },
   {
-    "label": "Inspeção Bagagens"
+    "label": "Inspeção Bagagens",
+    "responsible_column": "Responsável Inspeção Bagagens"
   },
   {
-    "label": "Inspeção Cargas"
+    "label": "Inspeção Cargas",
+    "responsible_column": "Responsável Inspeção Cargas"
   },
   {
-    "label": "Proteção Cargas"
+    "label": "Proteção Cargas",
+    "responsible_column": "Responsável Proteção Cargas"
   },
   {
-    "label": "Profiler 1"
+    "label": "Profiler 1",
+    "responsible_column": "Responsável Profiler 1"
   },
   {
-    "label": "Profiler 2"
+    "label": "Profiler 2",
+    "responsible_column": "Responsável Profiler 2"
   },
   {
-    "label": "Profiler 3"
+    "label": "Profiler 3",
+    "responsible_column": "Responsável Profiler 3"
   },
   {
-    "label": "Profiler 4"
+    "label": "Profiler 4",
+    "responsible_column": "Responsável Profiler 4"
   },
   {
-    "label": "Selectee 1"
+    "label": "Selectee 1",
+    "responsible_column": "Responsável Selectee 1"
   },
   {
-    "label": "Selectee 2"
+    "label": "Selectee 2",
+    "responsible_column": "Responsável Selectee 2"
   },
   {
-    "label": "Selectee 3"
+    "label": "Selectee 3",
+    "responsible_column": "Responsável Selectee 3"
   },
   {
-    "label": "Catering"
+    "label": "Catering",
+    "responsible_column": "Responsável Catering"
   },
   {
-    "label": "GRIS"
+    "label": "GRIS",
+    "responsible_column": "Responsável GRIS"
   },
   {
-    "label": "GRIS + Pernoite"
+    "label": "GRIS + Pernoite",
+    "responsible_column": "Responsavel GRIS + Pernoite"
   },
   {
-    "label": "Inspeção Conecta"
+    "label": "Inspeção Conecta",
+    "responsible_column": "Responsavel Inspeção Conecta"
   },
   {
-    "label": "Líder"
+    "label": "Líder",
+    "responsible_column": "Responsavel Líder"
   }
 ]

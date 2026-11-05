@@ -2,106 +2,76 @@
   "rotas": [
     {
       "base_atend": "BSB",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional Bate e volta (TURN)",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL TURN"
     },
     {
       "base_atend": "BSB",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Partida (RON)",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL RON CHEGADA"
     },
     {
       "base_atend": "BSB",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Chegada (RON)",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "GRU",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Bate e volta (TURN)",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "GRU",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Partida (RON)",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "GRU",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Chegada (RON)",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL RON PARTIDA"
     },
     {
       "base_atend": "GIG",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Bate e volta (TURN)",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL TURN"
     },
     {
       "base_atend": "GIG",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Partida (RON)",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL RON CHEGADA"
     },
     {
       "base_atend": "GIG",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Chegada (RON)",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL RON PARTIDA"
     },
     {
-      "base_atend": "CNF",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Bate e volta (TURN)",
-      "_destino_tipo": "select"
+      "base_atend": "GRU",
+      "classificacao": "INTERNACIONAL RON CHEGADA"
     },
     {
-      "base_atend": "CNF",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Partida (RON)",
-      "_destino_tipo": "select"
+      "base_atend": "GRU",
+      "classificacao": "INTERNACIONAL RON PARTIDA"
     },
     {
-      "base_atend": "CNF",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Chegada (RON)",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "POA",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Bate e volta (TURN)",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "POA",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Partida (RON)",
-      "_destino_tipo": "select"
-    },
-    {
-      "base_atend": "POA",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Chegada (RON)",
-      "_destino_tipo": "select"
+      "base_atend": "GRU",
+      "classificacao": "INTERNACIONAL TURN"
     },
     {
       "base_atend": "MAO",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Bate e volta (TURN)",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL TURN"
     },
     {
       "base_atend": "MAO",
-      "base_dest": "PTY",
-      "classificacao": "Voo Internacional  Partida (RON)",
-      "_destino_tipo": "select"
+      "classificacao": "INTERNACIONAL RON CHEGADA"
+    },
+    {
+      "base_atend": "MAO",
+      "classificacao": "INTERNACIONAL RON PARTIDA"
+    },
+    {
+      "base_atend": "POA",
+      "classificacao": "INTERNACIONAL TURN"
+    },
+    {
+      "base_atend": "POA",
+      "classificacao": "INTERNACIONAL RON CHEGADA"
+    },
+    {
+      "base_atend": "POA",
+      "classificacao": "INTERNACIONAL RON PARTIDA"
+    },
+    {
+      "base_atend": "SSA",
+      "classificacao": "INTERNACIONAL TURN"
+    },
+    {
+      "base_atend": "SSA",
+      "classificacao": "INTERNACIONAL RON CHEGADA"
+    },
+    {
+      "base_atend": "SSA",
+      "classificacao": "INTERNACIONAL RON PARTIDA"
     }
   ],
-  "destino_tipo": "select"
+  "destino_tipo": "input"
 }
