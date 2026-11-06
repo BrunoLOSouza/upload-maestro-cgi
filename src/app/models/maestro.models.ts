@@ -92,7 +92,7 @@ export interface SlaResult {
   observation?: string;
   sla_upload: number;
   sla_contratual: number;
-  origem: 'manual' | 'programado' | 'fallback_chegada' | 'fallback';
+  origem: 'manual' | 'programado' | 'ausente';
   legend: string;
 }
 

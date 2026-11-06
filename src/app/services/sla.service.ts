@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SlaConfig, SlaResult } from '../models/maestro.models';
 
-export const SLA_FALLBACK_PARTIDA = -240;
-
 @Injectable({
   providedIn: 'root'
 })
@@ -57,22 +55,11 @@ export class SlaService {
       };
     }
 
-    if (this.isChegada(baseDest, classif)) {
-      const contr = Math.abs(SLA_FALLBACK_PARTIDA);
-      return {
-        sla_upload: 0,
-        sla_contratual: contr,
-        origem: 'fallback_chegada',
-        legend: this.buildSlaLegend(0, contr)
-      };
-    }
-
-    const fallbackContr = Math.abs(SLA_FALLBACK_PARTIDA);
     return {
-      sla_upload: SLA_FALLBACK_PARTIDA,
-      sla_contratual: fallbackContr,
-      origem: 'fallback',
-      legend: this.buildSlaLegend(SLA_FALLBACK_PARTIDA, fallbackContr)
+      sla_upload: 0,
+      sla_contratual: 0,
+      origem: 'ausente',
+      legend: 'Posto sem SLA cadastrado para esta unidade, base e atendimento. Não pode ser lançado.'
     };
   }
 

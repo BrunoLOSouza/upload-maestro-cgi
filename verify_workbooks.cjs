@@ -71,11 +71,31 @@ const sourceNames={
   azul:'AZUL Linhas Aéreas - Varredura BR', latam:'LATAM Linhas Aéreas - Varredura BR',
   cabo:'Cabo Verde Airlines - Varredura BR', modern:'MODERN Logistics - Varredura BR', tap:'TAP Linhas Aéreas - Varredura BR'
 };
+let auditedRules=0, auditedManual=0, blankServices=0;
+const slaService=new SlaService();
 for(const configUnit of app.config.unidades){
   app.selCiaId=configUnit.id; app.onCiaChange();
   const sourceName=sourceNames[configUnit.id];
   assert.ok(sourceName, `Nome de origem ausente: ${configUnit.id}`);
   const expectedRoutes=sourceRules.filter(r=>r['Unidade de gestão / Cliente']===sourceName && r.Ativo==='SIM');
+  for(const row of expectedRoutes) for(const service of app.servicos){
+    const expected=row[service.label];
+    const key=[configUnit.label.trim().toUpperCase(),row.Base,'*',row.Atendimento,service.label].join('|');
+    const actual=rules.chaves[key];
+    const resolved=slaService.resolveSla(null,rules,configUnit.label.trim().toUpperCase(),row.Base,'GRU',row.Atendimento,service.label);
+    if(expected===undefined || expected===null || expected===''){
+      assert.equal(actual,undefined,`SLA inventado: ${key}`);
+      assert.equal(resolved.origem,'ausente',key); blankServices++;
+    }else{
+      const minutes=Math.round(Math.abs(Number(String(expected).replace('*',''))));
+      assert.ok(actual,`Regra faltante: ${key}`);
+      assert.equal(actual.sla_upload,row['SLA + ou -']==='+'?minutes:-minutes,key);
+      assert.equal(actual.sla_contratual,minutes,key);
+      assert.equal(actual.manual_input,typeof expected==='string'&&expected.includes('*'),key);
+      assert.equal(resolved.sla_upload,actual.sla_upload,key);
+      auditedRules++; if(actual.manual_input) auditedManual++;
+    }
+  }
   assert.deepEqual(app.availableBases,[...new Set(expectedRoutes.map(r=>r.Base))].sort());
   assert.deepEqual(app.currentCiaData.rotas.map(r=>[r.base_atend,r.classificacao]),
     expectedRoutes.map(r=>[r.Base,r.Atendimento]).filter((r,i,all)=>all.findIndex(x=>x[0]===r[0]&&x[1]===r[1])===i));
@@ -86,4 +106,6 @@ for(const configUnit of app.config.unidades){
   if(linked) assert.equal(app.autoSetorText,allan.unidades.find(u=>u.unidade===configUnit.label).setor);
   if(!linked) assert.equal(app.isAddRowValid,false);
 }
-console.log('OK: cabecalhos exatos, todos os vinculos, exportacao contratual, todas as regras e SLA manual obrigatorio.');
+assert.equal(auditedRules,Object.keys(rules.chaves).length);
+assert.equal(data('import_pending').length,5);
+console.log(`OK: ${auditedRules} SLAs confrontados com a planilha, ${auditedManual} manuais, ${blankServices} celulas vazias sem valor padrao; vinculos e exportacao exatos.`);

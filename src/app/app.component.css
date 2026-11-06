@@ -215,6 +215,7 @@
 }
 
 .sidebar-section {
+  flex-shrink: 0;
   padding: 14px 18px;
   border-bottom: 1px solid var(--border);
 }
@@ -490,6 +491,7 @@ input:disabled {
 }
 
 .sla-card-mini {
+  min-width: 0;
   flex: 1;
   padding: 6px 9px;
   background: var(--bg);
@@ -582,12 +584,34 @@ input:disabled {
 
 /* Footer Submit */
 .sidebar-footer {
+  flex-shrink: 0;
+  z-index: 5;
   padding: 14px 18px;
   margin-top: auto;
   border-top: 1px solid var(--border);
   background: var(--surface);
   position: sticky;
   bottom: 0;
+}
+
+.manual-sla-field {
+  display: block;
+  margin-top: 8px;
+}
+
+.manual-sla-field input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin-top: 4px;
+}
+
+.add-row-hint {
+  margin: 0 0 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--text-dim);
 }
 
 .btn-add-row {

@@ -275,7 +275,7 @@
                   [disabled]="!!svc.locked"
                 >
                   <option value="">Selecione o posto...</option>
-                  <option *ngFor="let s of servicos" [value]="s.label">
+                  <option *ngFor="let s of serviceOptions(svc)" [value]="s.label">
                     {{ s.label }}
                   </option>
                 </select>
@@ -295,13 +295,13 @@
               <div class="sla-card-mini" [class.pendente]="!svc.label">
                 <div class="sla-header-mini">
                   <span class="sla-tag">SLA UPLOAD</span>
-                  <span class="sla-val-mini">{{ svc.label ? svc.slaUpload + ' min' : '—' }}</span>
+                  <span class="sla-val-mini">{{ !svc.label ? '—' : svc.manualInput && !svc.manualMinutes ? 'Pendente' : svc.slaUpload + ' min' }}</span>
                 </div>
                 <div class="sla-legend-mini">{{ svc.legend }}</div>
-                <label *ngIf="svc.manualInput" class="field-label-sm">
+                <label *ngIf="svc.manualInput" class="field-label-sm manual-sla-field">
                   SLA em minutos (obrigatório)
-                  <input type="number" min="1" step="1" [(ngModel)]="svc.manualMinutes"
-                    (ngModelChange)="updateManualSla(svc)" placeholder="Informe os minutos" />
+                  <input type="number" min="1" step="1" [ngModel]="svc.manualMinutes"
+                    (ngModelChange)="updateManualSla(svc, $event)" placeholder="Informe os minutos" />
                 </label>
               </div>
 
@@ -319,14 +319,18 @@
         <button
           class="btn-add-svc"
           (click)="addServicoItem()"
-          [disabled]="!selClassifVal"
+          [disabled]="!selClassifVal || selectedServices.length >= availableServices.length"
         >
           <span class="plus-icon">+</span> Adicionar Posto à Escala
         </button>
+        <div *ngIf="selClassifVal && availableServices.length === 0" class="field-label-sm">
+          Nenhum posto com SLA e coluna de upload cadastrados para este atendimento.
+        </div>
       </div>
 
       <!-- FOOTER ADICIONAR VOO -->
       <div class="sidebar-footer">
+        <p class="add-row-hint" aria-live="polite">{{ addRowHint }}</p>
         <button
           class="btn-add-row"
           (click)="addRow()"

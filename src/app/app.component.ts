@@ -14,7 +14,7 @@ import {
   Supervisor
 } from './models/maestro.models';
 import { GithubService } from './services/github.service';
-import { SLA_FALLBACK_PARTIDA, SlaService } from './services/sla.service';
+import { SlaService } from './services/sla.service';
 import { DuplicateService } from './services/duplicate.service';
 import { ExcelService } from './services/excel.service';
 import { ApacSelectComponent } from './components/apac-select/apac-select.component';
@@ -455,6 +455,19 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   // ── SERVIÇOS ──
+  public get availableServices(): ServicoDef[] {
+    const ctx = this.getCurrentRouteContext();
+    return this.servicos.filter(service => this.slaService.resolveSla(
+      this.slaManual, this.slaProgramado, ctx.unidadeKey, ctx.base, ctx.dest,
+      ctx.classif, service.label
+    ).origem !== 'ausente');
+  }
+
+  public serviceOptions(current: SelectedService): ServicoDef[] {
+    return this.availableServices.filter(service => service.label === current.label ||
+      !this.selectedServices.some(selected => selected.label === service.label));
+  }
+
   public addServicoItem(label = '', apac = '', locked = false): void {
     const ctx = this.getCurrentRouteContext();
     const slaRes = this.slaService.resolveSla(
@@ -470,8 +483,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.selectedServices.push({
       label,
       apac,
-      slaUpload: label ? slaRes.sla_upload : SLA_FALLBACK_PARTIDA,
-      slaContratual: label ? slaRes.sla_contratual : Math.abs(SLA_FALLBACK_PARTIDA),
+      slaUpload: label ? slaRes.sla_upload : 0,
+      slaContratual: label ? slaRes.sla_contratual : 0,
       legend: label ? slaRes.legend : 'Selecione o serviço',
       manualInput: !!slaRes.manual_input,
       manualMinutes: null,
@@ -482,9 +495,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public onServiceSelectChange(svc: SelectedService): void {
     if (!svc.label) {
-      svc.slaUpload = SLA_FALLBACK_PARTIDA;
-      svc.slaContratual = Math.abs(SLA_FALLBACK_PARTIDA);
+      svc.slaUpload = 0;
+      svc.slaContratual = 0;
       svc.legend = 'Selecione o serviço';
+      svc.manualInput = false;
+      svc.manualMinutes = null;
       return;
     }
 
@@ -533,10 +548,15 @@ export class AppComponent implements OnInit, OnDestroy {
     this.selectedServices.splice(index, 1);
   }
 
-  public updateManualSla(svc: SelectedService): void {
-    if (typeof svc.manualMinutes !== 'number' || !Number.isFinite(svc.manualMinutes)) return;
-    svc.slaContratual = svc.manualMinutes;
-    svc.slaUpload = svc.manualMinutes * (svc.manualSign || -1);
+  public updateManualSla(svc: SelectedService, value: number | null = svc.manualMinutes ?? null): void {
+    svc.manualMinutes = value;
+    if (typeof value !== 'number' || !Number.isInteger(value) || value <= 0) {
+      svc.slaContratual = 0;
+      svc.slaUpload = 0;
+      return;
+    }
+    svc.slaContratual = value;
+    svc.slaUpload = value * (svc.manualSign || -1);
   }
 
   // ── TÍTULO & VALIDAÇÃO ──
@@ -578,7 +598,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const destValid = basePattern.test(ctx.dest);
     const baseValid = basePattern.test(ctx.base);
     const servicesValid = this.selectedServices.length > 0 && this.selectedServices.every(
-      service => this.servicos.some(def => def.label === service.label) &&
+      service => this.availableServices.some(def => def.label === service.label) &&
         this.colaboradores.includes(service.apac) &&
         (!service.manualInput || (typeof service.manualMinutes === 'number' &&
           Number.isInteger(service.manualMinutes) && service.manualMinutes > 0))
@@ -604,6 +624,23 @@ export class AppComponent implements OnInit, OnDestroy {
       servicesValid &&
       uniqueServices
     );
+  }
+
+  public get addRowHint(): string {
+    if (!this.selCiaId) return 'Selecione a unidade de gestão.';
+    const ctx = this.getCurrentRouteContext();
+    if (!ctx.base || !ctx.dest || !ctx.classif || !this.inputNumberVal) return 'Complete a rota, o número do voo e a classificação.';
+    if (!this.inputDataVal || !this.inputHoraVal) return 'Informe a data e o horário de referência.';
+    if (!this.selectedSupervisorLink) return 'Selecione um responsável vinculado à unidade.';
+    if (!this.selectedServices.length) return 'Adicione pelo menos um posto à escala.';
+    for (const service of this.selectedServices) {
+      if (!service.label) return 'Selecione o posto de cada item da escala.';
+      if (!this.availableServices.some(def => def.label === service.label)) return 'Há um posto sem SLA cadastrado para este atendimento.';
+      if (!this.colaboradores.includes(service.apac)) return 'Selecione um APAC da lista para cada posto.';
+      if (service.manualInput && (!Number.isInteger(service.manualMinutes) || (service.manualMinutes ?? 0) <= 0))
+        return `Informe o SLA manual de ${service.label} em minutos inteiros positivos.`;
+    }
+    return this.isAddRowValid ? 'Escala validada para adicionar.' : 'Confira os campos da rota e os postos repetidos.';
   }
 
   // ── ADICIONAR VOO AO PREVIEW ──

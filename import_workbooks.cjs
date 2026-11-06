@@ -30,6 +30,8 @@ save('colaboradores.json', [...new Set(base.map(r => r.APACS).filter(Boolean))])
 // Matching is internal only: output labels always come unchanged from BASE.
 const matchKey = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/\s+/g, ' ').trim();
 const rules = XLSX.utils.sheet_to_json(sla.Sheets[sla.SheetNames[0]]);
+const slaHeaders = XLSX.utils.sheet_to_json(sla.Sheets[sla.SheetNames[0]], {header: 1})[0];
+const slaServiceHeaders = slaHeaders.slice(7, slaHeaders.indexOf('Obs'));
 const config = JSON.parse(fs.readFileSync(path.join(out, 'config.json')));
 const newUnits = [];
 const chaves = {};
@@ -41,6 +43,13 @@ for (const label of units) {
   const routes = [];
   for (const rule of rules.filter(r => matchKey(r['Unidade de gestão / Cliente'] || '') === matchKey(label) && r.Ativo === 'SIM')) {
     const base = rule.Base, classification = rule.Atendimento;
+    const sourceRow = rules.indexOf(rule) + 2;
+    for (const service of slaServiceHeaders) {
+      const value = rule[service];
+      if (service === 'Obs' || value === '' || value == null || services.some(s => s.label === service)) continue;
+      pending.push({source_row: sourceRow, label, base, classification, service, value,
+        reason: 'Posto presente no SLA, mas sem coluna correspondente no modelo de upload.'});
+    }
     if (!routes.some(r => r.base_atend === base && r.classificacao === classification)) routes.push({base_atend: base, classificacao: classification});
     for (const service of services) {
       const value = rule[service.label];
@@ -48,9 +57,12 @@ for (const label of units) {
       const manual_input = typeof value === 'string' && value.includes('*');
       if (!manual_input && typeof value !== 'number') { pending.push({label, base, classification, service: service.label, value}); continue; }
       const minutes = Math.round(Math.abs(Number(String(value).replace('*', ''))));
-      chaves[[label.trim().toUpperCase(), base, '*', classification, service.label].join('|')] = {
+      if (!Number.isFinite(minutes) || minutes <= 0) throw new Error(`SLA inválido na linha ${sourceRow}: ${service.label}`);
+      const key = [label.trim().toUpperCase(), base, '*', classification, service.label].join('|');
+      if (chaves[key]) throw new Error(`SLA duplicado: ${key}`);
+      chaves[key] = {
         sla_upload: rule['SLA + ou -'] === '+' ? minutes : -minutes,
-        sla_contratual: minutes, manual_input, observation: rule.Obs || ''
+        sla_contratual: minutes, manual_input, observation: rule.Obs || '', source_row: sourceRow
       };
     }
   }
