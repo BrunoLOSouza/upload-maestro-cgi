@@ -58,8 +58,17 @@ app.onSupervisorChange(); app.inputNumberVal='123'; app.inputDataVal='2026-11-05
 app.addServicoItem(service, app.colaboradores[0]);
 assert.equal(app.isAddRowValid, false);
 const selected=app.selectedServices[0]; selected.manualMinutes=135; app.updateManualSla(selected);
-assert.equal(app.isAddRowValid, true); assert.equal(selected.slaUpload, -135);
+assert.equal(app.isAddRowValid, true); assert.equal(selected.slaUpload, 135);
 assert.equal(selected.slaContratual, 135);
+for(const value of [-240,240,0]) {
+  app.updateManualSla(selected,value);
+  assert.equal(app.isAddRowValid,true);
+  assert.equal(selected.slaUpload,value);
+  assert.equal(selected.slaContratual,Math.abs(value));
+}
+app.updateManualSla(selected,null); assert.equal(app.isAddRowValid,false);
+app.updateManualSla(selected,-240);
+assert.ok(app.availableServices.some(service=>service.label==='Controle de Acesso Rampa 2'));
 const validBase=app.selBaseVal;
 app.selBaseVal='ZZZ'; assert.equal(app.isAddRowValid,false); app.selBaseVal=validBase;
 const allan = app.supervisores.find(s=>s.responsavel==='ALLAN LEVATI');

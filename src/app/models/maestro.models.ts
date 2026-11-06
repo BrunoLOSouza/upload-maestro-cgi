@@ -99,7 +99,7 @@ export interface SlaResult {
 export interface SelectedService {
   manualInput?: boolean;
   manualMinutes?: number | null;
-  manualSign?: number;
+  manualNote?: string;
   label: string;
   apac: string;
   slaUpload: number;

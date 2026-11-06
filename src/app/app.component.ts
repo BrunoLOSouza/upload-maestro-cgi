@@ -457,10 +457,7 @@ export class AppComponent implements OnInit, OnDestroy {
   // ── SERVIÇOS ──
   public get availableServices(): ServicoDef[] {
     const ctx = this.getCurrentRouteContext();
-    return this.servicos.filter(service => this.slaService.resolveSla(
-      this.slaManual, this.slaProgramado, ctx.unidadeKey, ctx.base, ctx.dest,
-      ctx.classif, service.label
-    ).origem !== 'ausente');
+    return ctx.base && ctx.classif ? this.servicos : [];
   }
 
   public serviceOptions(current: SelectedService): ServicoDef[] {
@@ -486,9 +483,9 @@ export class AppComponent implements OnInit, OnDestroy {
       slaUpload: label ? slaRes.sla_upload : 0,
       slaContratual: label ? slaRes.sla_contratual : 0,
       legend: label ? slaRes.legend : 'Selecione o serviço',
-      manualInput: !!slaRes.manual_input,
+      manualInput: !!label && !!slaRes.manual_input,
       manualMinutes: null,
-      manualSign: slaRes.sla_upload < 0 ? -1 : 1,
+      manualNote: slaRes.origem === 'ausente' ? 'Sem SLA nesta linha da planilha.' : slaRes.observation,
       locked
     });
   }
@@ -518,7 +515,7 @@ export class AppComponent implements OnInit, OnDestroy {
     svc.legend = res.legend;
     svc.manualInput = !!res.manual_input;
     svc.manualMinutes = null;
-    svc.manualSign = res.sla_upload < 0 ? -1 : 1;
+    svc.manualNote = res.origem === 'ausente' ? 'Sem SLA nesta linha da planilha.' : res.observation;
   }
 
   public recalculateAllServicesSla(): void {
@@ -539,7 +536,7 @@ export class AppComponent implements OnInit, OnDestroy {
         s.legend = res.legend;
         s.manualInput = !!res.manual_input;
         s.manualMinutes = null;
-        s.manualSign = res.sla_upload < 0 ? -1 : 1;
+        s.manualNote = res.origem === 'ausente' ? 'Sem SLA nesta linha da planilha.' : res.observation;
       }
     });
   }
@@ -550,13 +547,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public updateManualSla(svc: SelectedService, value: number | null = svc.manualMinutes ?? null): void {
     svc.manualMinutes = value;
-    if (typeof value !== 'number' || !Number.isInteger(value) || value <= 0) {
+    if (typeof value !== 'number' || !Number.isInteger(value)) {
       svc.slaContratual = 0;
       svc.slaUpload = 0;
       return;
     }
-    svc.slaContratual = value;
-    svc.slaUpload = value * (svc.manualSign || -1);
+    svc.slaContratual = Math.abs(value);
+    svc.slaUpload = value;
+    svc.legend = `${this.slaService.buildSlaLegend(value, Math.abs(value))} · valor manual. ${svc.manualNote || ''}`;
   }
 
   // ── TÍTULO & VALIDAÇÃO ──
@@ -601,7 +599,7 @@ export class AppComponent implements OnInit, OnDestroy {
       service => this.availableServices.some(def => def.label === service.label) &&
         this.colaboradores.includes(service.apac) &&
         (!service.manualInput || (typeof service.manualMinutes === 'number' &&
-          Number.isInteger(service.manualMinutes) && service.manualMinutes > 0))
+          Number.isInteger(service.manualMinutes)))
     );
     const uniqueServices = new Set(this.selectedServices.map(service => service.label)).size ===
       this.selectedServices.length;
@@ -637,8 +635,8 @@ export class AppComponent implements OnInit, OnDestroy {
       if (!service.label) return 'Selecione o posto de cada item da escala.';
       if (!this.availableServices.some(def => def.label === service.label)) return 'Há um posto sem SLA cadastrado para este atendimento.';
       if (!this.colaboradores.includes(service.apac)) return 'Selecione um APAC da lista para cada posto.';
-      if (service.manualInput && (!Number.isInteger(service.manualMinutes) || (service.manualMinutes ?? 0) <= 0))
-        return `Informe o SLA manual de ${service.label} em minutos inteiros positivos.`;
+      if (service.manualInput && !Number.isInteger(service.manualMinutes))
+        return `Informe o SLA manual de ${service.label} em minutos inteiros, com o sinal desejado.`;
     }
     return this.isAddRowValid ? 'Escala validada para adicionar.' : 'Confira os campos da rota e os postos repetidos.';
   }
@@ -799,7 +797,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.addServicoItem(col, resp, false);
         const restored = this.selectedServices[this.selectedServices.length - 1];
         if (restored.manualInput) {
-          restored.manualMinutes = Math.abs(Number(row[col]));
+          restored.manualMinutes = Number(row[col]);
           this.updateManualSla(restored);
         }
       }
@@ -936,7 +934,7 @@ export class AppComponent implements OnInit, OnDestroy {
               this.addServicoItem(col, resp, false);
         const restored = this.selectedServices[this.selectedServices.length - 1];
         if (restored.manualInput) {
-          restored.manualMinutes = Math.abs(Number(row[col]));
+          restored.manualMinutes = Number(row[col]);
           this.updateManualSla(restored);
         }
             }

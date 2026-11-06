@@ -59,7 +59,8 @@ export class SlaService {
       sla_upload: 0,
       sla_contratual: 0,
       origem: 'ausente',
-      legend: 'Posto sem SLA cadastrado para esta unidade, base e atendimento. Não pode ser lançado.'
+      manual_input: true,
+      legend: 'Sem SLA nesta linha da planilha. Informe manualmente o valor de upload com sinal, conforme orientação operacional.'
     };
   }
 
@@ -75,7 +76,7 @@ export class SlaService {
   public buildSlaLegend(slaUpload: number, slaContratual: number): string {
     if (slaUpload > 0) return `Início ${this.minutosParaTexto(slaUpload)} após a hora informada`;
     if (slaUpload === 0) {
-      return `Chegada · início imediato à hora informada · duração estimada ${this.minutosParaTexto(slaContratual)}`;
+      return `Início à hora informada · duração estimada ${this.minutosParaTexto(slaContratual)}`;
     }
     return `Partida · início ${this.minutosParaTexto(slaUpload)} antes da hora informada`;
   }

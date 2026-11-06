@@ -295,13 +295,14 @@
               <div class="sla-card-mini" [class.pendente]="!svc.label">
                 <div class="sla-header-mini">
                   <span class="sla-tag">SLA UPLOAD</span>
-                  <span class="sla-val-mini">{{ !svc.label ? '—' : svc.manualInput && !svc.manualMinutes ? 'Pendente' : svc.slaUpload + ' min' }}</span>
+                  <span class="sla-val-mini">{{ !svc.label ? '—' : svc.manualInput && svc.manualMinutes == null ? 'Pendente' : svc.slaUpload + ' min' }}</span>
                 </div>
                 <div class="sla-legend-mini">{{ svc.legend }}</div>
                 <label *ngIf="svc.manualInput" class="field-label-sm manual-sla-field">
-                  SLA em minutos (obrigatório)
-                  <input type="number" min="1" step="1" [ngModel]="svc.manualMinutes"
-                    (ngModelChange)="updateManualSla(svc, $event)" placeholder="Informe os minutos" />
+                  SLA de upload em minutos, com sinal (obrigatório)
+                  <input type="number" step="1" [ngModel]="svc.manualMinutes"
+                    (ngModelChange)="updateManualSla(svc, $event)" placeholder="Ex.: -240, 0 ou 240" />
+                  O valor digitado será mantido. Negativo: antes; positivo: após; zero: na hora informada.
                 </label>
               </div>
 

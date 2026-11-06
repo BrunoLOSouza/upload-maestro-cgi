@@ -35,6 +35,7 @@ const assert = require('node:assert/strict');
       const tick=()=>new Promise(resolve=>setTimeout(resolve,30));
       const check=(condition,message)=>{if(!condition)throw new Error(message);};
       const manual=Object.entries(app.slaProgramado.chaves).filter(([,rule])=>rule.manual_input);
+      manual.push(['GOL LINHAS AÉREAS - VARREDURA BR|AJU|*|VARREDURA|Controle de Acesso Rampa 2', {}]);
       app.githubService.ensureMalhaMonth=async()=>null;
       const cases=[];
       for(const [key,rule] of manual){
@@ -56,14 +57,19 @@ const assert = require('node:assert/strict');
         check(button.disabled,'Botao deveria bloquear SLA vazio: '+key);
         const input=document.querySelector('.manual-sla-field input');
         check(!!input,'Campo manual ausente: '+key);
-        for(const invalid of ['', '0', '-1', '1.5']) {
+        for(const invalid of ['', '1.5']) {
           input.value=invalid; input.dispatchEvent(new Event('input',{bubbles:true})); await tick();
           check(button.disabled,'Botao aceitou SLA invalido '+invalid+': '+key);
         }
-        input.value='135'; input.dispatchEvent(new Event('input',{bubbles:true})); await tick();
+        for(const value of [240,-240,0]) {
+          input.value=String(value); input.dispatchEvent(new Event('input',{bubbles:true})); await tick();
+          check(!button.disabled,'Botao bloqueou valor valido '+value+': '+key);
+          check(app.selectedServices[0].slaUpload===value,'Sinal alterado para '+value+': '+key);
+        }
+        input.value='-135'; input.dispatchEvent(new Event('input',{bubbles:true})); await tick();
         const svc=app.selectedServices[0];
-        check(svc.manualMinutes===135,'Evento nao atualizou minutos: '+key);
-        check(svc.slaUpload===(rule.sla_upload<0?-135:135),'Sinal ou valor incorreto: '+key);
+        check(svc.manualMinutes===-135,'Evento nao atualizou minutos: '+key);
+        check(svc.slaUpload===-135,'Sinal ou valor incorreto: '+key);
         check(!button.disabled,'Botao continua bloqueado: '+key+' / '+app.addRowHint);
         button.scrollIntoView({block:'center'}); await tick();
         const bounds=button.getBoundingClientRect();
@@ -71,13 +77,15 @@ const assert = require('node:assert/strict');
         const previous=app.rows.length; button.click(); await tick();
         check(app.rows.length===previous+1,'Clique nao adicionou voo: '+key);
         const row=app.rows[app.rows.length-1];
-        check(row[service]===(rule.sla_upload<0?-135:135),'Valor do upload incorreto: '+key);
+        check(row[service]===-135,'Valor do upload incorreto: '+key);
         check(row['_contratual_'+service]===135,'Valor contratual incorreto: '+key);
+        app.cloneRow(app.rows.length-1);
+        check(app.selectedServices.find(s=>s.label===service).slaUpload===-135,'Clone alterou sinal manual: '+key);
         cases.push(key); app.rows=[];
       }
       return {tested:cases.length,cases};
     })()`);
-    assert.equal(result.tested, 25);
-    console.log(`OK: ${result.tested} SLAs manuais testados no Chrome; vazio/zero/negativo/fracionado bloqueados, digitacao valida libera botao e clique adiciona voo com valor correto.`);
+    assert.equal(result.tested, 26);
+    console.log(`OK: ${result.tested} SLAs manuais testados no Chrome; positivo, negativo e zero mantidos, vazio e fracionado bloqueados, clique adiciona voo com sinal correto.`);
   } finally { socket.close(); }
 })().catch(error => { console.error(error); process.exitCode=1; });
