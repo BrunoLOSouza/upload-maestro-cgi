@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "source_row": 41,
+    "label": "GOL LINHAS AÉREAS - VARREDURA BR",
+    "base": "GRU",
+    "classification": "INTERNACIONAL",
+    "service": "TPS 3",
+    "value": "240*",
+    "reason": "Posto presente no SLA, mas sem coluna correspondente no modelo de upload."
+  },
+  {
+    "source_row": 25,
+    "label": "LATAM Linhas Aéreas - Varredura BR",
+    "base": "FOR",
+    "classification": "INTERNACIONAL EUA",
+    "service": "Inspeção em Aeronave 5",
+    "value": 120,
+    "reason": "Posto presente no SLA, mas sem coluna correspondente no modelo de upload."
+  },
+  {
+    "source_row": 25,
+    "label": "LATAM Linhas Aéreas - Varredura BR",
+    "base": "FOR",
+    "classification": "INTERNACIONAL EUA",
+    "service": "Inspeção em Aeronave 6",
+    "value": 120,
+    "reason": "Posto presente no SLA, mas sem coluna correspondente no modelo de upload."
+  },
+  {
+    "source_row": 92,
+    "label": "LATAM Linhas Aéreas - Varredura BR",
+    "base": "DOU",
+    "classification": "INSPEÇÃO DE BAGAGEM",
+    "service": "Inspeção de Bagagem",
+    "value": 360,
+    "reason": "Posto presente no SLA, mas sem coluna correspondente no modelo de upload."
+  },
+  {
+    "source_row": 69,
+    "label": "CABO VERDE AIRLINES - VARREDURA BR",
+    "base": "REC",
+    "classification": "INTERNACIONAL",
+    "service": "Auditoria Check-in",
+    "value": 270,
+    "reason": "Posto presente no SLA, mas sem coluna correspondente no modelo de upload."
+  }
+]
