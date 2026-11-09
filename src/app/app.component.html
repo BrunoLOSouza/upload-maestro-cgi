@@ -225,15 +225,13 @@
             [disabled]="!selCiaId || availableSupervisores.length === 0"
           >
             <option value="">
-              {{ selCiaId ? 'Selecione o supervisor responsável...' : 'Selecione a CIA primeiro' }}
+              {{ selBaseVal ? 'Selecione o supervisor responsável...' : 'Selecione a base primeiro' }}
             </option>
             <option *ngFor="let s of availableSupervisores" [value]="s.responsavel">
               {{ s.responsavel }}
             </option>
           </select>
-          <div *ngIf="selCiaId && availableSupervisores.length === 0" class="field-label-sm">
-            Nenhum responsável vinculado a esta unidade na BASE. Lançamento bloqueado.
-          </div>
+          <div class="field-label-sm">{{ supervisorHint }}</div>
         </div>
         <div class="field">
           <label class="field-label">

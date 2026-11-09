@@ -16,6 +16,8 @@ assert.deepEqual(data('config').unidades.map(u => u.label), [...new Set(sourceBa
 for (const supervisor of data('supervisores')) {
   const expected = sourceBase.filter(r => r['Responsável'] === supervisor.responsavel && r['Unidade de Gestão'] && r['Setor Responsável'])
     .map(r => ({unidade: r['Unidade de Gestão'], setor: r['Setor Responsável']}));
+  if(supervisor.responsavel==='Bruna Rafaelle Da Silva')
+    expected.push({unidade:'LATAM Linhas Aéreas - Varredura BR',setor:'Operacional COPA Virtual Brasília'});
   assert.deepEqual(supervisor.unidades, expected.filter((e, i) => expected.findIndex(x => x.unidade === e.unidade && x.setor === e.setor) === i));
 }
 let workbook;
@@ -53,7 +55,7 @@ const selectedUnit=app.config.unidades.find(u => u.label.toUpperCase()===unit);
 app.selCiaId=selectedUnit.id; app.currentCiaData.unidade=selectedUnit.label;
 app.currentCiaData.rotas=selectedUnit.arquivos.flatMap(f=>data(f.replace('.json','')).rotas);
 app.selBaseVal=base; app.selBaseDestVal='GRU'; app.selClassifVal=classification;
-app.selSupervisorName=app.supervisores.find(s => s.unidades.some(u=>u.unidade===selectedUnit.label)).responsavel;
+app.selSupervisorName=app.currentCiaData.rotas.find(r=>r.base_atend===base).responsavel;
 app.onSupervisorChange(); app.inputNumberVal='123'; app.inputDataVal='2026-11-05'; app.inputHoraVal='12:00';
 app.addServicoItem(service, app.colaboradores[0]);
 assert.equal(app.isAddRowValid, false);
@@ -108,13 +110,28 @@ for(const configUnit of app.config.unidades){
   assert.deepEqual(app.availableBases,[...new Set(expectedRoutes.map(r=>r.Base))].sort());
   assert.deepEqual(app.currentCiaData.rotas.map(r=>[r.base_atend,r.classificacao]),
     expectedRoutes.map(r=>[r.Base,r.Atendimento]).filter((r,i,all)=>all.findIndex(x=>x[0]===r[0]&&x[1]===r[1])===i));
-  const linked=allan.unidades.some(u=>u.unidade===configUnit.label);
-  assert.equal(app.availableSupervisores.some(s=>s.responsavel===allan.responsavel),linked);
-  app.selSupervisorName=allan.responsavel; app.onSupervisorChange();
-  assert.equal(app.selSupervisorName,linked?allan.responsavel:'');
-  if(linked) assert.equal(app.autoSetorText,allan.unidades.find(u=>u.unidade===configUnit.label).setor);
-  if(!linked) assert.equal(app.isAddRowValid,false);
+  assert.equal(app.availableSupervisores.length,0,'Selecao de supervisor antes da base');
+  for(const selectedBase of app.availableBases){
+    app.selBaseVal=selectedBase; app.onBaseChange();
+    const mappedNames=[...new Set(app.currentCiaData.rotas.filter(r=>r.base_atend===selectedBase).map(r=>r.responsavel).filter(Boolean))];
+    assert.deepEqual(app.availableSupervisores.map(s=>s.responsavel),mappedNames);
+    const expectedNames=[...new Set(expectedRoutes.filter(r=>r.Base===selectedBase).map(r=>r['Responsável']))];
+    const overrides={'Bruna Silva':'Bruna Rafaelle Da Silva','Brenda Coelho':'ANDRESSA DOS SANTOS BARBOSA','Marcio Drumond':'Janderson Henrique de Santana','Ana Ferreira':'Janderson Henrique de Santana'};
+    for(const sourceName of expectedNames) if(overrides[sourceName]) {
+      assert.deepEqual(mappedNames,[overrides[sourceName]],`Substituicao incorreta: ${configUnit.id}/${selectedBase}`);
+      assert.equal(app.selSupervisorName,overrides[sourceName]);
+      const link=app.supervisores.find(s=>s.responsavel===overrides[sourceName]).unidades.find(u=>u.unidade===configUnit.label);
+      assert.equal(app.autoSetorText,link.setor,`Setor incorreto: ${configUnit.id}/${selectedBase}`);
+    }
+    assert.deepEqual([...new Set(app.currentCiaData.rotas.filter(r=>r.base_atend===selectedBase).map(r=>r.responsavel_origem))],expectedNames);
+    const linked=mappedNames.includes(allan.responsavel);
+    app.selSupervisorName=allan.responsavel; app.onSupervisorChange();
+    assert.equal(app.selSupervisorName,linked?allan.responsavel:'');
+    if(linked) assert.equal(app.autoSetorText,allan.unidades.find(u=>u.unidade===configUnit.label).setor);
+    if(!linked) assert.equal(app.isAddRowValid,false);
+  }
 }
 assert.equal(auditedRules,Object.keys(rules.chaves).length);
 assert.equal(data('import_pending').length,5);
+assert.deepEqual(data('supervisores_pendentes'),[]);
 console.log(`OK: ${auditedRules} SLAs confrontados com a planilha, ${auditedManual} manuais, ${blankServices} celulas vazias sem valor padrao; vinculos e exportacao exatos.`);

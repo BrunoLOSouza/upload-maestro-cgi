@@ -305,9 +305,7 @@ export class AppComponent implements OnInit, OnDestroy {
     };
 
     // Supervisores
-    this.availableSupervisores = this.supervisores.filter(
-      s => s.unidades.some(u => u.unidade === unidadeCfg.label && !!u.setor)
-    );
+    this.updateBaseSupervisors();
 
     if (unidadeCfg.id === 'ondemand') {
       this.isBaseAtendInput = true;
@@ -338,15 +336,41 @@ export class AppComponent implements OnInit, OnDestroy {
     this.updateTitulo();
   }
 
+  private updateBaseSupervisors(): void {
+    this.selSupervisorName = '';
+    this.autoSetorText = '—';
+    const base = this.isBaseAtendInput ? this.inputBaseAtendVal.trim() : this.selBaseVal;
+    const names = new Set(this.currentCiaData?.rotas.filter(route => route.base_atend === base)
+      .map(route => route.responsavel).filter(Boolean));
+    this.availableSupervisores = this.supervisores.filter(supervisor => names.has(supervisor.responsavel) &&
+      supervisor.unidades.some(link => link.unidade === this.currentCiaData?.unidade && !!link.setor));
+    if (this.availableSupervisores.length === 1) {
+      this.selSupervisorName = this.availableSupervisores[0].responsavel;
+      this.onSupervisorChange();
+    }
+  }
+
+  public get supervisorHint(): string {
+    if (!this.selCiaId || !this.selBaseVal) return 'Selecione a unidade de gestão e a base primeiro.';
+    if (this.availableSupervisores.length) return 'Responsável vinculado à unidade e à base na planilha.';
+    const names = [...new Set(this.currentCiaData?.rotas.filter(route => route.base_atend === this.selBaseVal)
+      .map(route => route.responsavel_origem).filter(Boolean))].join(', ');
+    return `${names || 'Responsável da base'}: falta confirmar o cadastro ou o setor desta unidade na BASE. Lançamento bloqueado.`;
+  }
+
   private get selectedSupervisorLink() {
     const unit = this.config?.unidades.find(u => u.id === this.selCiaId);
     if (!unit || unit.label !== this.currentCiaData?.unidade) return undefined;
+    const base = this.isBaseAtendInput ? this.inputBaseAtendVal.trim() : this.selBaseVal;
+    if (!base || !this.currentCiaData.rotas.some(route =>
+      route.base_atend === base && route.responsavel === this.selSupervisorName)) return undefined;
     return this.supervisores.find(s => s.responsavel === this.selSupervisorName)
       ?.unidades.find(u => u.unidade === unit.label && !!u.setor);
   }
 
   public onBaseChange(): void {
     this.resetFrom('base');
+    this.updateBaseSupervisors();
     if (!this.selBaseVal || !this.currentCiaData) return;
 
     const rotasFiltradas = this.currentCiaData.rotas.filter(r => r.base_atend === this.selBaseVal);
@@ -369,6 +393,7 @@ export class AppComponent implements OnInit, OnDestroy {
     let val = this.inputBaseAtendVal.toUpperCase().replace(/[^A-Z\-]/g, '');
     if (val.length > 7) val = val.slice(0, 7);
     this.inputBaseAtendVal = val;
+    this.updateBaseSupervisors();
     this.errBaseAtend = !/^[A-Z]{3}(-[A-Z]{3})?$/.test(val) && val.length > 0;
     this.updateTitulo();
   }
@@ -847,6 +872,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public resetForNext(): void {
+    this.availableSupervisores = [];
+    this.selSupervisorName = '';
+    this.autoSetorText = '—';
     if (this.currentCiaData?._isOndemand) {
       this.inputBaseAtendVal = '';
     } else {

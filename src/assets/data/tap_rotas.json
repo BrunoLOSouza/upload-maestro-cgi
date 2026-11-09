@@ -2,7 +2,9 @@
   "rotas": [
     {
       "base_atend": "SLZ",
-      "classificacao": "INTERNACIONAL EUR"
+      "classificacao": "INTERNACIONAL EUR",
+      "responsavel": "VERANO ARAUJO DA CUNHA",
+      "responsavel_origem": "Verano Cunha"
     }
   ],
   "destino_tipo": "input"

@@ -56,6 +56,8 @@ export interface SlaConfig {
 }
 
 export interface Rota {
+  responsavel?: string | null;
+  responsavel_origem?: string;
   base_atend: string;
   base_dest?: string;
   classificacao: string;

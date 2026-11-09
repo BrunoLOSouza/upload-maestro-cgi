@@ -2,7 +2,9 @@
   "rotas": [
     {
       "base_atend": "SSA",
-      "classificacao": "CARGUEIRO"
+      "classificacao": "CARGUEIRO",
+      "responsavel": "Emerson Nascimento Da Franca",
+      "responsavel_origem": "Emerson França"
     }
   ],
   "destino_tipo": "input"

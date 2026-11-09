@@ -25,6 +25,14 @@ for (const row of base) {
   const unidade = row['Unidade de Gestão'], setor = row['Setor Responsável'];
   if (unidade && setor && !entries.some(e => e.unidade === unidade && e.setor === setor)) entries.push({unidade, setor});
 }
+// Vínculo adicional autorizado: preservar a grafia existente na planilha.
+const bruna = supervisors.get('Bruna Rafaelle Da Silva');
+const latamLabel = units.find(label => label === 'LATAM Linhas Aéreas - Varredura BR');
+const brunaLatamSector = base.map(row => row['Setor Responsável'])
+  .find(setor => setor === 'Operacional COPA Virtual Brasília');
+if (!bruna || !latamLabel || !brunaLatamSector) throw new Error('Cadastro de referência do vínculo Bruna/LATAM ausente.');
+if (!bruna.unidades.some(link => link.unidade === latamLabel))
+  bruna.unidades.push({unidade: latamLabel, setor: brunaLatamSector});
 save('supervisores.json', [...supervisors.values()]);
 save('colaboradores.json', [...new Set(base.map(r => r.APACS).filter(Boolean))]);
 // Matching is internal only: output labels always come unchanged from BASE.
@@ -36,6 +44,29 @@ const config = JSON.parse(fs.readFileSync(path.join(out, 'config.json')));
 const newUnits = [];
 const chaves = {};
 const pending = [];
+const supervisorPending = [];
+// Resolve shortened consultation names only when all name tokens identify one BASE entry.
+const nameTokens = name => matchKey(name).split(' ').filter(token => !['DA','DE','DO','DAS','DOS'].includes(token));
+// Substituições operacionais autorizadas pelo usuário; manter o nome de cadastro da BASE.
+const supervisorOverrides = new Map([
+  [matchKey('Bruna Silva'), 'Bruna Rafaelle Da Silva'],
+  [matchKey('Brenda Coelho'), 'ANDRESSA DOS SANTOS BARBOSA'],
+  [matchKey('Marcio Drumond'), 'Janderson Henrique de Santana'],
+  [matchKey('Ana Ferreira'), 'Janderson Henrique de Santana']
+]);
+function supervisorFor(rule, label, sourceRow) {
+  const sourceName = rule['Responsável'];
+  const tokens = nameTokens(sourceName || '');
+  const override = supervisorOverrides.get(matchKey(sourceName || ''));
+  const candidates = override ? [...supervisors.values()].filter(s => s.responsavel === override) :
+    [...supervisors.values()].filter(s => tokens.length > 0 && tokens.every(t => nameTokens(s.responsavel).includes(t)));
+  const candidate = candidates.length === 1 ? candidates[0] : null;
+  const link = candidate?.unidades.find(u => u.unidade === label && u.setor);
+  if (!link) supervisorPending.push({source_row:sourceRow, unidade:label, base:rule.Base,
+    responsavel_origem:sourceName, candidato:candidate?.responsavel || null,
+    motivo:candidate ? 'Responsável sem setor vinculado a esta unidade na BASE.' : 'Nome sem correspondência única na BASE.'});
+  return {responsavel:link ? candidate.responsavel : null, responsavel_origem:sourceName};
+}
 for (const label of units) {
   const previous = config.unidades.find(u => matchKey(u.label) === matchKey(label));
   const id = previous?.id || matchKey(label).split(' ')[0].toLowerCase();
@@ -50,7 +81,8 @@ for (const label of units) {
       pending.push({source_row: sourceRow, label, base, classification, service, value,
         reason: 'Posto presente no SLA, mas sem coluna correspondente no modelo de upload.'});
     }
-    if (!routes.some(r => r.base_atend === base && r.classificacao === classification)) routes.push({base_atend: base, classificacao: classification});
+    if (!routes.some(r => r.base_atend === base && r.classificacao === classification))
+      routes.push({base_atend: base, classificacao: classification, ...supervisorFor(rule, label, sourceRow)});
     for (const service of services) {
       const value = rule[service.label];
       if (value === undefined || value === null || value === '') continue;
@@ -73,4 +105,5 @@ config.unidades = newUnits;
 save('config.json', config);
 save('sla_malha_programada.json', {chaves});
 save('import_pending.json', pending);
+save('supervisores_pendentes.json', supervisorPending);
 console.log(JSON.stringify({units: units.length, supervisors: supervisors.size, services: services.length, rules: Object.keys(chaves).length, manual: Object.values(chaves).filter(r=>r.manual_input).length, pending}));
