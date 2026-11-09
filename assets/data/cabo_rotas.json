@@ -2,7 +2,9 @@
   "rotas": [
     {
       "base_atend": "REC",
-      "classificacao": "INTERNACIONAL"
+      "classificacao": "INTERNACIONAL",
+      "responsavel": "Bruna Rafaelle Da Silva",
+      "responsavel_origem": "Bruna Silva"
     }
   ],
   "destino_tipo": "input"
