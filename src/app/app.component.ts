@@ -7,6 +7,8 @@ import {
   CiaData,
   FlightRow,
   GitHubCredentials,
+  MonthlyMatch,
+  MonthlyReport,
   RowDuplicateInfo,
   SelectedService,
   ServicoDef,
@@ -17,6 +19,8 @@ import { GithubService } from './services/github.service';
 import { SlaService } from './services/sla.service';
 import { DuplicateService } from './services/duplicate.service';
 import { ExcelService } from './services/excel.service';
+import { MonthlyReportService } from './services/monthly-report.service';
+import { MonthlyReportStorageService } from './services/monthly-report-storage.service';
 import { ApacSelectComponent } from './components/apac-select/apac-select.component';
 import { SettingsModalComponent } from './components/settings-modal/settings-modal.component';
 
@@ -35,7 +39,7 @@ export interface FilteredRowItem {
     SettingsModalComponent
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', './monthly-report.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
   // ── ESTADO DA APLICAÇÃO ──
@@ -113,6 +117,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // ── MODAIS & TOAST ──
   public isModalClearOpen = false;
+  public isReportModalOpen = false;
+  public isImportingReport = false;
+  public reportError = '';
+  public monthlyReport: MonthlyReport | null = null;
+  public isRestoringReport = true;
+  public reportIsSaved = false;
+  public reportStorageWarning = '';
   public isSettingsModalOpen = false;
   public githubCreds: GitHubCredentials = { user: '', repo: '', token: '' };
 
@@ -125,13 +136,15 @@ export class AppComponent implements OnInit, OnDestroy {
     private githubService: GithubService,
     private slaService: SlaService,
     private duplicateService: DuplicateService,
-    private excelService: ExcelService
+    private excelService: ExcelService,
+    public monthlyReportService: MonthlyReportService,
+    private monthlyReportStorage: MonthlyReportStorageService
   ) {}
 
   public ngOnInit(): void {
     this.startClock();
     this.githubCreds = this.githubService.getCredentials();
-    this.loadAllData();
+    this.loadAllData().then(() => this.restoreMonthlyReport());
   }
 
   public ngOnDestroy(): void {
@@ -195,8 +208,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.statusText = 'Carregando malha operacional...';
 
     try {
-      const { ano, mes, anoAnt, mesAnt } = this.githubService.getMonthPair();
-
       const [
         config,
         colaboradores,
@@ -214,9 +225,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.githubService.fetchJson<Aviso[]>('avisos.json').catch(() => []),
         this.githubService.fetchJson<{ fixed_cols: string[]; upload_cols?: string[] }>('colunas.json'),
         this.githubService.fetchJson<SlaConfig>('sla_malha_programada.json').catch(() => null),
-        this.githubService.fetchJson<SlaConfig>('sla_malha_manual.json').catch(() => null),
-        this.githubService.ensureMalhaMonth(ano, mes),
-        this.githubService.ensureMalhaMonth(anoAnt, mesAnt)
+        this.githubService.fetchJson<SlaConfig>('sla_malha_manual.json').catch(() => null)
       ]);
 
       this.config = config;
@@ -682,8 +691,6 @@ export class AppComponent implements OnInit, OnDestroy {
     const horaAMPM = this.excelService.formatHoraAMPM(this.inputHoraVal);
 
     // Carregar índice histórico
-    const [anoRow, mesRow] = this.inputDataVal.split('-').map(Number);
-    await this.githubService.ensureMalhaMonth(anoRow, mesRow);
 
     const row: FlightRow = {
       EMPRESA: this.config.campos_fixos.EMPRESA,
@@ -735,8 +742,17 @@ export class AppComponent implements OnInit, OnDestroy {
     this.duplicates = this.duplicateService.computeDuplicates(
       this.rows,
       this.svcCols,
-      this.githubService.malhaIndex
+      {}
     );
+    if (this.monthlyReport) this.rows.forEach((row, index) => this.getActiveServiceCols(row).forEach(service => {
+      const matches = this.monthlyReportService.match(this.monthlyReport!, row, service);
+      if (!matches.length) return;
+      const detail = this.duplicates[index].services[service] || {external: false, sessionWith: []};
+      detail.reportMatches = matches;
+      detail.external = matches.some(match => match.level !== 'cancelada');
+      this.duplicates[index].services[service] = detail;
+      if (detail.external) this.duplicates[index].hasAny = true;
+    }));
   }
 
   public getActiveServiceCols(row: FlightRow): string[] {
@@ -750,7 +766,85 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public isServiceDup(i: number, col: string): boolean {
-    return !!(this.duplicates[i] && this.duplicates[i].services && this.duplicates[i].services[col]);
+    const detail = this.duplicates[i]?.services[col];
+    return !!detail && (detail.external || detail.sessionWith.length > 0);
+  }
+
+  public async importMonthlyReport(event: Event): Promise<void> {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file || this.isImportingReport || this.isRestoringReport) return;
+    this.isImportingReport = true;
+    this.reportError = '';
+    try {
+      if (file.size > 25 * 1024 * 1024) throw new Error('O limite para este teste local é 25 MB.');
+      const buffer = await file.arrayBuffer();
+      const report = this.monthlyReportService.parse(buffer, file.name, this.servicos);
+      try {
+        await this.monthlyReportStorage.save({ version: 1, filename: file.name, importedAt: report.importedAt, buffer });
+        this.reportIsSaved = true;
+        this.reportStorageWarning = '';
+      } catch {
+        this.reportIsSaved = false;
+        this.reportStorageWarning = 'Não foi possível salvar no navegador. Este relatório é temporário; ao reabrir, a versão salva anterior pode ser restaurada. Importe novamente ou libere espaço.';
+      }
+      this.monthlyReport = report;
+      this.recomputeDuplicates();
+      this.showToast(`${report.records.length} registros importados. Os voos do lote foram reavaliados.`, 'success');
+    } catch (error: any) {
+      this.reportError = error.message || 'Não foi possível ler o relatório. O anterior foi preservado.';
+    } finally { this.isImportingReport = false; input.value = ''; }
+  }
+
+  public async removeMonthlyReport(): Promise<void> {
+    if (this.isImportingReport || this.isRestoringReport) return;
+    this.isImportingReport = true;
+    try {
+      await this.monthlyReportStorage.clear();
+      this.monthlyReport = null;
+      this.reportIsSaved = false;
+      this.reportError = '';
+      this.reportStorageWarning = '';
+      this.recomputeDuplicates();
+    } catch {
+      this.reportError = 'Não foi possível remover a cópia salva. O relatório foi mantido; tente novamente.';
+    } finally { this.isImportingReport = false; }
+  }
+
+  private async restoreMonthlyReport(): Promise<void> {
+    try {
+      if (!this.config) return;
+      const saved = await this.monthlyReportStorage.load();
+      if (!saved) return;
+      if (saved.version !== 1 || !(saved.buffer instanceof ArrayBuffer) || !saved.filename || !Number.isFinite(Date.parse(saved.importedAt)))
+        throw new Error('Cópia salva inválida.');
+      const report = this.monthlyReportService.parse(saved.buffer, saved.filename, this.servicos);
+      report.importedAt = saved.importedAt;
+      this.monthlyReport = report;
+      this.reportIsSaved = true;
+      this.recomputeDuplicates();
+    } catch {
+      this.reportStorageWarning = 'Não foi possível restaurar o relatório salvo. Importe o arquivo mensal novamente; a duplicidade externa ainda não foi verificada.';
+    } finally { this.isRestoringReport = false; }
+  }
+
+  public get reportNeedsUpdate(): boolean {
+    if (!this.monthlyReport) return false;
+    const now = new Date();
+    const day = this.monthlyReportService.parseDate(`${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} 00:00`);
+    return day !== null && (day > this.monthlyReport.to || day + 1439 < this.monthlyReport.from);
+  }
+
+  public reportMatches(index: number, service: string): MonthlyMatch[] {
+    return this.duplicates[index]?.services[service]?.reportMatches || [];
+  }
+
+  public reportCoverage(row: FlightRow): string {
+    if (!this.monthlyReport) return 'Duplicidade externa não verificada: importe o relatório mensal.';
+    const intervals = this.getActiveServiceCols(row).map(service => this.monthlyReportService.interval(row, service));
+    if (intervals.some(interval => !interval || interval.end < this.monthlyReport!.from || interval.start > this.monthlyReport!.to))
+      return 'Há postos fora do período do relatório. A ausência de alerta não confirma ausência de cadastro.';
+    return 'Conferido somente contra o relatório importado. Registros posteriores à exportação não estão incluídos.';
   }
 
   public getServiceTip(i: number, col: string): string | null {
@@ -784,6 +878,11 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   // ── FILTROS & BUSCA ──
+  public trackFlightRow(_index: number, item: FilteredRowItem): FlightRow {
+    // filteredRows creates wrappers on each clock tick; preserve the card DOM and native details state.
+    return item.row;
+  }
+
   public get filteredRows(): FilteredRowItem[] {
     const q = this.searchTerm.trim().toLowerCase();
     return this.rows

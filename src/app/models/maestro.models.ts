@@ -111,8 +111,47 @@ export interface SelectedService {
 }
 
 export interface ServiceDuplicateDetail {
+  reportMatches?: MonthlyMatch[];
   external: boolean;
   sessionWith: Array<{ idx: number; titulo: string }>;
+}
+
+export interface MonthlyRecord {
+  os: string;
+  unidade: string;
+  base: string;
+  voo: string;
+  destino: string;
+  atendimento: string;
+  posto: string;
+  status: string;
+  primaryStart: number;
+  primaryEnd: number;
+  alternateStart: number | null;
+  alternateEnd: number | null;
+  actualStart: number | null;
+  actualEnd: number | null;
+  adjustedStart: number | null;
+  adjustedEnd: number | null;
+  warnings: string[];
+}
+
+export interface MonthlyMatch {
+  record: MonthlyRecord;
+  level: 'programacao' | 'possivel' | 'cancelada';
+  reason: string;
+}
+
+export interface MonthlyReport {
+  filename: string;
+  importedAt: string;
+  records: MonthlyRecord[];
+  ignoredGroups: number;
+  rejected: string[];
+  warnings: string[];
+  from: number;
+  to: number;
+  index: Map<string, MonthlyRecord[]>;
 }
 
 export interface RowDuplicateInfo {

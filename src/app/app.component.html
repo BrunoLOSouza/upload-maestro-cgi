@@ -8,6 +8,41 @@
   </div>
 </div>
 
+<div *ngIf="isReportModalOpen" class="report-modal-overlay">
+  <section class="report-modal" role="dialog" aria-modal="true" aria-labelledby="report-title">
+    <div class="report-modal-heading">
+      <h2 id="report-title">Relatório mensal de malhas</h2>
+      <button type="button" (click)="isReportModalOpen = false" aria-label="Fechar relatório">✕</button>
+    </div>
+    <p>Importe a exportação de Medição de Malhas Aéreas. A comparação principal usa Data Inicio e Data Prazo; Início e Fim complementam os alertas. Datas reais e ajustadas aparecem como contexto.</p>
+    <p>O relatório é salvo apenas neste navegador e restaurado ao reabrir o site. Não é enviado ao servidor nem compartilhado com outros computadores. Limpar os dados do site, usar outro navegador ou encerrar uma sessão privada pode remover a cópia.</p>
+    <p>Você pode substituir o relatório uma vez por mês ou antes, se houver novos cadastros. A verificação usa somente a última exportação importada.</p>
+    <label class="report-file-label">Selecionar relatório XLSX, XLS ou CSV
+      <input type="file" accept=".xlsx,.xls,.csv" (change)="importMonthlyReport($event)" [disabled]="isImportingReport || isLoading || isRestoringReport" />
+    </label>
+    <p *ngIf="isImportingReport" role="status">Lendo e conferindo o relatório…</p>
+    <p *ngIf="isRestoringReport" role="status">Restaurando o relatório salvo neste navegador…</p>
+    <p *ngIf="reportStorageWarning" class="report-error" role="alert">{{ reportStorageWarning }}</p>
+    <p *ngIf="reportError" class="report-error" role="alert">{{ reportError }}</p>
+    <ng-container *ngIf="monthlyReport as report">
+      <h3>{{ report.filename }}</h3>
+      <p>{{ reportIsSaved ? 'Salvo neste navegador: continuará disponível ao reabrir o site.' : 'Não salvo: disponível apenas nesta sessão.' }}</p>
+      <p *ngIf="reportNeedsUpdate" class="report-error">O período do relatório não inclui a data atual. Importe a medição do período vigente.</p>
+      <p>{{ report.records.length }} registros · {{ report.ignoredGroups }} agrupadores/linhas sem OS ignorados · {{ report.rejected.length }} registros rejeitados</p>
+      <p>Período: {{ monthlyReportService.formatDate(report.from) }} → {{ monthlyReportService.formatDate(report.to) }}</p>
+      <p>Importado em {{ report.importedAt | date:'dd/MM/yyyy HH:mm' }}. A verificação se limita a este arquivo; não consulta o sistema da empresa.</p>
+      <details *ngIf="report.warnings.length || report.rejected.length">
+        <summary>{{ report.warnings.length }} observações e {{ report.rejected.length }} rejeições — ver amostra</summary>
+        <ul><li *ngFor="let issue of report.rejected | slice:0:20">{{ issue }}</li>
+          <li *ngFor="let issue of report.warnings | slice:0:20">{{ issue }}</li></ul>
+        <p>Mostrando até 20 itens de cada categoria. Os registros válidos foram carregados; confira as rejeições antes de confiar na cobertura.</p>
+      </details>
+      <button type="button" (click)="removeMonthlyReport()" [disabled]="isImportingReport || isRestoringReport">Remover relatório salvo e recalcular alertas</button>
+    </ng-container>
+    <p>Os alertas são para conferência: não bloqueiam a inclusão nem a exportação. Registros cancelados são identificados separadamente.</p>
+  </section>
+</div>
+
 <!-- APLICAÇÃO PRINCIPAL -->
 <div class="app">
   <!-- CABEÇALHO EXECUTIVO -->
@@ -31,8 +66,8 @@
 
     <div class="header-right">
       <div class="header-actions">
-        <button class="btn-tool" (click)="openSettings()" title="Configurar Repositório GitHub">
-          ⚙️
+        <button class="btn-tool" (click)="isReportModalOpen = true" title="Importar relatório mensal" aria-label="Importar relatório mensal">
+          ↥
         </button>
         <button class="btn-tool" (click)="toggleTheme()" title="Alternar tema visual">
           {{ isDark ? '🌙' : '☀️' }}
@@ -376,13 +411,21 @@
           <div class="kpi-data">
             <span class="kpi-val">{{ totalAlertasDuplicidade }}</span>
             <span class="kpi-label">
-              {{ totalAlertasDuplicidade === 0 ? 'Conflitos Zero' : 'Voos com Alerta' }}
+              {{ totalAlertasDuplicidade > 0 ? 'Voos com Alerta' : !monthlyReport ? 'Relatório não importado' : rows.length === 0 ? 'Nenhum voo para validar' : 'Sem alertas no lote' }}
             </span>
           </div>
         </div>
       </section>
 
       <!-- ── TOOLBAR DE BUSCA E AÇÕES ── -->
+      <div class="report-status">
+        <span *ngIf="!monthlyReport">{{ isRestoringReport ? 'Restaurando relatório salvo…' : 'Duplicidade externa não verificada. Importe a medição mensal.' }}</span>
+        <span *ngIf="monthlyReport">{{ monthlyReport.filename }} · {{ monthlyReport.records.length }} registros ·
+          {{ monthlyReportService.formatDate(monthlyReport.from) }} a {{ monthlyReportService.formatDate(monthlyReport.to) }} · {{ reportIsSaved ? 'Salvo neste navegador' : 'Somente nesta sessão' }}
+          <strong *ngIf="reportNeedsUpdate"> · Atualização necessária</strong></span>
+        <span *ngIf="reportStorageWarning" role="alert">{{ reportStorageWarning }}</span>
+        <button type="button" (click)="isReportModalOpen = true">{{ monthlyReport ? 'Ver / substituir relatório' : 'Importar relatório mensal' }}</button>
+      </div>
       <div class="toolbar">
         <div class="toolbar-search">
           <span class="search-icon">🔍</span>
@@ -479,7 +522,7 @@
         <!-- GRID DE FLIGHT STRIPS -->
         <div class="cards-grid" *ngIf="filteredRows.length > 0">
           <div
-            *ngFor="let item of filteredRows"
+            *ngFor="let item of filteredRows; trackBy: trackFlightRow"
             class="flight-strip-card"
             [class.has-conflict]="isRowDup(item.index)"
           >
@@ -590,8 +633,22 @@
                   <span class="slot-sla-pill">
                     {{ item.row[col] }} min
                   </span>
+                  <details *ngIf="reportMatches(item.index, col).length" class="report-match-details">
+                    <summary>{{ reportMatches(item.index, col).length }} correspondência(s) no relatório — conferir OS</summary>
+                    <article *ngFor="let match of reportMatches(item.index, col)" class="report-match" [class.cancelled]="match.level === 'cancelada'">
+                      <strong>OS {{ match.record.os }} · {{ match.record.status }} ·
+                        {{ match.level === 'cancelada' ? 'Cancelada: aviso informativo' : match.level === 'programacao' ? 'Correspondência na programação' : 'Possível duplicidade' }}</strong>
+                      <p>{{ match.reason }}</p>
+                      <p>Data Inicio / Data Prazo: {{ monthlyReportService.formatDate(match.record.primaryStart) }} → {{ monthlyReportService.formatDate(match.record.primaryEnd) }}</p>
+                      <p>Início / Fim: {{ monthlyReportService.formatDate(match.record.alternateStart) }} → {{ monthlyReportService.formatDate(match.record.alternateEnd) }}</p>
+                      <p *ngIf="match.record.actualStart !== null || match.record.actualEnd !== null">Execução / resolução reais: {{ monthlyReportService.formatDate(match.record.actualStart) }} → {{ monthlyReportService.formatDate(match.record.actualEnd) }} (contexto)</p>
+                      <p *ngIf="match.record.adjustedStart !== null || match.record.adjustedEnd !== null">Execução / resolução ajustadas: {{ monthlyReportService.formatDate(match.record.adjustedStart) }} → {{ monthlyReportService.formatDate(match.record.adjustedEnd) }} (contexto)</p>
+                      <p *ngFor="let warning of match.record.warnings">Aviso: {{ warning }}</p>
+                    </article>
+                  </details>
                 </div>
               </div>
+              <p class="report-coverage">{{ reportCoverage(item.row) }}</p>
             </div>
           </div>
         </div>

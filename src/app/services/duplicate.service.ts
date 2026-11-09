@@ -59,6 +59,7 @@ export class DuplicateService {
       for (let j = i + 1; j < rows.length; j++) {
         const a = rows[i];
         const b = rows[j];
+        if (String(a['TÍTULO']).split('_')[1] !== String(b['TÍTULO']).split('_')[1]) continue;
         if (a._unidadeKey !== b._unidadeKey) continue;
         if (a._baseAtend !== b._baseAtend) continue;
         if (a._baseDest !== b._baseDest) continue;
@@ -93,8 +94,9 @@ export class DuplicateService {
   public buildTooltip(sd: ServiceDuplicateDetail): string {
     const parts: string[] = [];
     if (sd.external) {
-      parts.push('Possível duplicidade externa: verifique no sistema antes de lançar.');
+      parts.push('Possível duplicidade no relatório mensal: confira a OS antes de lançar.');
     }
+    sd.reportMatches?.forEach(match => parts.push(`OS ${match.record.os} · ${match.record.status}: ${match.reason}`));
     if (sd.sessionWith.length) {
       const refs = sd.sessionWith.map(s => `#${s.idx + 1}`).join(', ');
       parts.push(`Duplicado com o card ${refs} — considere excluir um dos dois.`);
