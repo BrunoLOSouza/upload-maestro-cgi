@@ -39,7 +39,7 @@ export interface FilteredRowItem {
     SettingsModalComponent
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css', './monthly-report.css']
+  styleUrls: ['./app.component.css', './monthly-report.css', './service-scope.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
   // ── ESTADO DA APLICAÇÃO ──
@@ -491,15 +491,45 @@ export class AppComponent implements OnInit, OnDestroy {
   // ── SERVIÇOS ──
   public get availableServices(): ServicoDef[] {
     const ctx = this.getCurrentRouteContext();
+    return this.serviceCatalog.filter(service => this.slaService.resolveSla(
+      this.slaManual, this.slaProgramado, ctx.unidadeKey, ctx.base, ctx.dest, ctx.classif, service.label
+    ).origem !== 'ausente');
+  }
+
+  public get serviceCatalog(): ServicoDef[] {
+    const ctx = this.getCurrentRouteContext();
     return ctx.base && ctx.classif ? this.servicos : [];
   }
 
+  public get extraServices(): ServicoDef[] {
+    const standard = new Set(this.availableServices.map(service => service.label));
+    return this.serviceCatalog.filter(service => !standard.has(service.label));
+  }
+
+  public get canAddStandardService(): boolean {
+    return this.selectedServices.filter(service => !service.extra).length < this.availableServices.length;
+  }
+
+  public get canAddExtraService(): boolean {
+    return this.selectedServices.filter(service => service.extra).length < this.extraServices.length;
+  }
+
+  public isServiceAllowed(service: SelectedService): boolean {
+    const pool = service.extra ? this.extraServices : this.availableServices;
+    return pool.some(def => def.label === service.label);
+  }
+
   public serviceOptions(current: SelectedService): ServicoDef[] {
-    return this.availableServices.filter(service => service.label === current.label ||
+    const pool = current.extra ? this.extraServices : this.availableServices;
+    return pool.filter(service => service.label === current.label ||
       !this.selectedServices.some(selected => selected.label === service.label));
   }
 
-  public addServicoItem(label = '', apac = '', locked = false): void {
+  public addExtraServicoItem(): void {
+    if (this.canAddExtraService) this.addServicoItem('', '', false, true);
+  }
+
+  public addServicoItem(label = '', apac = '', locked = false, extra = false): void {
     const ctx = this.getCurrentRouteContext();
     const slaRes = this.slaService.resolveSla(
       this.slaManual,
@@ -512,6 +542,7 @@ export class AppComponent implements OnInit, OnDestroy {
     );
 
     this.selectedServices.push({
+      extra: extra || (!!label && slaRes.origem === 'ausente'),
       label,
       apac,
       slaUpload: label ? slaRes.sla_upload : 0,
@@ -554,8 +585,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public recalculateAllServicesSla(): void {
     const ctx = this.getCurrentRouteContext();
+    const standard = new Set(this.availableServices.map(service => service.label));
+    // Changing the operation must not silently turn a standard post into an extra.
+    this.selectedServices = this.selectedServices.filter(s => s.extra || !s.label || standard.has(s.label));
     this.selectedServices.forEach(s => {
       if (s.label) {
+        s.extra = !standard.has(s.label);
         const res = this.slaService.resolveSla(
           this.slaManual,
           this.slaProgramado,
@@ -630,7 +665,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const destValid = basePattern.test(ctx.dest);
     const baseValid = basePattern.test(ctx.base);
     const servicesValid = this.selectedServices.length > 0 && this.selectedServices.every(
-      service => this.availableServices.some(def => def.label === service.label) &&
+      service => this.isServiceAllowed(service) &&
         this.colaboradores.includes(service.apac) &&
         (!service.manualInput || (typeof service.manualMinutes === 'number' &&
           Number.isInteger(service.manualMinutes)))
@@ -667,7 +702,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!this.selectedServices.length) return 'Adicione pelo menos um posto à escala.';
     for (const service of this.selectedServices) {
       if (!service.label) return 'Selecione o posto de cada item da escala.';
-      if (!this.availableServices.some(def => def.label === service.label)) return 'Há um posto sem SLA cadastrado para este atendimento.';
+      if (!this.isServiceAllowed(service)) return 'Selecione um posto previsto na planilha ou inclua-o na área de serviços extras.';
       if (!this.colaboradores.includes(service.apac)) return 'Selecione um APAC da lista para cada posto.';
       if (service.manualInput && !Number.isInteger(service.manualMinutes))
         return `Informe o SLA manual de ${service.label} em minutos inteiros, com o sinal desejado.`;

@@ -99,6 +99,7 @@ export interface SlaResult {
 }
 
 export interface SelectedService {
+  extra?: boolean;
   manualInput?: boolean;
   manualMinutes?: number | null;
   manualNote?: string;

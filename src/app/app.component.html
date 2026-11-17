@@ -293,12 +293,14 @@
           </span>
         </div>
 
-        <div class="servicos-list">
+        <p *ngIf="selClassifVal" class="service-scope-note">Postos previstos para a unidade, base e atendimento selecionados.</p>
+        <ng-template #serviceEditor let-svc let-index="index">
           <div
-            *ngFor="let svc of selectedServices; let i = index"
             class="servico-item"
             [class.locked]="svc.locked"
+            [class.extra-service-item]="svc.extra"
           >
+            <span *ngIf="svc.extra" class="extra-service-badge">SERVIÇO EXTRA</span>
             <div class="servico-item-row">
               <div>
                 <label class="field-label-sm">Posto / Serviço</label>
@@ -306,6 +308,7 @@
                   [(ngModel)]="svc.label"
                   (change)="onServiceSelectChange(svc)"
                   [disabled]="!!svc.locked"
+                  [attr.aria-label]="svc.extra ? 'Serviço extra' : 'Posto previsto na planilha'"
                 >
                   <option value="">Selecione o posto...</option>
                   <option *ngFor="let s of serviceOptions(svc)" [value]="s.label">
@@ -341,25 +344,42 @@
 
               <button
                 class="btn-remove-svc"
-                (click)="removeServicoItem(i)"
+                (click)="removeServicoItem(index)"
                 title="Remover posto da escala"
               >
                 ✕
               </button>
             </div>
           </div>
+        </ng-template>
+        <div class="servicos-list standard-services-list">
+          <ng-container *ngFor="let svc of selectedServices; let i = index">
+            <ng-container *ngIf="!svc.extra" [ngTemplateOutlet]="serviceEditor" [ngTemplateOutletContext]="{ $implicit: svc, index: i }"></ng-container>
+          </ng-container>
         </div>
 
         <button
           class="btn-add-svc"
           (click)="addServicoItem()"
-          [disabled]="!selClassifVal || selectedServices.length >= availableServices.length"
+          [disabled]="!selClassifVal || !canAddStandardService"
         >
           <span class="plus-icon">+</span> Adicionar Posto à Escala
         </button>
         <div *ngIf="selClassifVal && availableServices.length === 0" class="field-label-sm">
-          Nenhum posto com SLA e coluna de upload cadastrados para este atendimento.
+          Nenhum posto previsto na planilha para este atendimento. Se necessário, inclua um serviço extra abaixo.
         </div>
+        <section *ngIf="selClassifVal" class="extra-services-section" aria-labelledby="extra-services-title">
+          <h3 id="extra-services-title">Serviços extras <span>OPCIONAL</span></h3>
+          <p>Use somente quando a operação precisar de um posto além dos previstos. Selecione o serviço, o colaborador e informe o SLA manual.</p>
+          <div class="servicos-list extra-services-list">
+            <ng-container *ngFor="let svc of selectedServices; let i = index">
+              <ng-container *ngIf="svc.extra" [ngTemplateOutlet]="serviceEditor" [ngTemplateOutletContext]="{ $implicit: svc, index: i }"></ng-container>
+            </ng-container>
+          </div>
+          <button type="button" class="btn-add-svc btn-add-extra-svc" (click)="addExtraServicoItem()" [disabled]="!canAddExtraService">
+            <span class="plus-icon">+</span> Adicionar serviço extra
+          </button>
+        </section>
       </div>
 
       <!-- FOOTER ADICIONAR VOO -->

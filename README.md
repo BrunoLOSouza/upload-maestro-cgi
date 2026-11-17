@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Postos previstos e serviços extras
+
+O seletor principal da escala oferece somente os postos previstos na planilha
+para a unidade, base e atendimento escolhidos. Postos além dessa previsão ficam
+em **Serviços extras (opcional)**, com inclusão explícita pelo operador e SLA
+manual obrigatório. Não há mudança nos nomes nem nas colunas de exportação.
+
+Validação: `node verify_service_scope.cjs` confronta os atendimentos com a planilha
+SLA de referência disponível em Downloads, além de verificar inclusão de extras,
+sinais do SLA, repetição, restauração e exportação. A versão no navegador pode
+ser verificada com `node verify_service_scope_browser.cjs`, usando um Chrome de
+testes na porta 9223. O endereço pode ser definido por `OPERA_BROWSER_URL`.
