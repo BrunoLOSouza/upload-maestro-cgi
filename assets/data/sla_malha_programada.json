@@ -1679,6 +1679,15 @@
       "manual_input": false,
       "observation": "Inicio dia 26/10/2026",
       "source_row": 77
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL|TPS 3": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00. Avisar comercial do GOL MELI PARTIDA",
+      "source_row": 41,
+      "available_before": "12:00",
+      "source_manual_input": true
     }
   }
 }
