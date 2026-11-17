@@ -49,6 +49,12 @@ export class ExcelService {
       throw new Error('Nenhuma linha para exportar.');
     }
 
+    const unmapped = [...new Set(rows.flatMap(row => Object.keys(row)
+      .filter(key => key.startsWith('_contratual_'))
+      .map(key => key.slice('_contratual_'.length))
+      .filter(label => typeof row[label] === 'number' && !allCols.includes(label))))];
+    if (unmapped.length) throw new Error(`Postos sem coluna confirmada no modelo de upload: ${unmapped.join(', ')}.`);
+
     const wb = XLSX.utils.book_new();
 
     // ── ABA 1: UPLOAD MAESTRO ──

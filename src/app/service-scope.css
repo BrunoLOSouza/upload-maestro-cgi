@@ -6,3 +6,7 @@
 .extra-service-item{border-style:dashed;border-color:#c99a1760}
 .extra-service-badge{display:inline-block;margin-bottom:9px}
 .btn-add-extra-svc{border-color:#c99a1750}
+.reference-time-hint{font-size:10px;line-height:1.5;color:var(--text-dim,#8293ab);margin:7px 0 0}
+.reference-time-error{color:var(--danger,#dd675f)}
+.info-tooltip-badge[data-tip]:hover::after{white-space:pre-line;width:320px;max-width:calc(100vw - 40px);line-height:1.6}
+.export-schema-warning{margin:12px 18px;padding:12px 14px;font-size:12px;line-height:1.6;color:var(--text,#f0f3f8);border:1px solid #d89b3066;border-left:3px solid #d89b30;border-radius:7px;background:#d89b3012}

@@ -106,5 +106,8 @@
   {
     "label": "Líder",
     "responsible_column": "Responsavel Líder"
+  },
+  {
+    "label": "TPS 3"
   }
 ]

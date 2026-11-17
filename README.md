@@ -43,3 +43,14 @@ Antes de incluir o voo no despacho, postos extras ou previstos ausentes geram
 um alerta com os nomes envolvidos. Cancelar preserva o formulário; somente OK
 libera a inclusão quando houver diferenças. A confirmação não envia o voo ao
 sistema da empresa, apenas o inclui no lote da aplicação.
+
+## TPS 3 e horário de referência
+
+Em GOL/GRU/INTERNACIONAL, TPS 3 é previsto somente antes das 12:00. O SLA é fixo:
+240 minutos contratuais e -240 no upload, sem digitação manual. A partir de 12:00
+ele não aparece nem é considerado ausente. O relógio aceita intervalos de 5
+minutos, sem arredondar valores inválidos.
+
+O modelo de upload disponível ainda não possui as colunas do TPS 3 e do seu
+colaborador. A exportação de lotes com esse posto fica protegida até confirmar
+os cabeçalhos. Os demais lotes continuam exportando normalmente.

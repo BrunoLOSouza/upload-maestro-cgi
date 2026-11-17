@@ -5,6 +5,19 @@ import { SlaConfig, SlaResult } from '../models/maestro.models';
   providedIn: 'root'
 })
 export class SlaService {
+  public isFiveMinuteTime(value: string): boolean {
+    return /^(?:[01]\d|2[0-3]):[0-5]\d(?::00)?$/.test(value) && Number(value.slice(3, 5)) % 5 === 0;
+  }
+
+  public isBeforeNoon(value: string): boolean {
+    return this.isFiveMinuteTime(value) && Number(value.slice(0, 2)) < 12;
+  }
+
+  public isTps3Scope(unidadeKey: string, baseAtend: string, classif: string): boolean {
+    return unidadeKey.trim().toUpperCase() === 'GOL LINHAS AÉREAS - VARREDURA BR' &&
+      baseAtend.trim().toUpperCase() === 'GRU' && classif.trim().toUpperCase() === 'INTERNACIONAL';
+  }
+
   public buildSlaKey(
     unidadeKey: string,
     baseAtend: string,
@@ -31,6 +44,18 @@ export class SlaService {
     svcLabel: string
   ): SlaResult {
     const key = this.buildSlaKey(unidadeKey, baseAtend, baseDest, classif, svcLabel);
+
+    // Operational exception: the asterisk does not make TPS 3 editable in this scope.
+    if (svcLabel === 'TPS 3' && this.isTps3Scope(unidadeKey, baseAtend, classif)) {
+      return {
+        sla_upload: -240,
+        sla_contratual: 240,
+        origem: 'programado',
+        manual_input: false,
+        observation: 'TPS 3 apenas em voos internacionais decolando antes das 12:00. Avisar comercial do GOL MELI PARTIDA.',
+        legend: `${this.buildSlaLegend(-240, 240)} · TPS 3: 240 minutos fixos, somente antes das 12:00. Avisar comercial do GOL MELI PARTIDA.`
+      };
+    }
 
     const manual = slaManual?.chaves?.[key];
     if (manual) {

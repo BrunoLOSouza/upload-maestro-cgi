@@ -45,6 +45,8 @@ export interface ColunasConfig {
 }
 
 export interface SlaChave {
+  available_before?: string;
+  source_manual_input?: boolean;
   sla_upload: number;
   sla_contratual: number;
   manual_input?: boolean;

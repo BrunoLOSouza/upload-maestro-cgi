@@ -242,7 +242,12 @@
           </div>
           <div class="field">
             <label class="field-label">Horário de Referência <span class="req">*</span></label>
-            <input type="time" [(ngModel)]="inputHoraVal" />
+            <input type="time" [(ngModel)]="inputHoraVal" (ngModelChange)="onReferenceTimeChange()"
+              step="300" min="00:00" max="23:55" aria-describedby="reference-time-hint"
+              [attr.aria-invalid]="inputHoraVal && !isReferenceTimeValid ? 'true' : null" />
+            <p id="reference-time-hint" class="reference-time-hint" [class.reference-time-error]="inputHoraVal && !isReferenceTimeValid">
+              Use intervalos de 5 minutos: 10:00, 10:05, 10:10.
+            </p>
           </div>
         </div>
       </div>
@@ -287,13 +292,14 @@
           </div>
           <span
             class="info-tooltip-badge"
-            data-tip="O SLA é calculado automaticamente pelo escopo da rota: Chegadas iniciam no horário de referência; Partidas iniciam com antecedência pré-voo."
+            data-tip="O SLA é calculado automaticamente pelo sistema, de acordo com a data e o horário informados.&#10;&#10;- CHEGADA: Devem ser inseridos os dados de POUSO da aeronave. O SLA será positivo (sem necessidade de inclusão de sinal).&#10;&#10;- PARTIDA: Devem ser inseridos os dados de DECOLAGEM da aeronave. O SLA será negativo (−)."
           >
             ℹ️ Como funciona
           </span>
         </div>
 
         <p *ngIf="selClassifVal" class="service-scope-note">Postos previstos para a unidade, base e atendimento selecionados.</p>
+        <p *ngIf="tps3TimeNotice" class="service-scope-note">{{ tps3TimeNotice }}</p>
         <ng-template #serviceEditor let-svc let-index="index">
           <div
             class="servico-item"
@@ -509,7 +515,7 @@
           <button
             class="btn btn-export-excel"
             (click)="exportExcel()"
-            [disabled]="rows.length === 0"
+            [disabled]="rows.length === 0 || exportSchemaIssues.length > 0"
           >
             <span class="export-icon">↓</span> Exportar para o Maestro
           </button>
@@ -517,6 +523,10 @@
       </div>
 
       <!-- ── FLIGHT BOARD / CARDS VIEW ── -->
+      <p *ngIf="exportSchemaIssues.length" class="export-schema-warning" role="alert">
+        Exportação pendente: {{ exportSchemaIssues.join(', ') }} não possui todas as colunas no modelo de upload atual.
+        Confirme o cabeçalho do posto e do responsável antes de gerar a carga.
+      </p>
       <div class="preview-wrap">
         <!-- ESTADO VAZIO -->
         <div class="empty-state" *ngIf="rows.length === 0">

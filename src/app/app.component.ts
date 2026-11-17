@@ -503,7 +503,37 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public get serviceCatalog(): ServicoDef[] {
     const ctx = this.getCurrentRouteContext();
-    return ctx.base && ctx.classif ? this.servicos : [];
+    return ctx.base && ctx.classif ? this.servicos.filter(service => service.label !== 'TPS 3' ||
+      (this.slaService.isTps3Scope(ctx.unidadeKey, ctx.base, ctx.classif) &&
+        this.slaService.isBeforeNoon(this.inputHoraVal))) : [];
+  }
+
+  public get isReferenceTimeValid(): boolean {
+    return this.slaService.isFiveMinuteTime(this.inputHoraVal);
+  }
+
+  public get tps3TimeNotice(): string {
+    const ctx = this.getCurrentRouteContext();
+    if (!this.slaService.isTps3Scope(ctx.unidadeKey, ctx.base, ctx.classif)) return '';
+    return this.slaService.isBeforeNoon(this.inputHoraVal)
+      ? 'TPS 3: 240 minutos fixos para voos antes das 12:00. Avisar comercial do GOL MELI PARTIDA.'
+      : 'TPS 3 previsto somente para voos antes das 12:00; a partir das 12:00 não é exigido.';
+  }
+
+  public get exportSchemaIssues(): string[] {
+    return this.servicos.filter(service => this.rows.some(row =>
+      typeof row[service.label] === 'number') &&
+      (!this.allCols.includes(service.label) || !service.responsible_column ||
+        !this.allCols.includes(service.responsible_column))).map(service => service.label);
+  }
+
+  public onReferenceTimeChange(): void {
+    this.serviceReview = null;
+    if (!this.isReferenceTimeValid) return;
+    const allowed = new Set(this.serviceCatalog.map(service => service.label));
+    const removed = this.selectedServices.some(service => service.label === 'TPS 3' && !allowed.has(service.label));
+    this.selectedServices = this.selectedServices.filter(service => service.label !== 'TPS 3' || allowed.has(service.label));
+    if (removed) this.showToast('TPS 3 removido da escala: não é previsto para este horário. Os demais postos foram mantidos.', 'info');
   }
 
   public get extraServices(): ServicoDef[] {
@@ -620,6 +650,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public updateManualSla(svc: SelectedService, value: number | null = svc.manualMinutes ?? null): void {
+    const ctx = this.getCurrentRouteContext();
+    if (svc.label === 'TPS 3' && this.slaService.isTps3Scope(ctx.unidadeKey, ctx.base, ctx.classif)) return;
     svc.manualMinutes = value;
     if (typeof value !== 'number' || !Number.isInteger(value)) {
       svc.slaContratual = 0;
@@ -671,6 +703,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const baseValid = basePattern.test(ctx.base);
     const servicesValid = this.selectedServices.length > 0 && this.selectedServices.every(
       service => this.isServiceAllowed(service) &&
+        (service.label !== 'TPS 3' || (service.slaUpload === -240 && service.slaContratual === 240 && !service.manualInput)) &&
         this.colaboradores.includes(service.apac) &&
         (!service.manualInput || (typeof service.manualMinutes === 'number' &&
           Number.isInteger(service.manualMinutes)))
@@ -692,7 +725,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.selectedSupervisorLink &&
       this.autoSetorText === this.selectedSupervisorLink.setor &&
       this.inputDataVal &&
-      this.inputHoraVal &&
+      this.isReferenceTimeValid &&
       servicesValid &&
       uniqueServices
     );
@@ -703,6 +736,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const ctx = this.getCurrentRouteContext();
     if (!ctx.base || !ctx.dest || !ctx.classif || !this.inputNumberVal) return 'Complete a rota, o número do voo e a classificação.';
     if (!this.inputDataVal || !this.inputHoraVal) return 'Informe a data e o horário de referência.';
+    if (!this.isReferenceTimeValid) return 'Informe um horário em intervalos de 5 minutos, como 10:00 ou 10:05, sem segundos.';
     if (!this.selectedSupervisorLink) return 'Selecione um responsável vinculado à unidade.';
     if (!this.selectedServices.length) return 'Adicione pelo menos um posto à escala.';
     for (const service of this.selectedServices) {
@@ -1171,6 +1205,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // ── EXPORTAÇÃO EXCEL ──
   public exportExcel(): void {
+    if (this.exportSchemaIssues.length) {
+      this.showToast(`Exportação pendente: falta confirmar as colunas de upload de ${this.exportSchemaIssues.join(', ')}.`, 'error');
+      return;
+    }
     try {
       const res = this.excelService.exportExcel(this.rows, this.allCols, this.slaCols);
       this.showToast(

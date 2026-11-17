@@ -102,7 +102,8 @@ for(const configUnit of app.config.unidades){
       assert.ok(actual,`Regra faltante: ${key}`);
       assert.equal(actual.sla_upload,row['SLA + ou -']==='+'?minutes:-minutes,key);
       assert.equal(actual.sla_contratual,minutes,key);
-      assert.equal(actual.manual_input,typeof expected==='string'&&expected.includes('*'),key);
+      const fixedTps3=service.label==='TPS 3'&&slaService.isTps3Scope(configUnit.label,row.Base,row.Atendimento);
+      assert.equal(actual.manual_input,!fixedTps3&&typeof expected==='string'&&expected.includes('*'),key);
       assert.equal(resolved.sla_upload,actual.sla_upload,key);
       auditedRules++; if(actual.manual_input) auditedManual++;
     }

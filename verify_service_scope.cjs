@@ -28,10 +28,12 @@ for(const row of rows.filter(r=>r.Ativo==='SIM')){
  const unit=app.config.unidades.find(u=>normalize(u.label)===normalize(row['Unidade de gestão / Cliente']));
  if(!unit)continue;
  context(unit,row.Base,row.Atendimento);
- const expected=app.servicos.filter(s=>row[s.label]!==undefined&&row[s.label]!==null&&row[s.label]!=='').map(s=>s.label).sort();
+ const expected=app.servicos.filter(s=>row[s.label]!==undefined&&row[s.label]!==null&&row[s.label]!==''&&
+   (s.label!=='TPS 3'||app.slaService.isBeforeNoon(app.inputHoraVal))).map(s=>s.label).sort();
  assert.deepEqual(app.availableServices.map(s=>s.label).sort(),expected,`${unit.id}/${row.Base}/${row.Atendimento}`);
- assert.equal(app.serviceCatalog.length,app.servicos.length);
- assert.equal(app.extraServices.length,app.servicos.length-expected.length);
+ const catalogSize=app.servicos.filter(s=>s.label!=='TPS 3'||(app.slaService.isTps3Scope(unit.label,row.Base,row.Atendimento)&&app.slaService.isBeforeNoon(app.inputHoraVal))).length;
+ assert.equal(app.serviceCatalog.length,catalogSize);
+ assert.equal(app.extraServices.length,catalogSize-expected.length);
  for(const label of expected){
   const svc=app.servicos.find(s=>s.label===label);app.addServicoItem(svc.label,app.colaboradores[0]);
   const selected=app.selectedServices.at(-1),minutes=Math.round(Math.abs(Number(String(row[label]).replace('*',''))));

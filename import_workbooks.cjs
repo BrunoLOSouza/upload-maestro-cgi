@@ -11,7 +11,6 @@ const headers = XLSX.utils.sheet_to_json(model.Sheets['UPLOAD MAESTRO'], {header
 save('colunas.json', {fixed_cols: headers.slice(0, 15), upload_cols: headers});
 const services = [];
 for (let i = 15; i < headers.length; i += 2) services.push({label: headers[i], responsible_column: headers[i + 1]});
-save('servicos.json', services);
 const base = XLSX.utils.sheet_to_json(model.Sheets.BASE);
 const supervisors = new Map();
 // Contrato encerrado, conforme orientação operacional.
@@ -40,6 +39,11 @@ const matchKey = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpper
 const rules = XLSX.utils.sheet_to_json(sla.Sheets[sla.SheetNames[0]]);
 const slaHeaders = XLSX.utils.sheet_to_json(sla.Sheets[sla.SheetNames[0]], {header: 1})[0];
 const slaServiceHeaders = slaHeaders.slice(7, slaHeaders.indexOf('Obs'));
+// Retain TPS 3 for operational validation even when the supplied upload template
+// has no corresponding columns. Export stays blocked until its headers are mapped.
+if (slaServiceHeaders.includes('TPS 3') && !services.some(service => service.label === 'TPS 3'))
+  services.push({label:'TPS 3'});
+save('servicos.json', services);
 const config = JSON.parse(fs.readFileSync(path.join(out, 'config.json')));
 const newUnits = [];
 const chaves = {};
@@ -77,7 +81,7 @@ for (const label of units) {
     const sourceRow = rules.indexOf(rule) + 2;
     for (const service of slaServiceHeaders) {
       const value = rule[service];
-      if (service === 'Obs' || value === '' || value == null || services.some(s => s.label === service)) continue;
+      if (service === 'Obs' || value === '' || value == null || headers.includes(service)) continue;
       pending.push({source_row: sourceRow, label, base, classification, service, value,
         reason: 'Posto presente no SLA, mas sem coluna correspondente no modelo de upload.'});
     }
@@ -86,15 +90,19 @@ for (const label of units) {
     for (const service of services) {
       const value = rule[service.label];
       if (value === undefined || value === null || value === '') continue;
-      const manual_input = typeof value === 'string' && value.includes('*');
-      if (!manual_input && typeof value !== 'number') { pending.push({label, base, classification, service: service.label, value}); continue; }
+      const markedManual = typeof value === 'string' && value.includes('*');
+      const fixedTps3 = service.label === 'TPS 3' && matchKey(label) === 'GOL LINHAS AEREAS - VARREDURA BR' &&
+        base === 'GRU' && classification === 'INTERNACIONAL';
+      const manual_input = markedManual && !fixedTps3;
+      if (!markedManual && typeof value !== 'number') { pending.push({label, base, classification, service: service.label, value}); continue; }
       const minutes = Math.round(Math.abs(Number(String(value).replace('*', ''))));
       if (!Number.isFinite(minutes) || minutes <= 0) throw new Error(`SLA inválido na linha ${sourceRow}: ${service.label}`);
       const key = [label.trim().toUpperCase(), base, '*', classification, service.label].join('|');
       if (chaves[key]) throw new Error(`SLA duplicado: ${key}`);
       chaves[key] = {
         sla_upload: rule['SLA + ou -'] === '+' ? minutes : -minutes,
-        sla_contratual: minutes, manual_input, observation: rule.Obs || '', source_row: sourceRow
+          sla_contratual: minutes, manual_input, observation: rule.Obs || '', source_row: sourceRow,
+          ...(fixedTps3 ? {available_before:'12:00',source_manual_input:markedManual} : {})
       };
     }
   }
