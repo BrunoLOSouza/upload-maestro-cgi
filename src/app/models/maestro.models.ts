@@ -191,3 +191,9 @@ export interface GitHubCredentials {
   repo: string;
   token: string;
 }
+
+export interface ServiceReview {
+  additional: string[];
+  missing: string[];
+  signature: string;
+}

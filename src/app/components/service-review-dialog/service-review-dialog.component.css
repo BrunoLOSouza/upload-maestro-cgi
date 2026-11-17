@@ -1,0 +1,21 @@
+.review-overlay{position:fixed;inset:0;z-index:1800;display:grid;place-items:center;padding:24px;background:#020713ba;backdrop-filter:blur(5px)}
+.review-dialog{display:flex;flex-direction:column;box-sizing:border-box;width:min(720px,100%);max-height:calc(100dvh - 48px);max-height:calc(100svh - 48px);background:var(--bg,#0a0d14);color:var(--text,#f0f3f8);border:1px solid var(--border-bright,#ffffff29);border-top:3px solid #e7b847;border-radius:14px;box-shadow:0 25px 90px #0007;overflow:hidden}
+.review-header{padding:24px 26px 18px;border-bottom:1px solid var(--border,#ffffff14)}
+.review-eyebrow{font:10px Consolas,monospace;letter-spacing:1.8px;color:#c28e26}
+.review-header h2{font-size:21px;line-height:1.35;margin:10px 0;color:var(--text,#f0f3f8)}
+.review-header p,.review-warning p{font-size:13px;line-height:1.75;margin:0;color:var(--text-dim,#a0aabf)}
+.review-body{padding:20px 26px;overflow-y:auto;overscroll-behavior:contain}
+.review-warning{border:1px solid #d89b3042;border-left:3px solid #d89b30;border-radius:8px;padding:18px;background:#e3ac2409}
+.review-warning+.review-warning{margin-top:16px}
+.review-warning h3{font-size:12px;letter-spacing:.6px;margin:0 0 12px;color:var(--text,#f0f3f8)}
+.review-warning ul{padding-left:20px;margin:0 0 14px}
+.review-warning li{font-size:14px;font-weight:650;line-height:1.6;overflow-wrap:anywhere;margin:3px 0;color:var(--text,#f0f3f8)}
+.review-missing{border-color:#e9807740;border-left-color:#e98077;background:#e9807708}
+.review-actions{padding:16px 26px 22px;border-top:1px solid var(--border,#ffffff14);flex-shrink:0;background:var(--bg,#0a0d14)}
+.review-actions p{font-size:11px;line-height:1.5;margin:0 0 14px;color:var(--text-dim,#a0aabf)}
+.review-actions>div{display:flex;justify-content:flex-end;gap:12px}
+.review-actions button{cursor:pointer;border:1px solid var(--border-bright,#ffffff29);border-radius:7px;font:600 12px 'Segoe UI',sans-serif;padding:11px 18px}
+.review-cancel{background:transparent;color:var(--text,#f0f3f8)}
+.review-confirm{background:var(--accent,#c9d900);border-color:var(--accent,#c9d900)!important;color:var(--accent-text,#0a0d14);min-width:100px}
+.review-actions button:focus-visible{outline:2px solid var(--accent,#c9d900);outline-offset:4px}
+@media(max-width:560px){.review-overlay{padding:12px}.review-dialog{max-height:calc(100svh - 24px)}.review-header,.review-body{padding:18px}.review-header h2{font-size:18px}.review-warning{padding:14px}.review-actions{padding:14px 18px 18px}.review-actions>div{justify-content:stretch}.review-actions button{flex:1;padding:12px 10px}}

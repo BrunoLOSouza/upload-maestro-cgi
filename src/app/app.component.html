@@ -44,7 +44,7 @@
 </div>
 
 <!-- APLICAÇÃO PRINCIPAL -->
-<div class="app">
+<div class="app" [attr.inert]="serviceReview ? '' : null">
   <!-- CABEÇALHO EXECUTIVO -->
   <header class="header">
     <div class="logo">
@@ -695,6 +695,9 @@
     </main>
   </div>
 </div>
+
+<app-service-review-dialog *ngIf="serviceReview as review" [review]="review"
+  (confirmed)="confirmServiceReview()" (cancelled)="cancelServiceReview()"></app-service-review-dialog>
 
 <!-- MODAL DE LIMPEZA DE LOTE -->
 <div class="modal-overlay" [class.open]="isModalClearOpen">

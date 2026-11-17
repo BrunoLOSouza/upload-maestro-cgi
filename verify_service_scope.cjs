@@ -61,7 +61,9 @@ app.selectedServices.splice(0,1);assert.equal(app.serviceOptions(extra).some(s=>
 app.addServicoItem(expected[0],app.colaboradores[0]);
 const columns=data('colunas');app.fixedCols=columns.fixed_cols;app.svcCols=app.servicos.flatMap(s=>[s.label,s.responsible_column]).filter(Boolean);
 app.recomputeDuplicates=()=>{};app.showToast=()=>{};
-await app.addRow();assert.equal(app.rows.length,1);const row=app.rows[0];
+await app.addRow();assert.equal(app.rows.length,0);
+assert.deepEqual(app.serviceReview.additional,['Controle de Acesso Rampa 2']);
+await app.confirmServiceReview();assert.equal(app.rows.length,1);const row=app.rows[0];
 assert.equal(row['Controle de Acesso Rampa 2'],-135);assert.equal(row['_contratual_Controle de Acesso Rampa 2'],135);
 context(gol,'JPA','INTERNACIONAL');app.cloneRow(0);const restored=app.selectedServices.find(s=>s.label===label);
 assert.equal(restored.extra,true);assert.equal(restored.manualMinutes,-135);assert.equal(restored.slaUpload,-135);assert.equal(app.isAddRowValid,true,app.addRowHint);

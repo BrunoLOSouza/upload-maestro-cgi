@@ -103,6 +103,12 @@ const assert = require('node:assert/strict');
         check(document.elementFromPoint(bounds.x+bounds.width/2,bounds.y+bounds.height/2)?.closest('.btn-add-row')===button,'Botao sobreposto: '+key);
         const expectedSupervisor=app.selSupervisorName, expectedSetor=app.autoSetorText, expectedUnit=app.currentCiaData.unidade;
         const previous=app.rows.length; button.click(); await tick();
+        if(app.serviceReview){
+          check(app.rows.length===previous,'Voo incluído antes do OK: '+key);
+          const confirm=document.querySelector('.review-confirm');
+          check(!!confirm,'Confirmação dos postos ausente: '+key);
+          confirm.click(); await tick();
+        }
         check(app.rows.length===previous+1,'Clique nao adicionou voo: '+key);
         const row=app.rows[app.rows.length-1];
         check(row['RESPONSÁVEL']===expectedSupervisor && row['SETOR RESPONSÁVEL']===expectedSetor && row['UNIDADE DE GESTÃO']===expectedUnit,'Nome ou setor alterado no lancamento: '+key);

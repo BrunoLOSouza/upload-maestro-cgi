@@ -11,6 +11,7 @@ import {
   MonthlyReport,
   RowDuplicateInfo,
   SelectedService,
+  ServiceReview,
   ServicoDef,
   SlaConfig,
   Supervisor
@@ -23,6 +24,7 @@ import { MonthlyReportService } from './services/monthly-report.service';
 import { MonthlyReportStorageService } from './services/monthly-report-storage.service';
 import { ApacSelectComponent } from './components/apac-select/apac-select.component';
 import { SettingsModalComponent } from './components/settings-modal/settings-modal.component';
+import { ServiceReviewDialogComponent } from './components/service-review-dialog/service-review-dialog.component';
 
 export interface FilteredRowItem {
   row: FlightRow;
@@ -36,7 +38,8 @@ export interface FilteredRowItem {
     CommonModule,
     FormsModule,
     ApacSelectComponent,
-    SettingsModalComponent
+    SettingsModalComponent,
+    ServiceReviewDialogComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css', './monthly-report.css', './service-scope.css']
@@ -117,6 +120,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // ── MODAIS & TOAST ──
   public isModalClearOpen = false;
+  public serviceReview: ServiceReview | null = null;
   public isReportModalOpen = false;
   public isImportingReport = false;
   public reportError = '';
@@ -462,6 +466,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public onClassifChange(): void {
+    this.serviceReview = null;
     this.recalculateAllServicesSla();
     this.updateTitulo();
   }
@@ -712,6 +717,46 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // ── ADICIONAR VOO AO PREVIEW ──
   public async addRow(): Promise<void> {
+    if (!this.isAddRowValid || !this.config || !this.currentCiaData) return;
+    const review = this.buildServiceReview();
+    if (review.additional.length || review.missing.length) {
+      this.serviceReview = review;
+      return;
+    }
+    this.serviceReview = null;
+    await this.appendValidatedRow();
+  }
+
+  private buildServiceReview(): ServiceReview {
+    const expected = this.availableServices.map(service => service.label);
+    const selected = this.selectedServices.map(service => service.label);
+    return {
+      additional: selected.filter(name => !expected.includes(name)),
+      missing: expected.filter(name => !selected.includes(name)),
+      signature: JSON.stringify([
+        this.getCurrentRouteContext(), this.selCiaId, this.inputNumberVal,
+        this.inputDataVal, this.inputHoraVal, this.selSupervisorName, this.autoSetorText,
+        this.selectedServices, expected
+      ])
+    };
+  }
+
+  public cancelServiceReview(): void {
+    this.serviceReview = null;
+  }
+
+  public async confirmServiceReview(): Promise<void> {
+    const pending = this.serviceReview;
+    if (!pending) return;
+    this.serviceReview = null;
+    if (!this.isAddRowValid || pending.signature !== this.buildServiceReview().signature) {
+      this.showToast('Os dados do voo mudaram. Confira o formulário e clique novamente em Adicionar Voo ao Despacho.', 'info');
+      return;
+    }
+    await this.appendValidatedRow();
+  }
+
+  private async appendValidatedRow(): Promise<void> {
     if (!this.isAddRowValid || !this.config || !this.currentCiaData) return;
 
     const unidade = this.currentCiaData._isOndemand
@@ -974,6 +1019,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // ── RESET ──
   public resetFrom(level: 'cia' | 'base' | 'destino'): void {
+    this.serviceReview = null;
     if (level === 'cia') {
       this.selSupervisorName = '';
       this.autoSetorText = '—';
@@ -1006,6 +1052,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public resetForNext(): void {
+    this.serviceReview = null;
     this.availableSupervisores = [];
     this.selSupervisorName = '';
     this.autoSetorText = '—';

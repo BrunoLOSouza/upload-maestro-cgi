@@ -38,3 +38,8 @@ SLA de referência disponível em Downloads, além de verificar inclusão de ext
 sinais do SLA, repetição, restauração e exportação. A versão no navegador pode
 ser verificada com `node verify_service_scope_browser.cjs`, usando um Chrome de
 testes na porta 9223. O endereço pode ser definido por `OPERA_BROWSER_URL`.
+
+Antes de incluir o voo no despacho, postos extras ou previstos ausentes geram
+um alerta com os nomes envolvidos. Cancelar preserva o formulário; somente OK
+libera a inclusão quando houver diferenças. A confirmação não envia o voo ao
+sistema da empresa, apenas o inclui no lote da aplicação.
