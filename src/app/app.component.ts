@@ -72,6 +72,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public svcCols: string[] = [];
   public allCols: string[] = [];
   public slaCols: string[] = [];
+  public contractualCols: string[] = [];
   private uploadCols: string[] = [];
 
   // ── FORMULÁRIO (SIDEBAR) ──
@@ -227,7 +228,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.githubService.fetchJson<Supervisor[]>('supervisores.json'),
         this.githubService.fetchJson<ServicoDef[]>('servicos.json'),
         this.githubService.fetchJson<Aviso[]>('avisos.json').catch(() => []),
-        this.githubService.fetchJson<{ fixed_cols: string[]; upload_cols?: string[] }>('colunas.json'),
+        this.githubService.fetchJson<{ fixed_cols: string[]; upload_cols?: string[]; sla_cols?: string[] }>('colunas.json'),
         this.githubService.fetchJson<SlaConfig>('sla_malha_programada.json').catch(() => null),
         this.githubService.fetchJson<SlaConfig>('sla_malha_manual.json').catch(() => null)
       ]);
@@ -240,6 +241,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.slaManual = slaManual;
       this.fixedCols = colunas.fixed_cols || [];
       this.uploadCols = colunas.upload_cols || [];
+      this.contractualCols = colunas.sla_cols || [];
 
       // Carregar rotas das CIAs
       const allArquivos = [...new Set(config.unidades.flatMap(u => u.arquivos))];
@@ -276,10 +278,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.svcCols = [];
     this.servicos.forEach(s => {
       this.svcCols.push(s.label);
-      this.svcCols.push('Responsavel ' + s.label);
+      if (s.responsible_column) this.svcCols.push(s.responsible_column);
     });
     this.allCols = this.uploadCols.length ? this.uploadCols : [...this.fixedCols, ...this.svcCols];
-    this.slaCols = ['TÍTULO', ...this.svcCols.filter(c => !c.startsWith('Responsavel'))];
+    this.slaCols = this.contractualCols.length ? this.contractualCols : ['TÍTULO', ...this.servicos.map(s => s.label)];
   }
 
   private buildAvisos(avisos: Aviso[]): void {
@@ -516,7 +518,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const ctx = this.getCurrentRouteContext();
     if (!this.slaService.isTps3Scope(ctx.unidadeKey, ctx.base, ctx.classif)) return '';
     return this.slaService.isBeforeNoon(this.inputHoraVal)
-      ? 'TPS 3: 240 minutos fixos para voos antes das 12:00. Avisar comercial do GOL MELI PARTIDA.'
+      ? 'TPS 3: 240 minutos fixos para voos internacionais antes das 12:00.'
       : 'TPS 3 previsto somente para voos antes das 12:00; a partir das 12:00 não é exigido.';
   }
 

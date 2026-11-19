@@ -16,6 +16,22 @@
     "responsible_column": "Responsavel Controle de Acesso Rampa 4"
   },
   {
+    "label": "Auditoria Check-in",
+    "responsible_column": "Responsavel Auditoria Check-in"
+  },
+  {
+    "label": "Inspeção em Aeronave 5",
+    "responsible_column": "Responsavel Inspeção em Aeronave 5"
+  },
+  {
+    "label": "Inspeção em Aeronave 6",
+    "responsible_column": "Responsavel Inspeção em Aeronave 6"
+  },
+  {
+    "label": "TPS 3",
+    "responsible_column": "Responsavel TPS 3"
+  },
+  {
     "label": "Controle de Acesso Porta 1",
     "responsible_column": "Responsavel controle de acesso porta 1"
   },
@@ -106,8 +122,5 @@
   {
     "label": "Líder",
     "responsible_column": "Responsavel Líder"
-  },
-  {
-    "label": "TPS 3"
   }
 ]

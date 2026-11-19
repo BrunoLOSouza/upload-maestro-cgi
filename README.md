@@ -51,6 +51,13 @@ Em GOL/GRU/INTERNACIONAL, TPS 3 é previsto somente antes das 12:00. O SLA é fi
 ele não aparece nem é considerado ausente. O relógio aceita intervalos de 5
 minutos, sem arredondar valores inválidos.
 
-O modelo de upload disponível ainda não possui as colunas do TPS 3 e do seu
-colaborador. A exportação de lotes com esse posto fica protegida até confirmar
-os cabeçalhos. Os demais lotes continuam exportando normalmente.
+O modelo consolidado recebido em 19/11/2026 confirma as colunas `TPS 3` e
+`Responsavel TPS 3`, liberando a exportação desse posto. As duas abas exportadas
+respeitam os cabeçalhos e a ordem do modelo, inclusive acentos e espaços.
+Na consulta, `Inspeção de Bagagem` corresponde à coluna de carga
+`Inspeção Bagagens`; o vínculo é explícito e preserva a grafia de saída.
+
+Atualização local: `node import_workbooks.cjs "caminho/arquivo.xlsx"`.
+Para conferir a nova base: defina `OPERA_WORKBOOK` com o caminho da planilha
+e execute `node verify_service_scope.cjs`; `node verify_workbooks.cjs "caminho/arquivo.xlsx"`
+confere também os vínculos e os cabeçalhos das duas abas exportadas.

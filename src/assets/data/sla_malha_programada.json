@@ -893,33 +893,26 @@
       "sla_upload": -240,
       "sla_contratual": 240,
       "manual_input": false,
-      "observation": "*posto porta 2 é posto extra solicitado temporáriamente pelo comercial Pamela. Questionar mensalmente se mantem o posto",
+      "observation": "",
       "source_row": 31
     },
     "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUR|Controle de Acesso Porta 1": {
       "sla_upload": -240,
       "sla_contratual": 240,
       "manual_input": false,
-      "observation": "*posto porta 2 é posto extra solicitado temporáriamente pelo comercial Pamela. Questionar mensalmente se mantem o posto",
+      "observation": "",
       "source_row": 31
     },
     "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|INTERNACIONAL EUR|Controle de Acesso Porta 2": {
       "sla_upload": -240,
       "sla_contratual": 240,
-      "manual_input": true,
-      "observation": "*posto porta 2 é posto extra solicitado temporáriamente pelo comercial Pamela. Questionar mensalmente se mantem o posto",
+      "manual_input": false,
+      "observation": "",
       "source_row": 31
     },
     "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|VARREDURA|Inspeção em Aeronave 1": {
       "sla_upload": -180,
       "sla_contratual": 180,
-      "manual_input": false,
-      "observation": "",
-      "source_row": 32
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|GIG|*|VARREDURA|Triagem Bagagens 1": {
-      "sla_upload": -240,
-      "sla_contratual": 240,
       "manual_input": false,
       "observation": "",
       "source_row": 32
@@ -942,21 +935,30 @@
       "sla_upload": -180,
       "sla_contratual": 180,
       "manual_input": false,
-      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00. Avisar comercial do GOL MELI PARTIDA",
+      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00.",
       "source_row": 41
+    },
+    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL|TPS 3": {
+      "sla_upload": -240,
+      "sla_contratual": 240,
+      "manual_input": false,
+      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00.",
+      "source_row": 41,
+      "available_before": "12:00",
+      "source_manual_input": true
     },
     "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL|Controle de Acesso Porta 1": {
       "sla_upload": -180,
       "sla_contratual": 180,
       "manual_input": false,
-      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00. Avisar comercial do GOL MELI PARTIDA",
+      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00.",
       "source_row": 41
     },
     "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL|Triagem Bagagens 1": {
       "sla_upload": -240,
       "sla_contratual": 240,
       "manual_input": false,
-      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00. Avisar comercial do GOL MELI PARTIDA",
+      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00.",
       "source_row": 41
     },
     "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|VARREDURA|Inspeção em Aeronave 1": {
@@ -1358,6 +1360,20 @@
       "observation": "",
       "source_row": 25
     },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Inspeção em Aeronave 5": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "",
+      "source_row": 25
+    },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Inspeção em Aeronave 6": {
+      "sla_upload": -120,
+      "sla_contratual": 120,
+      "manual_input": false,
+      "observation": "",
+      "source_row": 25
+    },
     "LATAM LINHAS AÉREAS - VARREDURA BR|FOR|*|INTERNACIONAL EUA|Controle de Acesso Porta 1": {
       "sla_upload": -360,
       "sla_contratual": 360,
@@ -1603,6 +1619,13 @@
       "observation": "Sob demanda",
       "source_row": 91
     },
+    "LATAM LINHAS AÉREAS - VARREDURA BR|DOU|*|INSPEÇÃO DE BAGAGEM|Inspeção Bagagens": {
+      "sla_upload": -360,
+      "sla_contratual": 360,
+      "manual_input": false,
+      "observation": "Base possui contrato fixo porém por se tratar de contrato direto com cliente de aéreas, deve ser controlado pelos voos atendidos. Pegar malha no SIROS/ANAC",
+      "source_row": 92
+    },
     "LATAM LINHAS AÉREAS - VARREDURA BR|VIX|*|VARREDURA|Inspeção em Aeronave 1": {
       "sla_upload": -240,
       "sla_contratual": 240,
@@ -1611,6 +1634,13 @@
       "source_row": 93
     },
     "CABO VERDE AIRLINES - VARREDURA BR|REC|*|INTERNACIONAL|Controle de Acesso Rampa 1": {
+      "sla_upload": -270,
+      "sla_contratual": 270,
+      "manual_input": false,
+      "observation": "",
+      "source_row": 69
+    },
+    "CABO VERDE AIRLINES - VARREDURA BR|REC|*|INTERNACIONAL|Auditoria Check-in": {
       "sla_upload": -270,
       "sla_contratual": 270,
       "manual_input": false,
@@ -1679,15 +1709,6 @@
       "manual_input": false,
       "observation": "Inicio dia 26/10/2026",
       "source_row": 77
-    },
-    "GOL LINHAS AÉREAS - VARREDURA BR|GRU|*|INTERNACIONAL|TPS 3": {
-      "sla_upload": -240,
-      "sla_contratual": 240,
-      "manual_input": false,
-      "observation": "*TPS 3 apenas voos internacionais decolando antes das 12:00. Avisar comercial do GOL MELI PARTIDA",
-      "source_row": 41,
-      "available_before": "12:00",
-      "source_manual_input": true
     }
   }
 }

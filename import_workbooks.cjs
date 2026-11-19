@@ -1,17 +1,24 @@
 const fs = require('fs');
 const path = require('path');
 const XLSX = require('xlsx');
-const [modelPath, slaPath] = process.argv.slice(2);
-if (!modelPath || !slaPath) throw new Error('Informe os arquivos de modelo e SLA.');
+const [modelPath, slaPath = modelPath] = process.argv.slice(2);
+if (!modelPath) throw new Error('Informe o modelo consolidado ou os arquivos de modelo e SLA.');
 const model = XLSX.readFile(modelPath);
 const sla = XLSX.readFile(slaPath);
 const out = path.join(__dirname, 'src/assets/data');
 const save = (name, value) => fs.writeFileSync(path.join(out, name), JSON.stringify(value, null, 2) + '\n');
 const headers = XLSX.utils.sheet_to_json(model.Sheets['UPLOAD MAESTRO'], {header: 1})[0];
-save('colunas.json', {fixed_cols: headers.slice(0, 15), upload_cols: headers});
+const contractualHeaders = XLSX.utils.sheet_to_json(model.Sheets['SLA contratual'], {header: 1})[0];
+if (!contractualHeaders || contractualHeaders[0] !== 'SLA CONTRATUAL') throw new Error('Cabeçalho SLA contratual inválido.');
+if (new Set(headers).size !== headers.length || (headers.length - 15) % 2) throw new Error('Colunas de upload inválidas.');
+const slaCols = ['TÍTULO', ...contractualHeaders.slice(1)];
+save('colunas.json', {fixed_cols: headers.slice(0, 15), upload_cols: headers, sla_cols: slaCols});
 const services = [];
 for (let i = 15; i < headers.length; i += 2) services.push({label: headers[i], responsible_column: headers[i + 1]});
-const base = XLSX.utils.sheet_to_json(model.Sheets.BASE);
+const baseRows = XLSX.utils.sheet_to_json(model.Sheets.BASE, {header: 1});
+const baseHeader = baseRows.findIndex(row => row.includes('Unidade de Gestão') && row.includes('Responsável') && row.includes('APACS'));
+if (baseHeader < 0) throw new Error('Cabeçalho BASE não encontrado.');
+const base = XLSX.utils.sheet_to_json(model.Sheets.BASE, {range: baseHeader});
 const supervisors = new Map();
 // Contrato encerrado, conforme orientação operacional.
 const excludedUnits = new Set(['AZUL Linhas Aéreas - Varredura BR']);
@@ -36,15 +43,25 @@ save('supervisores.json', [...supervisors.values()]);
 save('colaboradores.json', [...new Set(base.map(r => r.APACS).filter(Boolean))]);
 // Matching is internal only: output labels always come unchanged from BASE.
 const matchKey = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/\s+/g, ' ').trim();
-const rules = XLSX.utils.sheet_to_json(sla.Sheets[sla.SheetNames[0]]);
-const slaHeaders = XLSX.utils.sheet_to_json(sla.Sheets[sla.SheetNames[0]], {header: 1})[0];
+const rulesSheet = sla.Sheets['CONSULTA - SLA E POSTOS'] || sla.Sheets[sla.SheetNames[0]];
+const rules = XLSX.utils.sheet_to_json(rulesSheet);
+const slaHeaders = XLSX.utils.sheet_to_json(rulesSheet, {header: 1})[0];
+if (!slaHeaders.includes('SLA + ou -') || !slaHeaders.includes('Obs')) throw new Error('Aba de consulta SLA inválida.');
 const slaServiceHeaders = slaHeaders.slice(7, slaHeaders.indexOf('Obs'));
+// The consultation and upload tabs name this same post differently. Keep the
+// exact upload spelling and use an explicit source-column mapping internally.
+const sourceService = label => label === 'Inspeção Bagagens' ? 'Inspeção de Bagagem' : label;
 // Retain TPS 3 for operational validation even when the supplied upload template
 // has no corresponding columns. Export stays blocked until its headers are mapped.
 if (slaServiceHeaders.includes('TPS 3') && !services.some(service => service.label === 'TPS 3'))
   services.push({label:'TPS 3'});
 save('servicos.json', services);
 const config = JSON.parse(fs.readFileSync(path.join(out, 'config.json')));
+const fixedReference = XLSX.utils.sheet_to_json(model.Sheets['UPLOAD MAESTRO'])[0];
+for (const [column, field] of Object.entries({EMPRESA:'EMPRESA',EXECUTOR:'EXECUTOR','CATEGORIA ':'CATEGORIA',PRIORIDADE:'PRIORIDADE',DISCIPLINA:'DISCIPLINA','GRUPO DE SERVIÇO':'GRUPO_SERVICO',SERVIÇO:'SERVICO'})) {
+  if (!fixedReference?.[column]) throw new Error(`Valor fixo ausente: ${column}`);
+  config.campos_fixos[field] = fixedReference[column];
+}
 const newUnits = [];
 const chaves = {};
 const pending = [];
@@ -81,14 +98,14 @@ for (const label of units) {
     const sourceRow = rules.indexOf(rule) + 2;
     for (const service of slaServiceHeaders) {
       const value = rule[service];
-      if (service === 'Obs' || value === '' || value == null || headers.includes(service)) continue;
+      if (service === 'Obs' || value === '' || value == null || services.some(s => sourceService(s.label) === service)) continue;
       pending.push({source_row: sourceRow, label, base, classification, service, value,
         reason: 'Posto presente no SLA, mas sem coluna correspondente no modelo de upload.'});
     }
     if (!routes.some(r => r.base_atend === base && r.classificacao === classification))
       routes.push({base_atend: base, classificacao: classification, ...supervisorFor(rule, label, sourceRow)});
     for (const service of services) {
-      const value = rule[service.label];
+      const value = rule[sourceService(service.label)];
       if (value === undefined || value === null || value === '') continue;
       const markedManual = typeof value === 'string' && value.includes('*');
       const fixedTps3 = service.label === 'TPS 3' && matchKey(label) === 'GOL LINHAS AEREAS - VARREDURA BR' &&

@@ -11,7 +11,8 @@ const fixedConfig=data('config').campos_fixos;
 for(const [field, configField] of Object.entries({EMPRESA:'EMPRESA',EXECUTOR:'EXECUTOR','CATEGORIA ':'CATEGORIA',PRIORIDADE:'PRIORIDADE',DISCIPLINA:'DISCIPLINA','GRUPO DE SERVIÇO':'GRUPO_SERVICO',SERVIÇO:'SERVICO'})) {
   assert.equal(fixedConfig[configField],fixedReference[field],`Texto fixo diferente: ${field}`);
 }
-const sourceBase = XLSX.utils.sheet_to_json(model.Sheets.BASE);
+const baseHeader=XLSX.utils.sheet_to_json(model.Sheets.BASE,{header:1}).findIndex(row=>row.includes('Unidade de Gestão')&&row.includes('APACS'));
+const sourceBase = XLSX.utils.sheet_to_json(model.Sheets.BASE,{range:baseHeader});
 assert.deepEqual(data('config').unidades.map(u => u.label), [...new Set(sourceBase.map(r => r['Unidade de Gestão']).filter(label => label && label !== 'AZUL Linhas Aéreas - Varredura BR'))]);
 for (const supervisor of data('supervisores')) {
   const expected = sourceBase.filter(r => r['Responsável'] === supervisor.responsavel && r['Unidade de Gestão'] && r['Setor Responsável'])
@@ -90,7 +91,7 @@ for(const configUnit of app.config.unidades){
   assert.ok(sourceName, `Nome de origem ausente: ${configUnit.id}`);
   const expectedRoutes=sourceRules.filter(r=>r['Unidade de gestão / Cliente']===sourceName && r.Ativo==='SIM');
   for(const row of expectedRoutes) for(const service of app.servicos){
-    const expected=row[service.label];
+    const expected=row[service.label==='Inspeção Bagagens'?'Inspeção de Bagagem':service.label];
     const key=[configUnit.label.trim().toUpperCase(),row.Base,'*',row.Atendimento,service.label].join('|');
     const actual=rules.chaves[key];
     const resolved=slaService.resolveSla(null,rules,configUnit.label.trim().toUpperCase(),row.Base,'GRU',row.Atendimento,service.label);
@@ -133,6 +134,29 @@ for(const configUnit of app.config.unidades){
   }
 }
 assert.equal(auditedRules,Object.keys(rules.chaves).length);
-assert.equal(data('import_pending').length,5);
+assert.deepEqual(data('import_pending'),[]);
 assert.deepEqual(data('supervisores_pendentes'),[]);
+// Exercise every service/responsible pair through the real row builder and
+// export, including accented headers and the different contractual order.
+const exportApp = new AppComponent({},new SlaService(),{},{});
+exportApp.servicos=data('servicos'); exportApp.fixedCols=data('colunas').fixed_cols;
+exportApp.uploadCols=headers; exportApp.contractualCols=data('colunas').sla_cols;
+exportApp.buildCols();
+const sourceContractual=XLSX.utils.sheet_to_json(model.Sheets['SLA contratual'],{header:1})[0];
+assert.deepEqual(exportApp.slaCols,['TÍTULO',...sourceContractual.slice(1)]);
+const exportRows=data('servicos').map((service,index)=>({
+ 'TÍTULO':`TEST_${index}`,_dataISO:'2026-11-19',_horaISO:'10:00',
+ [service.label]:-240,[service.responsible_column]:data('colaboradores')[0],
+ ['_contratual_'+service.label]:240
+}));
+new ExcelService().exportExcel(exportRows,exportApp.allCols,exportApp.slaCols);
+const uploadRows=XLSX.utils.sheet_to_json(workbook.Sheets['UPLOAD MAESTRO'],{header:1,defval:''});
+const contractualRows=XLSX.utils.sheet_to_json(workbook.Sheets['SLA contratual'],{header:1,defval:''});
+assert.deepEqual(uploadRows[0],headers);
+assert.deepEqual(contractualRows[0],['',...sourceContractual]);
+data('servicos').forEach((service,index)=>{
+ assert.equal(uploadRows[index+1][headers.indexOf(service.label)],-240);
+ assert.equal(uploadRows[index+1][headers.indexOf(service.responsible_column)],data('colaboradores')[0]);
+ assert.equal(contractualRows[index+1][sourceContractual.indexOf(service.label)+1],240);
+});
 console.log(`OK: ${auditedRules} SLAs confrontados com a planilha, ${auditedManual} manuais, ${blankServices} celulas vazias sem valor padrao; vinculos e exportacao exatos.`);

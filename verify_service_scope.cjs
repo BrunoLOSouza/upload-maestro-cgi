@@ -20,15 +20,16 @@ function context(unit,base,classification){
  app.inputNumberVal='1234';app.inputDataVal='2026-11-17';app.inputHoraVal='12:00';
 }
 const downloads=path.join(process.env.USERPROFILE||'C:/Users/brunosouza.7','Downloads');
-const workbookName=fs.readdirSync(downloads).find(n=>n.startsWith('SLA ')&&n.endsWith('.xlsx'));
+const workbookName=process.env.OPERA_WORKBOOK || fs.readdirSync(downloads).find(n=>n.startsWith('SLA ')&&n.endsWith('.xlsx'));
 assert.ok(workbookName,'Planilha de referência SLA não encontrada');
-const workbook=XLSX.readFile(path.join(downloads,workbookName));const rows=XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+const workbook=XLSX.readFile(path.resolve(downloads,workbookName));const rows=XLSX.utils.sheet_to_json(workbook.Sheets['CONSULTA - SLA E POSTOS']||workbook.Sheets[workbook.SheetNames[0]]);
+const sourceLabel=label=>label==='Inspeção Bagagens'?'Inspeção de Bagagem':label;
 let audited=0,rules=0;
 for(const row of rows.filter(r=>r.Ativo==='SIM')){
  const unit=app.config.unidades.find(u=>normalize(u.label)===normalize(row['Unidade de gestão / Cliente']));
  if(!unit)continue;
  context(unit,row.Base,row.Atendimento);
- const expected=app.servicos.filter(s=>row[s.label]!==undefined&&row[s.label]!==null&&row[s.label]!==''&&
+ const expected=app.servicos.filter(s=>row[sourceLabel(s.label)]!==undefined&&row[sourceLabel(s.label)]!==null&&row[sourceLabel(s.label)]!==''&&
    (s.label!=='TPS 3'||app.slaService.isBeforeNoon(app.inputHoraVal))).map(s=>s.label).sort();
  assert.deepEqual(app.availableServices.map(s=>s.label).sort(),expected,`${unit.id}/${row.Base}/${row.Atendimento}`);
  const catalogSize=app.servicos.filter(s=>s.label!=='TPS 3'||(app.slaService.isTps3Scope(unit.label,row.Base,row.Atendimento)&&app.slaService.isBeforeNoon(app.inputHoraVal))).length;
@@ -36,10 +37,10 @@ for(const row of rows.filter(r=>r.Ativo==='SIM')){
  assert.equal(app.extraServices.length,catalogSize-expected.length);
  for(const label of expected){
   const svc=app.servicos.find(s=>s.label===label);app.addServicoItem(svc.label,app.colaboradores[0]);
-  const selected=app.selectedServices.at(-1),minutes=Math.round(Math.abs(Number(String(row[label]).replace('*',''))));
+  const selected=app.selectedServices.at(-1),minutes=Math.round(Math.abs(Number(String(row[sourceLabel(label)]).replace('*',''))));
   assert.equal(selected.extra,false);assert.equal(selected.slaContratual,minutes);
   assert.equal(selected.slaUpload,row['SLA + ou -']==='+'?minutes:-minutes);
-  assert.equal(selected.manualInput,typeof row[label]==='string'&&row[label].includes('*'));
+  assert.equal(selected.manualInput,typeof row[sourceLabel(label)]==='string'&&row[sourceLabel(label)].includes('*'));
   rules++;
  }
  assert.equal(app.canAddStandardService,false);audited++;
