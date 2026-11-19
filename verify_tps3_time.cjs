@@ -8,7 +8,7 @@ const fs=require('fs'),path=require('path'),assert=require('node:assert/strict')
  assert.equal(sla.isFiveMinuteTime('10:05:00'),true);
  let exported=0;
  function appFor(time='10:00',classification='INTERNACIONAL'){
-  const app=new AppComponent({},sla,{},{formatDateBR:()=> '17/11/2026',formatHoraAMPM:()=> '10:00:00 AM',exportExcel:()=>{exported++;}});
+  const app=new AppComponent({},sla,{},{formatDateBR:()=> '17/11/2026',formatHoraAMPM:()=> '10:00:00 AM',exportExcel:()=>{exported++;return {filename:'teste.xlsx',rowsCount:1};}});
   app.config=data('config');app.servicos=data('servicos');app.supervisores=data('supervisores');app.colaboradores=data('colaboradores');app.slaProgramado=data('sla_malha_programada');app.slaManual=data('sla_malha_manual');app.cias={};
   for(const u of app.config.unidades)for(const file of u.arquivos)app.cias[file]=data(file.replace('.json',''));
   app.selCiaId='gol';app.onCiaChange();app.selBaseVal='GRU';app.onBaseChange();app.inputBaseDestVal='ASU';app.selBaseDestVal='ASU';app.onInputBaseDest();app.selClassifVal=classification;app.onClassifChange();app.inputNumberVal='1234';app.inputDataVal='2026-11-17';app.inputHoraVal=time;app.onReferenceTimeChange();
@@ -22,12 +22,12 @@ const fs=require('fs'),path=require('path'),assert=require('node:assert/strict')
  tps.slaUpload=-90;assert.equal(app.isAddRowValid,false);tps.slaUpload=-240;
  app.inputHoraVal='10:02';app.onReferenceTimeChange();assert.equal(app.inputHoraVal,'10:02');assert.equal(app.isAddRowValid,false);await app.addRow();assert.equal(app.rows.length,0);
  app.inputHoraVal='10:00';app.onReferenceTimeChange();await app.addRow();assert.equal(app.rows.length,1);assert.equal(app.rows[0]['TPS 3'],-240);assert.equal(app.rows[0]['_contratual_TPS 3'],240);
- assert.deepEqual(app.exportSchemaIssues,[]);app.exportExcel();assert.equal(exported,1,'TPS 3 deve exportar com cabeçalhos confirmados');
+ const exportedRows=app.rows;assert.deepEqual(app.exportSchemaIssues,[]);app.exportExcel();assert.equal(exported,1,'TPS 3 deve exportar com cabeçalhos confirmados');
  let wb;const {ExcelService}=load('src/app/services/excel.service.ts',{xlsx:{...XLSX,writeFile:value=>{wb=value;}}});
- new ExcelService().exportExcel(app.rows,app.allCols,['TÍTULO','TPS 3']);
+ new ExcelService().exportExcel(exportedRows,app.allCols,['TÍTULO','TPS 3']);
  assert.equal(wb.Sheets['UPLOAD MAESTRO'][XLSX.utils.encode_cell({r:1,c:app.allCols.indexOf('TPS 3')})].v,-240);
  assert.equal(wb.Sheets['UPLOAD MAESTRO'][XLSX.utils.encode_cell({r:1,c:app.allCols.indexOf('Responsavel TPS 3')})].v,app.colaboradores[0]);
- assert.throws(()=>new ExcelService().exportExcel(app.rows,app.allCols.filter(c=>c!=='TPS 3'),['TÍTULO','TPS 3']),/TPS 3/);
+ assert.throws(()=>new ExcelService().exportExcel(exportedRows,app.allCols.filter(c=>c!=='TPS 3'),['TÍTULO','TPS 3']),/TPS 3/);
  app=appFor('11:55');for(const s of app.availableServices)app.addServicoItem(s.label,app.colaboradores[0]);const apacs=app.selectedServices.filter(s=>s.label!=='TPS 3').map(s=>s.apac);app.inputHoraVal='12:00';app.onReferenceTimeChange();assert.equal(app.selectedServices.length,3);assert.deepEqual(app.selectedServices.map(s=>s.apac),apacs);await app.addRow();assert.equal(app.serviceReview,null);assert.equal(app.rows.length,1);
  app=appFor();for(const s of app.availableServices.filter(s=>s.label!=='TPS 3'))app.addServicoItem(s.label,app.colaboradores[0]);await app.addRow();assert.deepEqual(app.serviceReview.missing,['TPS 3']);app.inputHoraVal='12:00';app.onReferenceTimeChange();assert.equal(app.serviceReview,null);await app.addRow();assert.equal(app.rows.length,1);
  assert.equal(appFor('10:00','VARREDURA').serviceCatalog.some(s=>s.label==='TPS 3'),false);

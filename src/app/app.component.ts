@@ -1217,6 +1217,10 @@ export class AppComponent implements OnInit, OnDestroy {
         `✓ ${res.filename} gerado! ${res.rowsCount} voos prontos para carga no Maestro.`,
         'success'
       );
+      this.rows = [];
+      this.searchTerm = '';
+      this.activeFilter = 'all';
+      this.recomputeDuplicates();
     } catch (e: any) {
       this.showToast(`Erro ao exportar: ${e.message}`, 'error');
     }
